@@ -1,0 +1,44 @@
+--- orig/fate-v6-original/core/fate_engine.h	2026-07-19 20:00:53.000000000 +0000
++++ fate-v6/core/fate_engine.h	2026-07-25 00:17:04.222039489 +0000
+@@ -54,13 +54,22 @@
+     FateBatchFitnessFn batch_fitness_fn; // optional; if set, takes priority over fitness_fn
+     void *fitness_ctx;           // Opaque context passed to fitness_fn / batch_fitness_fn
+ 
+-    /* Cognitive features (USE_COG equivalent) */
+-    int use_cog;                 // 1 = enable omega_root, resonance, state_weight
+-    double omega_decay;          // EWMA decay (default 0.95)
+-    double resonance_weight;     // λ₃ (default 0.20)
+-    double state_weight_lambda;  // λ₄ (default 0.15)
+-    int topo_active_thresh;      // visits for ACTIVE state (default 3)
+-    int topo_dormant_ticks;      // ticks before HIBERNATE (default 100)
++    /* Cognitive features (USE_COG equivalent) — DSCN-G v3 audited dynamics.
++     * Population members are treated as DSCN-G nodes: candidate.state doubles
++     * as omega_i (semantic vector, used for Kuramoto coupling weight), and
++     * each candidate carries a real phase_i and vitality_i (see Candidate).
++     * Replaces the old omega_root/EWMA + 3-bucket topo ACTIVE/HIBERNATE
++     * heuristic, which had no actual relationship to DSCN-G despite the
++     * naming. Defaults below are DSCN_G_v2's DEFAULTS (audited, 6 rounds,
++     * 2026-07-22/24) — NOT the unaudited v5/BIO constants used elsewhere
++     * in this repo's oracle_dscng.py (N_ss*=7, omega*=0.649747). */
++    int use_cog;                 // 1 = enable Kuramoto coupling + vitality homeostasis
++    double dscng_alpha;          // Kuramoto coupling-weight sharpness (default 5.0)
++    double dscng_eta_kura;       // Kuramoto coupling strength, basal (default 0.005)
++    double dscng_gamma;          // vitality decay rate (default 0.01)
++    double dscng_theta_death;    // vitality prune threshold (default 0.10)
++    double resonance_weight;     // λ₃ — weight of phase-coherence term in escape score (default 0.20)
++    double state_weight_lambda;  // λ₄ — weight of vitality term in escape score (default 0.15)
+     int verbose;                 // debug output to stderr (default 0)
+ 
+     /* ULTRA_CHROMO enhancements */
+@@ -108,6 +117,11 @@
+     double  lambda_gap;          // spectral gap estimate (adaptive)
+     double  rho_eff;             // tabu density (count/capacity)
+     int     n_restarts;          // CTEG restarts triggered
++
++    /* DSCN-G v3 observability (only meaningful if use_cog=1) */
++    double  dscng_phase_coherence; // Kuramoto order parameter R = |<e^{i*phase}>| over population
++    double  dscng_mean_vitality;   // mean vitality V_i over population
++    int     dscng_prunes;          // cumulative candidates pruned+respawned (vitality < theta_death)
+ };
+ 
+ void fate_get_state(const FateEngine *e, FateState *out);
