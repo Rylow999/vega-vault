@@ -1,0 +1,70 @@
+{
+  "theta_deaths": [
+    0.5,
+    0.2,
+    0.1,
+    0.05,
+    0.02,
+    0.01
+  ],
+  "seeds": 10,
+  "steps": 2000,
+  "window": 300,
+  "method": "gaussian_MI_bipartition_proxy_PROPOSED_NOT_PREVIOUSLY_DEFINED",
+  "results": [
+    {
+      "theta_death": 0.2,
+      "N_init": 20,
+      "N_mean": 2.7,
+      "N_std": 0.45825756949558405,
+      "phi_proxy_mean": 0.39094722407007115,
+      "phi_proxy_std": 0.3105733067794126,
+      "n_valid_seeds": 10
+    },
+    {
+      "theta_death": 0.1,
+      "N_init": 20,
+      "N_mean": 4.6,
+      "N_std": 0.4898979485566356,
+      "phi_proxy_mean": 12.351400784611613,
+      "phi_proxy_std": 0.32341567901758483,
+      "n_valid_seeds": 10
+    },
+    {
+      "theta_death": 0.05,
+      "N_init": 30,
+      "N_mean": 8.8,
+      "N_std": 0.4,
+      "phi_proxy_mean": 12.855095401664041,
+      "phi_proxy_std": 1.0493379575366577,
+      "n_valid_seeds": 10
+    },
+    {
+      "theta_death": 0.02,
+      "N_init": 75,
+      "N_mean": 18.0,
+      "N_std": 0.6324555320336759,
+      "phi_proxy_mean": 9.49008706055198,
+      "phi_proxy_std": 3.2197684281755867,
+      "n_valid_seeds": 10
+    },
+    {
+      "theta_death": 0.01,
+      "N_init": 150,
+      "N_mean": 29.714285714285715,
+      "N_std": 0.880630571852711,
+      "phi_proxy_mean": 9.769056948867647,
+      "phi_proxy_std": 4.442016899182706,
+      "n_valid_seeds": 7
+    }
+  ],
+  "fit": {
+    "r2_vs_logN": 0.2241968982505549,
+    "slope_vs_logN": 2.4391126876346285,
+    "intercept_vs_logN": 3.6169482931867125,
+    "r2_vs_N": 0.07054492539210078,
+    "slope_vs_N": 0.11958986868777563,
+    "intercept_vs_N": 7.445009074157948,
+    "better_fit": "log(N)"
+  }
+}
