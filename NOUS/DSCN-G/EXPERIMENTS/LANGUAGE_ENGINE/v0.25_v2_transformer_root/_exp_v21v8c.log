@@ -1,0 +1,9 @@
+=== v0.21 v8c ENDURECER test polisemia (W=8, ctx denso, 6 poli) ===
+vocab=96 poly=['banco', 'llave', 'mouse', 'capital', 'firma', 'oro'] mono=['quijote', 'sancho', 'caballero'] seq=8640
+  [INCOND_th0.3] mono_sep=0/3 poli_sep=0/6 acc_gt=0.50 {'banco': 0.506, 'llave': 0.494, 'mouse': 0.5, 'capital': 0.5, 'firma': 0.329, 'oro': 0.667} -> PARCIAL
+  [COND_th0.3] mono_sep=0/3 poli_sep=0/6 acc_gt=0.50 {'banco': 0.506, 'llave': 0.494, 'mouse': 0.5, 'capital': 0.5, 'firma': 0.329, 'oro': 0.667} -> PARCIAL
+  [INCOND_th0.5] mono_sep=0/3 poli_sep=0/6 acc_gt=0.50 {'banco': 0.506, 'llave': 0.494, 'mouse': 0.5, 'capital': 0.5, 'firma': 0.329, 'oro': 0.667} -> PARCIAL
+  [COND_th0.5] mono_sep=0/3 poli_sep=0/6 acc_gt=0.50 {'banco': 0.506, 'llave': 0.494, 'mouse': 0.5, 'capital': 0.5, 'firma': 0.329, 'oro': 0.667} -> PARCIAL
+  [INCOND_th0.7] mono_sep=0/3 poli_sep=0/6 acc_gt=0.50 {'banco': 0.506, 'llave': 0.494, 'mouse': 0.5, 'capital': 0.5, 'firma': 0.329, 'oro': 0.667} -> PARCIAL
+  [COND_th0.7] mono_sep=0/3 poli_sep=0/6 acc_gt=0.50 {'banco': 0.506, 'llave': 0.494, 'mouse': 0.5, 'capital': 0.5, 'firma': 0.329, 'oro': 0.667} -> PARCIAL
+-> results_v21_v8c.json
