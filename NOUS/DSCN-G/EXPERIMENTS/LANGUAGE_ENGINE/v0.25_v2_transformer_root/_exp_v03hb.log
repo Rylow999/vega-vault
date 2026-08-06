@@ -1,0 +1,8 @@
+=== v0.3 REAL — HIBERNADO (memoria de masa) N_init=50 ===
+corrido en 23s
+N_active (working set): 50
+N_hibernated (masa):    0
+N_total (masa viva):    50  (N_init=50)
+colapso v0.1 (sin hibernar) daba ~4.5. Aca masa=50
+
+-> results_v03real.json
