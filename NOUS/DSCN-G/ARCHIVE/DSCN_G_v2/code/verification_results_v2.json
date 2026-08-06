@@ -1,0 +1,75 @@
+{
+  "theorem1": {
+    "alpha": 5.0,
+    "theta_death": 0.1,
+    "results": [
+      {
+        "N_init": 4,
+        "N_mean": 3.6,
+        "N_std": 0.8,
+        "rho_mean": 0.4222222222222222,
+        "rho_std": 0.1088662107903635,
+        "fp_ok": true,
+        "ub_ok": true,
+        "max_ok": false,
+        "maximality_n": 4,
+        "maximality_rho_approx": 0.75
+      },
+      {
+        "N_init": 50,
+        "N_mean": 4.0,
+        "N_std": 0.6324555320336759,
+        "rho_mean": 0.4222222222222222,
+        "rho_std": 0.1088662107903635,
+        "fp_ok": true,
+        "ub_ok": true,
+        "max_ok": false,
+        "maximality_n": 5,
+        "maximality_rho_approx": 0.6
+      },
+      {
+        "N_init": 200,
+        "N_mean": 3.6,
+        "N_std": 1.019803902718557,
+        "rho_mean": 0.37777777777777777,
+        "rho_std": 0.0888888888888889,
+        "fp_ok": true,
+        "ub_ok": true,
+        "max_ok": false,
+        "maximality_n": 4,
+        "maximality_rho_approx": 0.75
+      }
+    ]
+  },
+  "theorem2": {
+    "beta": 0.2,
+    "mean_alignment": 0.20640522139110926,
+    "std_alignment": 0.20087270790382428,
+    "threshold": 0.6,
+    "converged": false
+  },
+  "theorem3": {
+    "eta": 0.5,
+    "seeds": 5,
+    "steps": 500,
+    "consensus_count": 0,
+    "fraction": 0.0,
+    "details": [
+      "no_consensus",
+      "no_consensus",
+      "no_consensus",
+      "no_consensus",
+      "no_consensus"
+    ]
+  },
+  "c3": {
+    "seeds": 5,
+    "steps": 500,
+    "hijack_triggers": 10,
+    "hijack_rate": 0.004,
+    "plv_drops": 0,
+    "drop_rate": 0.0,
+    "mean_delta_plv": 4.4408920985006264e-17,
+    "max_delta_plv": 1.1102230246251565e-16
+  }
+}
