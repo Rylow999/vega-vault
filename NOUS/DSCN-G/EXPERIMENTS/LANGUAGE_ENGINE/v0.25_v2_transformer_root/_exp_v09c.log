@@ -1,0 +1,5 @@
+=== v0.9c DOLOR corregido (error de prediccion real) ===
+A(fijo) err=[0.9927, 0.9927, 0.9927, 0.9927]
+B(aprende) err=[0.9927, 0.958, 0.9356, 0.933]
+
+-> results_v09c_clean.json
