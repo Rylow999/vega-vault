@@ -1,0 +1,6 @@
+=== v0.6b-bis DOLOR=error prediccion (Q-learning aristas) ===
+error prediccion SIN dolor: 0.9921
+entrenado 1155s
+error prediccion CON dolor: 0.9933
+
+-> results_v06b_bis.json
