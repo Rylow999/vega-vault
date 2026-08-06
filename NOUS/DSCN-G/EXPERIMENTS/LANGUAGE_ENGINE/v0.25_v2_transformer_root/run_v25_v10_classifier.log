@@ -1,0 +1,11 @@
+=== v0.25 v10 CLASIFICADOR LINEAL + LOOP sobre skip-gram ===
+ descargando Wikipedia...
+ERROR Wikipedia (HTTP Error 403: Forbidden): usando corpus sintetico ampliado
+ fallback seq=4924
+ entrenando skip-gram...
+ ejemplos A/B: train=336 test=145
+ acc_clf baseline=0.766 (111/145)
+ acc_loop=0.490 (71/145)
+ mejora vs clasificador=-0.276
+LOOP EMPEORA CLASIFICADOR: el ciclo introduce ruido.
+-> results_v25_v10.json
