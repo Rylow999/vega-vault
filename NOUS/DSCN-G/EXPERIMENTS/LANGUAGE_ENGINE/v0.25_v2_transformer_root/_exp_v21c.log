@@ -1,0 +1,20 @@
+=== v0.21 v7 CORPUS CONTRASTIVO + REPULSION (fix v6) ===
+train 7s | corpus=2700 tok, vocab=33 (mide ['banco', 'llave', 'mouse'])
+curva (epoca, separadas, total_polisemicas):
+  ep1: 3/3
+  ep2: 1/3
+  ep3: 1/3
+  ep4: 0/3
+  ep5: 0/3
+  ep6: 0/3
+  ep7: 0/3
+  ep8: 0/3
+  ep9: 0/3
+  ep10: 0/3
+  ep11: 0/3
+  ep12: 0/3
+  ep13: 0/3
+  ep14: 0/3
+  ep15: 0/3
+
+-> results_v21_contrastivo.json
