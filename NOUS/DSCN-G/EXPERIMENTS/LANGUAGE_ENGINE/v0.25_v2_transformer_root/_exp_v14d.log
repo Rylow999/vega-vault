@@ -1,0 +1,8 @@
+=== v0.14d backprop manual CORREGIDO (head aprendido, lr=0.005) ===
+grafo 0s
+  epoca 1 lista
+  epoca 2 lista
+transformer bp 241s
+acc hibrido d=0.1055  (baseline v0.6a=0.1011)
+
+-> results_v14d.json
