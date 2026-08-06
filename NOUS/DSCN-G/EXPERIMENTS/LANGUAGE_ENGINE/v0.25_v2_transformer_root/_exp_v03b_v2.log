@@ -1,0 +1,5 @@
+=== v0.3b v2 MEMORIA (metrica borrar corregida) ===
+train 6s
+base=0.0589 hibernado=0.0589 borrado=0.0815
+
+-> results_v03b_v2.json
