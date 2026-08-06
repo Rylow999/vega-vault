@@ -1,0 +1,5 @@
+=== v0.4 beta_eff contextual (K=10, N=300, re-run robusto) ===
+beta fijo    : N*=5.0  align=1.0000
+beta_eff(rho): N*=5.2  align=1.0000
+
+-> results_v04.json
