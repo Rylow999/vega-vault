@@ -1,0 +1,12 @@
+=== v0.25 v3 TRANSFORMER BERT-STYLE (masked LM) ===
+vocab=79 poly=5 mono=2 seq=5280
+Entrenando BERT-style (masked LM)...
+Transformer BERT: acc_mlm=0.131 (azar=1/79=0.013)
+acc_gt_simple (¿clasifica A/B?): 0.533 (azar=0.50)
+  banco: cos(A,B)=0.937 acc_gt=0.500 (NO SEPARA)
+  llave: cos(A,B)=0.851 acc_gt=0.500 (NO SEPARA)
+  mouse: cos(A,B)=0.868 acc_gt=0.500 (NO SEPARA)
+  capital: cos(A,B)=0.812 acc_gt=0.500 (NO SEPARA)
+  oro: cos(A,B)=0.698 acc_gt=0.667 (NO SEPARA)
+VEREDICTO: BERT NO SEPARA A/B: masked LM no basta, necesitamos mas supervicion
+-> results_v25_v3.json
