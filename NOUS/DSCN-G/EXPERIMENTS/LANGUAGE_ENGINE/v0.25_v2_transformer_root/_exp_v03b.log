@@ -1,0 +1,5 @@
+=== v0.3b MEMORIA corregida (sin reward) ===
+train 5s
+base=0.0685 hibernado=0.0685 borrado=0.1011
+
+-> results_v03b.json
