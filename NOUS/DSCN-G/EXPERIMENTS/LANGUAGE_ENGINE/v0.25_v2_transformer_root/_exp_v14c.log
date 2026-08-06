@@ -1,0 +1,6 @@
+=== v0.14c HIBRIDO backprop manual D=16 (mas capacidad) ===
+grafo 0s
+transformer bp 147s
+acc hibrido D16=0.0013  (baseline v0.6a=0.1011)
+
+-> results_v14c.json
