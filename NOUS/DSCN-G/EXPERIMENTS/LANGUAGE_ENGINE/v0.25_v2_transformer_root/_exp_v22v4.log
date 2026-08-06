@@ -1,0 +1,6 @@
+=== v0.22 v4 ROOT DIRECTOR (MARGIN adaptativo, W Hebb) ===
+train+eval 80s
+FASE A (contrastivo) por percentil: {'70': {'margin': 0.0, 'routing_acc': 1.0, 'tasa_duda': 0.0}, '80': {'margin': 0.0, 'routing_acc': 1.0, 'tasa_duda': 0.0}, '90': {'margin': 0.0, 'routing_acc': 1.0, 'tasa_duda': 0.0}}
+FASE B (Don Quijote) por percentil: {'70': {'margin': 0.0, 'tasa_duda': 0.0}, '80': {'margin': 0.0, 'tasa_duda': 0.0}, '90': {'margin': 0.0, 'tasa_duda': 0.0}}
+
+-> results_v22_v4.json
