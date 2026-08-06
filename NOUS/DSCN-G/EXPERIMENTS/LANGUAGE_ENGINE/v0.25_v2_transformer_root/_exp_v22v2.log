@@ -1,0 +1,8 @@
+=== v0.22 v2 ROOT DIRECTOR sobre TRANSFORMER (v0.14d) ===
+vocab=79 poly=5 mono=2 seq=5280
+Entrenando transformer minimo (backprop completo)...
+Transformer entrenado. acc_pred(next-token)=0.907 (azar=1/79=0.013)
+routing_acc_gt (root sobre transformer): 0.545
+baseline (contexto solo, sin root):      0.545
+VEREDICTO: ROOT REFLEJA: root ~= baseline (no aporta)
+-> results_v22_v2.json
