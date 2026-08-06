@@ -1,0 +1,64 @@
+{
+  "rho_eff_definition": {
+    "manual": 0.5555555555555556,
+    "method": 0.5555555555555556,
+    "match": true
+  },
+  "theorem1": {
+    "alpha": 5.0,
+    "theta_death": 0.1,
+    "results": [
+      {
+        "N_init": 4,
+        "N_ss_mean": 3.6,
+        "N_ss_std": 0.48989794855663565,
+        "rho_eff_mean": 0.4666666666666666,
+        "rho_eff_std": 0.20367003088692626,
+        "universal_bound_ok": true,
+        "fixed_point_ok": true
+      },
+      {
+        "N_init": 50,
+        "N_ss_mean": 5.0,
+        "N_ss_std": 0.7745966692414834,
+        "rho_eff_mean": 0.44444444444444436,
+        "rho_eff_std": 0.20487876571761973,
+        "universal_bound_ok": true,
+        "fixed_point_ok": true
+      },
+      {
+        "N_init": 200,
+        "N_ss_mean": 4.2,
+        "N_ss_std": 0.7483314773547882,
+        "rho_eff_mean": 0.5555555555555556,
+        "rho_eff_std": 0.0,
+        "universal_bound_ok": true,
+        "fixed_point_ok": true
+      }
+    ],
+    "overall_N_ss": 4.266666666666667,
+    "overall_rho_eff": 0.4888888888888889
+  },
+  "theorem2": {
+    "lambda_vm": 3.0,
+    "n_actions": 8,
+    "beta": 0.1,
+    "omega_star": 0.75,
+    "mean_distance": 0.4747690141771904,
+    "std_distance": 0.08697045550211713,
+    "mean_le_beta": false,
+    "all_le_beta": false,
+    "C_estimate": 4.747690141771904
+  },
+  "theorem3": {
+    "lambda_vm": 3.0,
+    "eta": 0.1,
+    "seeds": 10,
+    "steps": 500,
+    "antipodal_count": 2,
+    "p_antipodal": 0.2,
+    "p_conv": 0.8,
+    "theoretical_bound": 2.67863696180804e-33,
+    "bound_satisfied": false
+  }
+}
