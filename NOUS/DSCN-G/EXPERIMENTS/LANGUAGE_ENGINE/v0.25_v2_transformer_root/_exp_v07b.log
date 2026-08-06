@@ -1,0 +1,5 @@
+=== v0.7-bis contexto SEPARADO W=3 ===
+entrenado 6s
+accuracy contexto separado W=3: 0.0049  (v0.6a W=1: 0.1011, v0.7 promedio: 0.0589)
+
+-> results_v07b.json
