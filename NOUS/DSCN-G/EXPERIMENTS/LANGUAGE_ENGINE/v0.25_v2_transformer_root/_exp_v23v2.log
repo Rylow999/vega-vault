@@ -1,0 +1,6 @@
+=== v0.23 v2 COMPOSICION RELACIONAL (sin contaminacion, D=16/32) ===
+train+eval 39s
+D=16: 0.312 (32 tests, azar=0.25) supera_azar=True
+D=32: 0.312 (32 tests, azar=0.25) supera_azar=True
+
+-> results_v23_v2.json
