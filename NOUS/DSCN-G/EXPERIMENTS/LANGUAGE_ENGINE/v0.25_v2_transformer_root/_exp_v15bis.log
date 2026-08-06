@@ -1,0 +1,5 @@
+=== v0.15-bis SENSE NODES (contextos con identidad) ===
+entrenado 0s
+tests=6000 acc_sense=0.4957 acc_post=0.0858 (v0.15 daba 0.4987)
+
+-> results_v15bis.json
