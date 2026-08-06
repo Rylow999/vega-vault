@@ -1,0 +1,19 @@
+{
+  "experiment": "v0.25_v2b_root_memoria_sobre_decision_transformer",
+  "hypothesis": "El root refuerza la decision del transformer (Hebb). Si acc_gt_root>0.7, el root funciona COMO MEMORIA (no como separador).",
+  "params": {
+    "d": 16,
+    "w": 8,
+    "lr": 0.05,
+    "epochs": 30,
+    "beta": 0.1,
+    "decaimiento": 0.85
+  },
+  "resultados": {
+    "acc_pred": 0.907,
+    "acc_gt_root": 0.543,
+    "dolor_en_duda": 0.0,
+    "W_contrae_pct": 0.0,
+    "veredicto": "ROOT NO FUNCIONA: no refuerza el sentido (acc_gt_root\u2248azar)"
+  }
+}
