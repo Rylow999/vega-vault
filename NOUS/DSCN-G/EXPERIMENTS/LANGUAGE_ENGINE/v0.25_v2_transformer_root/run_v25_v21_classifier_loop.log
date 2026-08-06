@@ -1,0 +1,9 @@
+=== v0.25 v21 CLASIFICADOR LINEAL + LOOP ===
+ entrenando skip-gram...
+ baseline_acc=0.500
+ clf_acc=1.000
+ loop...
+ loop_acc=1.000
+['A A A', 'B B B']
+ baseline_acc=0.500 | clf_acc=1.000 | loop_acc=1.000
+-> results_v25_v21.json
