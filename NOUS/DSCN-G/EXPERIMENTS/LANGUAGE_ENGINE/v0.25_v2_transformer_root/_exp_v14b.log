@@ -1,0 +1,6 @@
+=== v0.14b HIBRIDO backprop manual (transformer 1 capa) ===
+grafo 0s
+transformer bp 46s
+acc hibrido bp=0.0012  (baseline v0.6a=0.1011)
+
+-> results_v14b.json
