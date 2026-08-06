@@ -1,0 +1,52 @@
+{
+  "experiment": "v0.22_v4_margin_adaptativo",
+  "hypothesis": "MARGIN = percentil de top1-top2 recupera la duda SIN perder ruteo (W Hebb). La duda cae en ambiguedad real, no por umbral fijo.",
+  "params": {
+    "d": 16,
+    "window": 4,
+    "k": 2,
+    "beta": 0.1,
+    "beta_rep": 0.2,
+    "alpha": 0.1,
+    "lr_w": 0.01,
+    "epochs_w": 3,
+    "pctiles": [
+      70,
+      80,
+      90
+    ]
+  },
+  "fase_A": {
+    "70": {
+      "margin": 0.0,
+      "routing_acc": 1.0,
+      "tasa_duda": 0.0
+    },
+    "80": {
+      "margin": 0.0,
+      "routing_acc": 1.0,
+      "tasa_duda": 0.0
+    },
+    "90": {
+      "margin": 0.0,
+      "routing_acc": 1.0,
+      "tasa_duda": 0.0
+    }
+  },
+  "fase_B": {
+    "70": {
+      "margin": 0.0,
+      "tasa_duda": 0.0
+    },
+    "80": {
+      "margin": 0.0,
+      "tasa_duda": 0.0
+    },
+    "90": {
+      "margin": 0.0,
+      "tasa_duda": 0.0
+    }
+  },
+  "duda_emerge": false,
+  "ruteo_mantiene": true
+}
