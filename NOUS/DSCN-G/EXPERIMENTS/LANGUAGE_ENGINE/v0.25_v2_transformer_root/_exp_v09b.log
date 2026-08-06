@@ -1,0 +1,5 @@
+=== v0.9b CATEGORIZACION corregida (dict solo en eval) ===
+train 6s
+pureza=0.9267 azar=0.9267
+
+-> results_v09b_clean.json
