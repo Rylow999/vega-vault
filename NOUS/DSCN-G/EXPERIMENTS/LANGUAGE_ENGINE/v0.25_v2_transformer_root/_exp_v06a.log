@@ -1,0 +1,9 @@
+=== v0.6a next-token sobre Don Quijote (V=200) ===
+palabras totales: 386804
+vocabulario: 200 palabras
+secuencia util: 241443
+accuracy ANTES del entrenamiento: 0.0045
+entrenado en 4s
+accuracy DESPUES: 0.1011
+
+-> results_v06a.json
