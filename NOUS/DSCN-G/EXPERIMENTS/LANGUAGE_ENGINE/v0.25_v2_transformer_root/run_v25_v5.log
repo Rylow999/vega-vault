@@ -1,0 +1,9 @@
+=== v0.25 v5 DUDA como indicador de cambio de contexto (representacion que separa) ===
+vocab=79 poly=5 mono=2 seq=5280
+centros ortonormales: cos(A,B)=-0.000 (debe ser ~0)
+acc_decision (¿root decide A/B?): 0.459 (azar=0.50)
+dolor_en_cambio (¿subte cuando cambia A↔B?): 0.150 (598 casos)
+dolor_en_estable (¿bajo cuando contexto estable?): 0.504 (3833 casos)
+duda_detecta_cambio: False
+VEREDICTO: DUDA NO DETECTA CAMBIO: el dolor no distingue cambio de contexto
+-> results_v25_v5.json
