@@ -1,0 +1,8 @@
+=== v0.22 v3 ROOT DIRECTOR (PROYECCION Hebb, sin backprop) ===
+>> ataca la raiz: contexto plano no separa sentidos en D=16; W Hebb si
+train+eval 76s
+FASE A routing_acc por margin: {'0.05': {'routing_acc': 1.0, 'total': 300}, '0.1': {'routing_acc': 1.0, 'total': 300}, '0.15': {'routing_acc': 1.0, 'total': 300}, '0.2': {'routing_acc': 1.0, 'total': 300}}
+FASE A probe ambiguo duda: {'0.05': {'duda_ambigua': 0, 'n': 3}, '0.1': {'duda_ambigua': 0, 'n': 3}, '0.15': {'duda_ambigua': 0, 'n': 3}, '0.2': {'duda_ambigua': 0, 'n': 3}}
+FASE B tasa_duda por margin: {'0.05': {'tasa_duda': 0.0, 'total': 15222}, '0.1': {'tasa_duda': 0.0, 'total': 15222}, '0.15': {'tasa_duda': 0.0, 'total': 15222}, '0.2': {'tasa_duda': 0.0, 'total': 15222}}
+
+-> results_v22.json
