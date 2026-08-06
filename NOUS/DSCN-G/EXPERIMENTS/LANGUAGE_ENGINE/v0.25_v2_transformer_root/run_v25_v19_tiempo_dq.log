@@ -1,0 +1,37 @@
+tokens=386919 vocab=23643
+ocurrencias='tiempo': 327
+context words unicos alrededor de 'tiempo': 851
+vocab acotado=401
+
+[A] cluster sizes k=3: Counter({0: 139, 1: 123, 2: 65})
+ cohesion: {0: 0.3752283522337438, 1: 0.4991012908786536, 2: 0.4686772770612881}
+
+ Cluster 0 (n=139, coh=0.375):
+  para le poder imprimir y previlegio por el [tiempo] que fuésemos servidos
+  amigo la buena ventura mía en hallar en [tiempo] tan necesitado tal
+  fuera y no envidiara y fuera alegre el [tiempo] que fue triste
+  hechas pues estas prevenciones no quiso aguardar más [tiempo] a poner en
+  priesa a caminar y llegó a ella a [tiempo] que anochecía estaban
+  y vigor del debilitado corazón mío ahora es [tiempo] que vuelvas los
+  no había poder averiguarse con él en este [tiempo] solicitó don quijote
+  el arremeter al vizcaíno todo fue en un [tiempo] llevando determinación de
+
+ Cluster 1 (n=123, coh=0.499):
+  engaño en que he estado todo el mucho [tiempo] que ha que
+  cuyo nombre no quiero acordarme no ha mucho [tiempo] que vivía un
+  bien a mí y al ama que al [tiempo] del partirse aquel
+  fierabrás que con sola una gota se ahorraran [tiempo] y medicinas qué
+  suceda bien y que se llegue ya el [tiempo] de ganar esta
+  de entender también que andando lo más del [tiempo] de su vida
+  cuya causa no se probará que desde aquel [tiempo] a éste haya
+  han de dejar de encomendarse a dios que [tiempo] y lugar les
+
+ Cluster 2 (n=65, coh=0.469):
+  en todos estos nuestros reinos de castilla por [tiempo] y espacio de
+  de hacer imprimir el dicho libro durante el [tiempo] de los dichos
+  de muy buen parecer de quien él un [tiempo] anduvo enamorado aunque
+  sepáis mi nombre antes de toda sazón pero [tiempo] vendrá en que
+  con una turba de yangüeses ya en este [tiempo] se había levantado
+  debes más alegrar pero dejemos esto para su [tiempo] y mira si
+  en el estómago de don quijote y al [tiempo] que sancho llegó
+  la culpa de no habérmelo tú acordado en [tiempo] te sucedió aquello
