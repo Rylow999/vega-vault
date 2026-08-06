@@ -1,0 +1,12 @@
+=== v0.25 v4 ROOT como SISTEMA DE DUDA sobre transformer ===
+vocab=79 poly=5 mono=2 seq=5280
+1. Entrenando transformer (contexto/sentido)...
+   Transformer: acc_pred=0.901
+2. Root = SISTEMA DE DUDA (coherencia decision vs memoria)...
+   acc_decision (transformer decide sentido?): 0.544
+   dolor_en_duda (¿subte en contextos ambiguos?): 0.091 (656 casos)
+   dolor_en_confianza (¿bajo en contextos claros?): 0.000 (2 casos)
+   W_contrae_pct (¿ventana contrae en duda?): 0.091
+   foco_acc (¿memoria retiene lo relevante?): 0.635
+   VEREDICTO: ROOT COMO DUDA NO FUNCIONA: dolor no distingue ambiguidad
+-> results_v25_v4.json
