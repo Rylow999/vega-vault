@@ -1,0 +1,3756 @@
+============================================================
+EGFR Drug Discovery Benchmark — Direct Oracle Mode
+============================================================
+Start: 2026-07-19T19:24:03.247980
+Oracle: EGFROracle (oracle_egfr_v1.py)
+Output: C:\Users\lucas\repos\nexus-vault\experiments\EGFR_Benchmark
+
+[Loading oracle...]
+[EGFR Oracle] Loading data from C:\Users\lucas\repos\nexus-vault\experiments\EGFR_Drug_Discovery\data\chembl_egfr_ic50_1000.json...
+[EGFR Oracle] Found 1000 activities
+[EGFR Oracle] Processing 800 unique compounds...
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:03] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[19:24:04] DEPRECATION WARNING: please use MorganGenerator
+[EGFR Oracle] Loaded 800 compounds
+[EGFR Oracle] pIC50 range: 2.19 - 11.22
+[EGFR Oracle] FPS matrix shape: (800, 1024)
+[✓] Oracle loaded: 800 compounds
+
+[19:24:04] Starting: D=64, budget=500, seeds=25
+  [1/25] Seed 42...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [2/25] Seed 43...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [3/25] Seed 44...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [4/25] Seed 45...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [5/25] Seed 46...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [6/25] Seed 47...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [7/25] Seed 48...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [8/25] Seed 49...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [9/25] Seed 50...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [10/25] Seed 51...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [11/25] Seed 52...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [12/25] Seed 53...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [13/25] Seed 54...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [14/25] Seed 55...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [15/25] Seed 56...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [16/25] Seed 57...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [17/25] Seed 58...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [18/25] Seed 59...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [19/25] Seed 60...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [20/25] Seed 61...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [21/25] Seed 62...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [22/25] Seed 63...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [23/25] Seed 64...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [24/25] Seed 65...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [25/25] Seed 66...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+
+[19:24:34] Starting: D=64, budget=3000, seeds=25
+  [1/25] Seed 42...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [2/25] Seed 43...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [3/25] Seed 44...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [4/25] Seed 45...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [5/25] Seed 46...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [6/25] Seed 47...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [7/25] Seed 48...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [8/25] Seed 49...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [9/25] Seed 50...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [10/25] Seed 51...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [11/25] Seed 52...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [12/25] Seed 53...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [13/25] Seed 54...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [14/25] Seed 55...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [15/25] Seed 56...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [16/25] Seed 57...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [17/25] Seed 58...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [18/25] Seed 59...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [19/25] Seed 60...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [20/25] Seed 61...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [21/25] Seed 62...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [22/25] Seed 63...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [23/25] Seed 64...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [24/25] Seed 65...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [25/25] Seed 66...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+
+[19:27:41] Starting: D=128, budget=500, seeds=25
+  [1/25] Seed 42...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [2/25] Seed 43...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=0.9954
+    Eval 400/500, best=0.9954
+    Eval 500/500, best=0.9954
+    ✅ COMPLETED (best=0.9954)
+  [3/25] Seed 44...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [4/25] Seed 45...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [5/25] Seed 46...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [6/25] Seed 47...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [7/25] Seed 48...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [8/25] Seed 49...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [9/25] Seed 50...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [10/25] Seed 51...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [11/25] Seed 52...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [12/25] Seed 53...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [13/25] Seed 54...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [14/25] Seed 55...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [15/25] Seed 56...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [16/25] Seed 57...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [17/25] Seed 58...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [18/25] Seed 59...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [19/25] Seed 60...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [20/25] Seed 61...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=0.9954
+    Eval 400/500, best=0.9954
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [21/25] Seed 62...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [22/25] Seed 63...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [23/25] Seed 64...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=0.9954
+    Eval 300/500, best=0.9954
+    Eval 400/500, best=0.9954
+    Eval 500/500, best=0.9954
+    ✅ COMPLETED (best=0.9954)
+  [24/25] Seed 65...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [25/25] Seed 66...
+    Eval 100/500, best=0.9954
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+
+[19:28:14] Starting: D=128, budget=3000, seeds=25
+  [1/25] Seed 42...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [2/25] Seed 43...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=0.9954
+    Eval 400/3000, best=0.9954
+    Eval 500/3000, best=0.9954
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [3/25] Seed 44...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [4/25] Seed 45...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [5/25] Seed 46...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [6/25] Seed 47...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [7/25] Seed 48...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [8/25] Seed 49...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [9/25] Seed 50...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [10/25] Seed 51...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [11/25] Seed 52...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [12/25] Seed 53...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [13/25] Seed 54...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [14/25] Seed 55...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [15/25] Seed 56...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [16/25] Seed 57...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [17/25] Seed 58...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [18/25] Seed 59...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [19/25] Seed 60...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [20/25] Seed 61...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=0.9954
+    Eval 400/3000, best=0.9954
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [21/25] Seed 62...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [22/25] Seed 63...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [23/25] Seed 64...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=0.9954
+    Eval 300/3000, best=0.9954
+    Eval 400/3000, best=0.9954
+    Eval 500/3000, best=0.9954
+    Eval 600/3000, best=0.9954
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [24/25] Seed 65...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [25/25] Seed 66...
+    Eval 100/3000, best=0.9954
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+
+[19:31:31] Starting: D=256, budget=500, seeds=25
+  [1/25] Seed 42...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [2/25] Seed 43...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [3/25] Seed 44...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [4/25] Seed 45...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [5/25] Seed 46...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [6/25] Seed 47...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [7/25] Seed 48...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [8/25] Seed 49...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [9/25] Seed 50...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [10/25] Seed 51...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [11/25] Seed 52...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [12/25] Seed 53...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [13/25] Seed 54...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [14/25] Seed 55...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [15/25] Seed 56...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [16/25] Seed 57...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [17/25] Seed 58...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [18/25] Seed 59...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [19/25] Seed 60...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [20/25] Seed 61...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [21/25] Seed 62...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [22/25] Seed 63...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [23/25] Seed 64...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [24/25] Seed 65...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [25/25] Seed 66...
+    Eval 100/500, best=1.0000
+    Eval 200/500, best=1.0000
+    Eval 300/500, best=1.0000
+    Eval 400/500, best=1.0000
+    Eval 500/500, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+
+[19:32:05] Starting: D=256, budget=3000, seeds=25
+  [1/25] Seed 42...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [2/25] Seed 43...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [3/25] Seed 44...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [4/25] Seed 45...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [5/25] Seed 46...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [6/25] Seed 47...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [7/25] Seed 48...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [8/25] Seed 49...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [9/25] Seed 50...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [10/25] Seed 51...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [11/25] Seed 52...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [12/25] Seed 53...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [13/25] Seed 54...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [14/25] Seed 55...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [15/25] Seed 56...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [16/25] Seed 57...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [17/25] Seed 58...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [18/25] Seed 59...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [19/25] Seed 60...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [20/25] Seed 61...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [21/25] Seed 62...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [22/25] Seed 63...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [23/25] Seed 64...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [24/25] Seed 65...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+  [25/25] Seed 66...
+    Eval 100/3000, best=1.0000
+    Eval 200/3000, best=1.0000
+    Eval 300/3000, best=1.0000
+    Eval 400/3000, best=1.0000
+    Eval 500/3000, best=1.0000
+    Eval 600/3000, best=1.0000
+    Eval 700/3000, best=1.0000
+    Eval 800/3000, best=1.0000
+    Eval 900/3000, best=1.0000
+    Eval 1000/3000, best=1.0000
+    Eval 1100/3000, best=1.0000
+    Eval 1200/3000, best=1.0000
+    Eval 1300/3000, best=1.0000
+    Eval 1400/3000, best=1.0000
+    Eval 1500/3000, best=1.0000
+    Eval 1600/3000, best=1.0000
+    Eval 1700/3000, best=1.0000
+    Eval 1800/3000, best=1.0000
+    Eval 1900/3000, best=1.0000
+    Eval 2000/3000, best=1.0000
+    Eval 2100/3000, best=1.0000
+    Eval 2200/3000, best=1.0000
+    Eval 2300/3000, best=1.0000
+    Eval 2400/3000, best=1.0000
+    Eval 2500/3000, best=1.0000
+    Eval 2600/3000, best=1.0000
+    Eval 2700/3000, best=1.0000
+    Eval 2800/3000, best=1.0000
+    Eval 2900/3000, best=1.0000
+    Eval 3000/3000, best=1.0000
+    ✅ COMPLETED (best=1.0000)
+
+============================================================
+All runs finished: 2026-07-19T19:35:13.399517
+============================================================
