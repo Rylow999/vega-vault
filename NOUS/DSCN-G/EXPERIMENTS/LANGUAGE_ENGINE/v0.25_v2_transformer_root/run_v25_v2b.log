@@ -1,0 +1,10 @@
+=== v0.25 v2b ROOT con regla correcta (memoria sobre decision transformer) ===
+vocab=79 poly=5 mono=2 seq=5280
+1. Entrenando transformer (contexto/sentido, backprop)...
+   Transformer: acc_pred=0.907
+2. Root = MEMORIA sobre decision del transformer (Hebb + dolor en duda)...
+   acc_gt_root (¿root refuerza sentido correcto?): 0.543
+   dolor_en_duda (¿dolor sube en duda?): 0.000
+   W_contrae_pct (¿ventana contrae en duda?): 0.000
+   VEREDICTO: ROOT NO FUNCIONA: no refuerza el sentido (acc_gt_root≈azar)
+-> results_v25_v2b.json
