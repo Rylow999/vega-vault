@@ -1,0 +1,18 @@
+{
+  "experiment": "v0.25_v6_root_atencion_selectiva",
+  "hypothesis": "La atencion selectiva (peso por distintividad A/B) permite al root decidir A/B y detectar cambio de contexto.",
+  "params": {
+    "d": 16,
+    "w": 8,
+    "seed": 0
+  },
+  "resultados": {
+    "acc_decision": 0.8901446654611211,
+    "dolor_en_cambio": 0.03610560524971017,
+    "dolor_en_estable": 0.11320239471219956,
+    "cambio_count": 9,
+    "estable_count": 2202,
+    "duda_detecta_cambio": false,
+    "veredicto": "ATENCION SELECTIVA SEPARA A/B: root decide A/B (pero no detecta cambio)"
+  }
+}
