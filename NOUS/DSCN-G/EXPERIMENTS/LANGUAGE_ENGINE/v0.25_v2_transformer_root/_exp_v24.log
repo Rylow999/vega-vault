@@ -1,0 +1,6 @@
+=== v0.24 MEMORIA DE TRABAJO CON VITALIDAD ===
+sim+eval 27s
+TEST1 foco dominado por disparado: 12029/19999 = 0.601
+TEST2 next-token: con vitalidad=0.038  sin vitalidad=0.095  (baseline azar=0.007)
+
+-> results_v24.json
