@@ -1,0 +1,4 @@
+=== v0.12 ATENCION REAL (ambiguedad, palabra post-banco) ===
+tests=6000 acc W1=0.0967 acc W2=0.0558
+
+-> results_v12.json
