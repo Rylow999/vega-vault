@@ -1,0 +1,23 @@
+=== v0.25 v11b GENERALIZACION ===
+
+--- LOOP conservador sobre 'llave' ---
+ acc_clf baseline=1.000
+ acc_loop=0.500 (n=700)
+
+--- LOOP conservador sobre 'banco' ---
+ acc_clf baseline=1.000
+ acc_loop=0.447 (n=700)
+
+RESULTADOS: {
+  "llave": {
+    "acc_clf": 1.0,
+    "acc_loop": 0.5,
+    "mejora": -0.5
+  },
+  "banco": {
+    "acc_clf": 1.0,
+    "acc_loop": 0.4471428571428571,
+    "mejora": -0.5528571428571429
+  }
+}
+-> results_v25_v11b.json
