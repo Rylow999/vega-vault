@@ -1,0 +1,6 @@
+=== v0.25 HARNESS INTEGRACION (ciclo 12 pasos, NOUS v4 Sec.7) ===
+ciclo 0s
+  banco_dinero: sentido=dinero foco_post=[None, None, 'dinero'] acierto=True W=[37.5,50] dolor_max=0.167
+  banco_rio: sentido=rio foco_post=[None, 'banco', None] acierto=True W=[40.0,50] dolor_max=0.125
+
+-> results_v25.json
