@@ -1,0 +1,6 @@
+=== v0.3b MEMORIA LIMPIO v2 (hibernar = excluir + REINTEGRAR) ===
+base       =[0.9994, 0.9994, 0.9996, 0.9996, 0.9999]
+reintegrado=[0.9752, 0.9817, 0.98, 0.9761, 0.9812]  (debe quedar ~base tras volver a entrenar)
+borrado    =[0.0, 0.0, 0.0, 0.0, 0.0]  (debe ser ~0)
+
+-> results_v3b_limpio.json
