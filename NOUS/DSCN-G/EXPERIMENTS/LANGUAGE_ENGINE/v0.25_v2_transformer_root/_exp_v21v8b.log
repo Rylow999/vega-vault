@@ -1,0 +1,17 @@
+=== v0.21 v8b RE-MEDICION con instrumento correcto (conditional repulsion) ===
+vocab=44 poly=['banco', 'llave', 'mouse'] mono=['quijote', 'sancho', 'caballero'] seq=4860
+  [INCONDICIONAL] POLI banco    n=120 dom=0.50 sep=True acc_gt=1.0
+  [INCONDICIONAL] POLI llave    n=120 dom=0.67 sep=True acc_gt=0.267
+  [INCONDICIONAL] POLI mouse    n=120 dom=0.55 sep=True acc_gt=0.95
+  [INCONDICIONAL] MONO quijote  n= 60 dom=1.00 sep=False (deberia ser sep=False)
+  [INCONDICIONAL] MONO sancho   n= 60 dom=0.97 sep=False (deberia ser sep=False)
+  [INCONDICIONAL] MONO caballero n=180 dom=0.87 sep=False (deberia ser sep=False)
+  [INCONDICIONAL] mono_sep=0/3 poli_sep=3/3 acc_gt=0.74 -> GENUNO
+  [CONDICIONAL] POLI banco    n=120 dom=0.50 sep=True acc_gt=1.0
+  [CONDICIONAL] POLI llave    n=120 dom=0.67 sep=True acc_gt=0.267
+  [CONDICIONAL] POLI mouse    n=120 dom=0.55 sep=True acc_gt=0.95
+  [CONDICIONAL] MONO quijote  n= 60 dom=1.00 sep=False (deberia ser sep=False)
+  [CONDICIONAL] MONO sancho   n= 60 dom=0.97 sep=False (deberia ser sep=False)
+  [CONDICIONAL] MONO caballero n=180 dom=0.87 sep=False (deberia ser sep=False)
+  [CONDICIONAL] mono_sep=0/3 poli_sep=3/3 acc_gt=0.74 -> GENUNO
+-> results_v21_v8b.json
