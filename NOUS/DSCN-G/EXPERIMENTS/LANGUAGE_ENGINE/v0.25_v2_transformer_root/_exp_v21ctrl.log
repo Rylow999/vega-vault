@@ -1,0 +1,14 @@
+=== PRUEBA CONTROL v0.21 v8 (monosemicas vs polisemicas) ===
+
+-- MONOSEMICAS (control: deberian quedar en 1 bucket si el fix es genuino) --
+  quijote    n= 198 dom=0.55 buckets={1: 108, 0: 90} separada=True
+  sancho     n= 202 dom=0.51 buckets={0: 100, 1: 102} separada=True
+  caballero  n=  55 dom=0.82 buckets={0: 45, 1: 10} separada=True
+  dijo       n= 154 dom=0.68 buckets={1: 49, 0: 105} separada=True
+  casa       n=  21 dom=1.00 buckets={0: 21} separada=False
+
+-- POLISEMICAS (deberian separarse si el fix es genuino) --
+
+RESULTADO: monosemicas separadas=4/5  polisemicas separadas=0/0
+VEREDICTO: ARTEFACTO: monosemicas tambien se separan => repulsion incondicional, no senal de sentido
+-> results_v21_v8_control.json
