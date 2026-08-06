@@ -1,0 +1,5 @@
+=== v0.7-final CONTEXTO LIMPIO (trigrama, omega fijos) ===
+entrenado 5s
+accuracy trigrama (ctx 2 pal): 0.0385  (v0.6a bigrama: 0.1011)
+
+-> results_v07final.json
