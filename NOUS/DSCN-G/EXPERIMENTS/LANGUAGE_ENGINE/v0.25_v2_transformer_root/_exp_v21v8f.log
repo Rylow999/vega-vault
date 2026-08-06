@@ -1,0 +1,10 @@
+=== v0.21 v8f RESTA DE CONTEXTO (atencion implicita en grafo) ===
+vocab=96 poly=6 mono=3 seq=8640
+FINAL: acc_gt=0.500 poli_sep=0/6 mono_sep=0/3
+  banco: cos(subA,avgA)=-0.052 cos(subB,avgB)=-0.055
+  llave: cos(subA,avgA)=0.298 cos(subB,avgB)=0.243
+  mouse: cos(subA,avgA)=0.084 cos(subB,avgB)=0.071
+  capital: cos(subA,avgA)=0.538 cos(subB,avgB)=0.587
+  firma: cos(subA,avgA)=0.394 cos(subB,avgB)=0.419
+  oro: cos(subA,avgA)=-0.086 cos(subB,avgB)=0.332
+-> results_v21_v8f.json
