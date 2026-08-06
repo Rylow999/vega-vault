@@ -1,0 +1,10 @@
+=== v0.21 v8 ANCHOR/RESTART + REPULSION SIBLING (barrido alpha) ===
+>> FIX OVERSMOOTHING (diagnostico Luciano): anchor rompe convergencia
+>> al autovector dominante; repulsion sibling evita fusion de sentidos.
+corpus=2700 tok, vocab=33 (mide ['banco', 'llave', 'mouse'])
+  alpha=0.05: ep1=3/3 ep15=3/3
+  alpha=0.1: ep1=3/3 ep15=3/3
+  alpha=0.2: ep1=3/3 ep15=3/3
+train total 8s
+
+-> results_v21_v8.json
