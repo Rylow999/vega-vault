@@ -1,0 +1,12 @@
+=== v0.21 v8 REAL (Don Quijote, anchor+repulsion) ===
+train 20s
+  ep1: 39/40
+  ep2: 39/40
+  ep3: 39/40
+  ep4: 39/40
+  ep5: 39/40
+  ep6: 39/40
+  ep7: 39/40
+  ep8: 39/40
+
+-> results_v21_v8_real.json
