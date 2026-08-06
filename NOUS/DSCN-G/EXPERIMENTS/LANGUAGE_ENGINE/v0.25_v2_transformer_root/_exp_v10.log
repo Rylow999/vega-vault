@@ -1,0 +1,7 @@
+=== v0.10 PERSISTENCIA (score hibrido SynapticCache 2.1 + fallback 2.4) ===
+N_init=10: N_active=10.0 N_hibernado=0.0 N_total=10.0 ret=1.00 (25s)
+N_init=50: N_active=50.0 N_hibernado=0.0 N_total=50.0 ret=1.00 (121s)
+N_init=200: N_active=200.0 N_hibernado=0.0 N_total=200.0 ret=1.00 (244s)
+N_init=1000: N_active=1000.0 N_hibernado=0.0 N_total=1000.0 ret=1.00 (659s)
+
+-> results_v10.json
