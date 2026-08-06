@@ -1,0 +1,5 @@
+=== v0.8 ATENCION RUSTICA W=3 ===
+entrenado 4s
+accuracy atencion W=3: 0.0864  (v0.6a: 0.1011, v0.7-final tabla: 0.0385)
+
+-> results_v08.json
