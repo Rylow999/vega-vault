@@ -1,0 +1,5 @@
+=== v0.13-bis HIBRIDO atencion sobre Don Quijote (vocab 150) ===
+entrenado 1s
+acc W1=0.0348  W2=0.0423  W3=0.0383  (baseline v0.6a=0.1011)
+
+-> results_v13bis.json
