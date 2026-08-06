@@ -1,0 +1,451 @@
+--- orig/fate-v6-original/core/fate_engine.c	2026-07-19 20:00:53.000000000 +0000
++++ fate-v6/core/fate_engine.c	2026-07-25 00:21:21.199302481 +0000
+@@ -1,7 +1,8 @@
+ /*
+  * fate_engine.c — FATE v5 Core Engine (C Library)
+  *
+- * TNS Engine + CTEG + TabuMem + Cognitive (omega_root, resonance, state_weight)
++ * TNS Engine + CTEG + TabuMem + DSCN-G v3 (Kuramoto coupling + vitality
++ * homeostasis, ported from the audited DSCN_G_v2 core, verify_dscng_v2.py)
+  * Clean API: fate_create / fate_step / fate_get_state / fate_destroy
+  *
+  * Build: gcc -O3 -fPIC -shared -o libfate.so fate_engine.c -lm
+@@ -36,17 +37,32 @@
+ 
+ #define CLAMP01(v)  ((v)<0.0?0.0:(v)>1.0?1.0:(v))
+ 
+-/* ── Cognitive constants ─────────────────────────────────────────────── */
+-#define OMEGA_ROOT_DECAY        0.95
++/* ── DSCN-G v3 cognitive-layer constants ─────────────────────────────────
++ * Values are DSCN_G_v2's DEFAULTS from verify_dscng_v2.py (audited, 6
++ * rounds, 2026-07-22/24) — NOT the unaudited v5/BIO constants used in
++ * bench/oracle_dscng.py elsewhere in this repo (N_ss*=7, omega*=0.649747).
++ * DSCNG_MAX_NODES bounds the Kuramoto/vitality computation to the same
++ * O(N^2) neighborhood the audited model used (N=50 default there); FATE's
++ * own POP_MAX_CAP (64) already keeps the live population in that range, this
++ * is a defensive cap in case pop_size is set explicitly larger. */
++#define DSCNG_ALPHA             5.0
++#define DSCNG_ETA_KURA          0.005
++#define DSCNG_GAMMA             0.01
++#define DSCNG_THETA_DEATH       0.10
+ #define RESONANCE_WEIGHT        0.20
+ #define STATE_WEIGHT_LAMBDA     0.15
+-#define TOPO_ACTIVE_THRESH      3
+-#define TOPO_DORMANT_TICKS      100
++#define DSCNG_MAX_NODES         64
+ 
+ /* ── Types ───────────────────────────────────────────────────────────── */
+ typedef uint64_t HammingSig;
+ 
+-typedef struct { double *state; double valence; HammingSig sig; } Candidate;
++typedef struct {
++    double *state;      // doubles as omega_i (DSCN-G semantic vector) — the searched vector
++    double valence;
++    HammingSig sig;
++    double phase;        // DSCN-G phi_i — real Kuramoto phase, independent of state
++    double vitality;      // DSCN-G V_i — homeostatic vitality, in [0,1]
++} Candidate;
+ 
+ typedef struct {
+     HammingSig *sigs;
+@@ -86,8 +102,6 @@
+     uint64_t n_escapes;
+ } CTEGCtrl;
+ 
+-typedef enum { TOPO_HIBERNADA = 0, TOPO_DURMIENTE = 1, TOPO_ACTIVA = 2 } TopoState;
+-
+ typedef struct { uint32_t count; float max_fit; } TopoCell;
+ 
+ struct FateEngine {
+@@ -102,18 +116,12 @@
+     int n_restarts;
+     uint64_t total_evals;
+ 
+-    /* Cognitive: omega_root (2.1 — instance state, not a module global.
+-     * Previously g_omega_root/g_omega_root_weight/... were static globals,
+-     * which meant two FateEngine instances in the same process stomped on
+-     * each other's cognitive state (this was also the root cause of the
+-     * -n -C segfault, bug 1.2: init order depended on a global that a
+-     * second engine could free/realloc out from under the first). Now each
+-     * engine owns its own omega_root, so multiple engines can run
+-     * concurrently in one process. */
+-    double  *omega_root;             // NULL if !use_cog && !cog_fix
+-    double   omega_root_weight;
+-    uint64_t omega_root_last_update;
+-    int      omega_dim;
++    /* DSCN-G v3 cognitive layer (2.1 note preserved: this is per-instance
++     * state, not a module global — two FateEngine instances in one process
++     * must not share it; see bug 1.2 history in git blame). Population
++     * members (TNSEngine.pop) carry their own phase/vitality (Candidate);
++     * this counter is engine-level bookkeeping only. */
++    uint64_t dscng_prunes;           // cumulative vitality<theta_death respawns
+ };
+ 
+ /* ── PRNG: xoshiro256** ──────────────────────────────────────────────── */
+@@ -294,90 +302,122 @@
+     return thresh;
+ }
+ 
+-static TopoState topo_state_at(const TopoCell *map, const double *state, double fit, int dim, int active_thresh) {
+-    uint32_t visits = topo_visit_count(map, state, fit, dim);
+-    if (visits == 0) return TOPO_HIBERNADA;
+-    if (visits < (uint32_t)active_thresh) return TOPO_DURMIENTE;
+-    return TOPO_ACTIVA;
+-}
+-
+-static double topo_state_weight(TopoState s) {
+-    switch (s) {
+-        case TOPO_HIBERNADA: return 1.0;
+-        case TOPO_DURMIENTE: return 0.6;
+-        case TOPO_ACTIVA:    return 0.3;
+-    } return 0.5;
+-}
+-
+-/* ── Cognitive: omega_root ───────────────────────────────────────────── */
+-/* Forward-declared as FateEngine members (see struct FateEngine above). */
+-
+-static void omega_root_init(FateEngine *engine, int dim) {
+-    if (engine->omega_root) free(engine->omega_root);
+-    engine->omega_root = (double*)calloc(dim, sizeof(double));
+-    engine->omega_dim = dim;
+-    engine->omega_root_weight = 0.0;
+-    engine->omega_root_last_update = 0;
+-}
+-
+-static void omega_root_free(FateEngine *engine) {
+-    free(engine->omega_root);
+-    engine->omega_root = NULL;
+-    engine->omega_dim = 0;
+-}
+-
+-static int k_omega_threshold(double lambda_gap, int n_restarts) {
+-    if (n_restarts < N_RESTARTS_KTHRESH) return 0;
+-    const double hb = 64.0;
+-    double k = hb / (1.0 + lambda_gap);
+-    if (k < 1.0) k = 1.0;
+-    if (k > 63.0) k = 63.0;
+-    return (int)k;
+-}
+-
+-static void omega_root_update(FateEngine *engine, const double *champion_state, double champion_valence, uint64_t era, int dim, double lambda_gap, int n_restarts) {
+-    if (champion_valence <= 0.0) return;
+-
+-    double or_norm[MAX_DIM];
+-    memset(or_norm, 0, sizeof(double) * dim);
+-    if (engine->omega_root_weight > 1e-9) {
+-        for (int i = 0; i < dim; i++) or_norm[i] = engine->omega_root[i] / engine->omega_root_weight;
+-    } else {
+-        for (int i = 0; i < dim; i++) or_norm[i] = M_PI;
+-    }
+-
+-    HammingSig sig_champ = make_sig(champion_state, dim);
+-    HammingSig sig_or = make_sig(or_norm, dim);
+-    int hd = popcount64(sig_champ ^ sig_or);
+-    if (hd < k_omega_threshold(lambda_gap, n_restarts) && engine->omega_root_weight > 1e-9) {
+-        engine->omega_root_last_update = era;
+-        return;
++/* ── DSCN-G v3 dynamics: Kuramoto coupling + vitality homeostasis ───────
++ * Population members double as DSCN-G nodes, ported from the audited
++ * DSCN_G_v2 in verify_dscng_v2.py (6 rounds, 2026-07-22/24):
++ *   candidate.state    == omega_i (semantic vector; drives coupling weight)
++ *   candidate.phase     == phi_i   (real Kuramoto phase, updated here)
++ *   candidate.vitality  == V_i     (homeostatic vitality, drives prune)
++ * C3/hijack dynamics are intentionally NOT ported: the audit found them
++ * unsupported at the original parameters (0.9% of triggers show the
++ * claimed effect, mean ΔPLV≈-0.007) — see auditoria/AUDIT_NOTES_ROUND6.md
++ * in the DSCN_G_v3 paper kit. Only the verified mechanics (T1 homeostasis,
++ * T2/T3 phase dynamics) are ported. */
++
++static double state_l2_dist(const double *a, const double *b, int dim) {
++    double d = 0.0;
++    for (int i = 0; i < dim; i++) { double diff = a[i]-b[i]; d += diff*diff; }
++    return sqrt(d);
++}
++
++static void dscng_init_candidate(Candidate *c, uint64_t rng[4]) {
++    c->phase = prng_f64(rng) * 2.0 * M_PI;
++    c->vitality = 1.0;
++}
++
++/* Kuramoto order parameter R = |<e^{i*phase}>|, mirrors
++ * DSCN_G_v2.phase_coherence(). */
++static double dscng_phase_coherence(const Candidate *pop, int n_nodes) {
++    if (n_nodes <= 0) return 0.0;
++    double sum_c = 0.0, sum_s = 0.0;
++    for (int i = 0; i < n_nodes; i++) { sum_c += cos(pop[i].phase); sum_s += sin(pop[i].phase); }
++    sum_c /= n_nodes; sum_s /= n_nodes;
++    return sqrt(sum_c*sum_c + sum_s*sum_s);
++}
++
++/* _apply_kuramoto_coupling in verify_dscng_v2.py:
++ *   w_ij = exp(-alpha*||omega_i-omega_j||)
++ *   phi_i += eta * (Sum_j w_ij*sin(phi_j-phi_i)) / (Sum_j w_ij)
++ * AUDIT FIX preserved (Round 6): computed from a phase snapshot taken
++ * before any writes, to avoid the Gauss-Seidel order-dependency bug the
++ * audit found in the original mid-loop-write version. */
++static void dscng_kuramoto_step(Candidate *pop, int n_nodes, int dim, double alpha, double eta_kura) {
++    if (n_nodes < 2) return;
++    double *phase_snap = (double*)malloc(sizeof(double) * n_nodes);
++    if (!phase_snap) return;
++    for (int i = 0; i < n_nodes; i++) phase_snap[i] = pop[i].phase;
++    for (int i = 0; i < n_nodes; i++) {
++        double numer = 0.0, denom = 0.0;
++        for (int j = 0; j < n_nodes; j++) {
++            if (j == i) continue;
++            double w = exp(-alpha * state_l2_dist(pop[i].state, pop[j].state, dim));
++            numer += w * sin(phase_snap[j] - phase_snap[i]);
++            denom += w;
++        }
++        if (denom > 0.0) {
++            double ph = phase_snap[i] + eta_kura * (numer / denom);
++            ph = fmod(ph, 2.0 * M_PI); if (ph < 0) ph += 2.0 * M_PI;
++            pop[i].phase = ph;
++        }
+     }
+-
+-    double decay = pow(OMEGA_ROOT_DECAY, (double)(era - engine->omega_root_last_update));
+-    engine->omega_root_weight *= decay;
+-    for (int i = 0; i < dim; i++) engine->omega_root[i] *= decay;
+-
+-    double weight = champion_valence;
+-    engine->omega_root_weight += weight;
+-    for (int i = 0; i < dim; i++) engine->omega_root[i] += weight * champion_state[i];
+-
+-    engine->omega_root_last_update = era;
++    free(phase_snap);
+ }
+ 
+-static void omega_root_normalized(const FateEngine *engine, double *out, int dim) {
+-    if (!engine->omega_root || engine->omega_root_weight < 1e-9) {
+-        for (int i = 0; i < dim; i++) out[i] = M_PI;
+-        return;
++/* _update_vitality_and_prune, Eq.5: V <- V*e^-gamma + A*(1-e^-gamma);
++ * prune if V < theta_death. Activity A_i reuses FATE's own topo
++ * visit-density signal, normalized within the current population —
++ * DSCN-G's own activity comes from an analogous "how often is this region
++ * visited" signal (its K random-walk chains); this avoids introducing a
++ * second, unrelated activity metric. Population size is fixed in FATE, so
++ * a pruned slot is respawned in place rather than removed. */
++static int dscng_vitality_step(Candidate *pop, int n_nodes, int dim,
++                                const TopoCell *map, double gamma, double theta_death,
++                                uint64_t rng[4]) {
++    if (n_nodes <= 0 || n_nodes > DSCNG_MAX_NODES) return 0;
++    double decay = exp(-gamma);
++    double raw[DSCNG_MAX_NODES];
++    double max_raw = 1e-9;
++    for (int i = 0; i < n_nodes; i++) {
++        raw[i] = (double)topo_visit_count(map, pop[i].state, pop[i].valence, dim);
++        if (raw[i] > max_raw) max_raw = raw[i];
++    }
++    int n_pruned = 0;
++    for (int i = 0; i < n_nodes; i++) {
++        double activity = raw[i] / max_raw;
++        pop[i].vitality = pop[i].vitality * decay + activity * (1.0 - decay);
++        if (pop[i].vitality < theta_death) {
++            for (int j = 0; j < dim; j++) pop[i].state[j] = prng_f64(rng) * 2.0 * M_PI;
++            pop[i].valence = 0.0;
++            pop[i].sig = make_sig(pop[i].state, dim);
++            dscng_init_candidate(&pop[i], rng);
++            n_pruned++;
++        }
+     }
+-    for (int i = 0; i < dim; i++) out[i] = engine->omega_root[i] / engine->omega_root_weight;
++    return n_pruned;
+ }
+ 
+-static double cosine_similarity(const double *a, const double *b, int dim) {
+-    double dot = 0.0, na = 0.0, nb = 0.0;
+-    for (int i = 0; i < dim; i++) { dot += a[i]*b[i]; na += a[i]*a[i]; nb += b[i]*b[i]; }
+-    if (na < 1e-12 || nb < 1e-12) return 0.0;
+-    return dot / (sqrt(na) * sqrt(nb));
++/* Local vitality field at an arbitrary point (escape candidates aren't
++ * population members and so have no vitality of their own): same
++ * exp(-alpha*dist) kernel as the Kuramoto weight, evaluated against the
++ * live population's vitality. */
++static double dscng_local_vitality(const Candidate *pop, int n_nodes, const double *state, int dim, double alpha) {
++    if (n_nodes <= 0) return 1.0;
++    double num = 0.0, den = 0.0;
++    for (int i = 0; i < n_nodes; i++) {
++        double w = exp(-alpha * state_l2_dist(pop[i].state, state, dim));
++        num += w * pop[i].vitality;
++        den += w;
++    }
++    return (den > 1e-12) ? (num / den) : 1.0;
++}
++
++/* Circular mean angle of a state vector's own components — used as an
++ * escape candidate's "derived phase" since fresh candidates have no
++ * assigned Candidate.phase of their own yet. */
++static double state_circular_mean_angle(const double *state, int dim) {
++    double sc = 0.0, ss = 0.0;
++    for (int i = 0; i < dim; i++) { sc += cos(state[i]); ss += sin(state[i]); }
++    return atan2(ss, sc);
+ }
+ 
+ static int restart_after(double lambda_gap) {
+@@ -435,6 +475,7 @@
+         for (int j = 0; j < dim; j++) e->pop[i].state[j] = prng_f64(e->rng) * 2.0 * M_PI;
+         e->pop[i].sig = make_sig(e->pop[i].state, dim);
+         e->pop[i].valence = 0.0;
++        dscng_init_candidate(&e->pop[i], e->rng);
+     }
+     tabu_init(&e->tabu, tabu_size, dim);
+ 
+@@ -538,26 +579,30 @@
+     state_wrap(out, dim);
+ }
+ 
+-static double cog_escape_score(const FateEngine *engine, const TabuMem *tabu, const TopoCell *map,
+-                               const double *candidate, HammingSig sig,
+-                               double d_max, int dim, double resonance_w, double state_w,
+-                               int cog_fix_active, double fit) {
++static double dscng_escape_score(const Candidate *pop, int n_nodes, const TabuMem *tabu, const TopoCell *map,
++                                  const double *candidate, HammingSig sig,
++                                  double d_max, int dim, double alpha,
++                                  double resonance_w, double state_w) {
+     double novelty = tabu_min_dist(tabu, candidate, sig) / d_max;
+     double hardness = topo_hardness_at(map, candidate, dim);
+ 
+-    double omega_norm[MAX_DIM];
+-    omega_root_normalized(engine, omega_norm, dim);
+-    double cos_sim = cosine_similarity(candidate, omega_norm, dim);
+-    double resonance = (cos_sim + 1.0) / 2.0;
+-
+-    TopoState state = topo_state_at(map, candidate, fit, dim, TOPO_ACTIVE_THRESH);
+-    double state_weight = topo_state_weight(state);
+-
+-    // cog_fix: amplify cognitive weights so they actually discriminate
+-    double rw = resonance_w, sw = state_w;
+-    if (cog_fix_active) { rw = 0.45; sw = 0.35; }
++    // Phase coherence: candidate's derived phase vs. the population's
++    // actual Kuramoto consensus direction (order parameter), not a decayed
++    // champion-only memory.
++    double pop_mean_phase = 0.0;
++    if (n_nodes > 0) {
++        double sc = 0.0, ss = 0.0;
++        for (int i = 0; i < n_nodes; i++) { sc += cos(pop[i].phase); ss += sin(pop[i].phase); }
++        pop_mean_phase = atan2(ss, sc);
++    }
++    double coherence = (cos(state_circular_mean_angle(candidate, dim) - pop_mean_phase) + 1.0) / 2.0;
++
++    // Vitality term: reward escaping toward LOW local vitality (dormant /
++    // unexplored — same intent as the old HIBERNADA=1.0 > ACTIVA=0.3
++    // weighting, now grounded in the real vitality field).
++    double vitality_term = 1.0 - dscng_local_vitality(pop, n_nodes, candidate, dim, alpha);
+ 
+-    return 0.35 * novelty + 0.30 * hardness + rw * resonance + sw * state_weight;
++    return 0.35 * novelty + 0.30 * hardness + resonance_w * coherence + state_w * vitality_term;
+ }
+ 
+ static void cteg_escape(TNSEngine *e, CTEGCtrl *c, TopoCell *map, FateEngine *engine) {
+@@ -565,8 +610,10 @@
+     int use_cog = engine->cfg.use_cog;
+     double resonance_w = engine->cfg.resonance_weight;
+     double state_w = engine->cfg.state_weight_lambda;
++    double alpha = engine->cfg.dscng_alpha;
+     int uc_biased = engine->cfg.uc_biased;
+-    int cog_fix = engine->cfg.cog_fix;
++    if (engine->cfg.cog_fix) { resonance_w = 0.45; state_w = 0.35; }  // -C: amplify so they actually discriminate
++    int n_nodes = e->pop_n < DSCNG_MAX_NODES ? e->pop_n : DSCNG_MAX_NODES;
+     double *cands = (double*)malloc(sizeof(double) * N_ESCAPE * dim);
+     HammingSig sigs[N_ESCAPE];
+     if (!cands) return;
+@@ -593,9 +640,8 @@
+     for (int i = 0; i < N_ESCAPE; i++) {
+         double score;
+         if (use_cog) {
+-            score = cog_escape_score(engine, &e->tabu, map, cands + (size_t)i * dim, sigs[i],
+-                                     d_max, dim, resonance_w, state_w, cog_fix,
+-                                     e->champion_valence);
++            score = dscng_escape_score(e->pop, n_nodes, &e->tabu, map, cands + (size_t)i * dim, sigs[i],
++                                       d_max, dim, alpha, resonance_w, state_w);
+         } else {
+             double novelty = tabu_min_dist(&e->tabu, cands + (size_t)i * dim, sigs[i]) / d_max;
+             double hardness = topo_hardness_at(map, cands + (size_t)i * dim, dim);
+@@ -610,6 +656,7 @@
+         state_wrap(e->pop[i].state, dim);
+         e->pop[i].valence = 0.0;
+         e->pop[i].sig = make_sig(e->pop[i].state, dim);
++        if (use_cog) dscng_init_candidate(&e->pop[i], e->rng);  // fresh phase/vitality on scramble
+     }
+     tabu_add(&e->tabu, cands + (size_t)best * dim, 0.0);
+     c->n_escapes++;
+@@ -710,15 +757,22 @@
+ 
+     sort_pop(e->pop, e->pop_n);
+ 
++    /* DSCN-G v3 dynamics: run every era (not just on champion improvement —
++     * this is the actual population dynamic the audited model describes,
++     * not a memory of past champions). Elite-first after sort_pop, so when
++     * pop_n > DSCNG_MAX_NODES this operates on the top DSCNG_MAX_NODES. */
++    if (engine->cfg.use_cog) {
++        int n_nodes = e->pop_n < DSCNG_MAX_NODES ? e->pop_n : DSCNG_MAX_NODES;
++        dscng_kuramoto_step(e->pop, n_nodes, dim, engine->cfg.dscng_alpha, engine->cfg.dscng_eta_kura);
++        engine->dscng_prunes += (uint64_t)dscng_vitality_step(
++            e->pop, n_nodes, dim, engine->topo_map,
++            engine->cfg.dscng_gamma, engine->cfg.dscng_theta_death, e->rng);
++    }
++
+     if (e->pop[0].valence > e->champion_valence) {
+         e->champion_valence = e->pop[0].valence;
+         memcpy(e->champion_state, e->pop[0].state, sizeof(double) * dim);
+         tabu_add(&e->tabu, e->pop[0].state, e->pop[0].valence);
+-        if (engine->cfg.use_cog || engine->cfg.cog_fix) {
+-            // cog_fix without use_cog: keep omega_root warm so resonance has signal
+-            omega_root_update(engine, e->champion_state, e->champion_valence, e->era, dim,
+-                              engine->lambda_gap, engine->n_restarts);
+-        }
+         adapt_observe(engine->adapt_scores, &engine->adapt_count, &engine->lambda_gap,
+                       e->champion_valence);
+     }
+@@ -739,11 +793,12 @@
+     cfg->fitness_fn = fn;
+     cfg->fitness_ctx = ctx;
+     cfg->use_cog = 1;
+-    cfg->omega_decay = OMEGA_ROOT_DECAY;
++    cfg->dscng_alpha = DSCNG_ALPHA;
++    cfg->dscng_eta_kura = DSCNG_ETA_KURA;
++    cfg->dscng_gamma = DSCNG_GAMMA;
++    cfg->dscng_theta_death = DSCNG_THETA_DEATH;
+     cfg->resonance_weight = RESONANCE_WEIGHT;
+     cfg->state_weight_lambda = STATE_WEIGHT_LAMBDA;
+-    cfg->topo_active_thresh = TOPO_ACTIVE_THRESH;
+-    cfg->topo_dormant_ticks = TOPO_DORMANT_TICKS;
+     cfg->verbose = 0;
+     cfg->uc_biased = 0;
+     cfg->cog_fix = 0;
+@@ -775,8 +830,7 @@
+     e->topo_map = (TopoCell*)calloc(TOPO_CELLS, sizeof(TopoCell));
+     topo_init(e->topo_map);
+     e->adapt_count = 0; e->lambda_gap = 0.5; e->rho_eff = 1.0; e->n_restarts = 0; e->total_evals = 0;
+-    e->omega_root = NULL; e->omega_root_weight = 0.0; e->omega_root_last_update = 0; e->omega_dim = 0;
+-    if (cfg->use_cog || cfg->cog_fix) omega_root_init(e, cfg->dim);
++    e->dscng_prunes = 0;
+     return e;
+ }
+ 
+@@ -784,7 +838,6 @@
+     if (!e) return;
+     tns_free(e->tns);
+     free(e->topo_map);
+-    if (e->omega_root) omega_root_free(e);
+     free(e);
+ }
+ 
+@@ -821,6 +874,16 @@
+     out->lambda_gap = e->lambda_gap;
+     out->rho_eff = e->rho_eff;
+     out->n_restarts = e->n_restarts;
++
++    int n_nodes = e->tns->pop_n < DSCNG_MAX_NODES ? e->tns->pop_n : DSCNG_MAX_NODES;
++    out->dscng_phase_coherence = e->cfg.use_cog ? dscng_phase_coherence(e->tns->pop, n_nodes) : 0.0;
++    double mean_v = 0.0;
++    if (e->cfg.use_cog && n_nodes > 0) {
++        for (int i = 0; i < n_nodes; i++) mean_v += e->tns->pop[i].vitality;
++        mean_v /= n_nodes;
++    }
++    out->dscng_mean_vitality = mean_v;
++    out->dscng_prunes = (int)e->dscng_prunes;
+ }
+ 
+ uint64_t fate_rng_next(FateEngine *e) { return prng_next(e->tns->rng); }
