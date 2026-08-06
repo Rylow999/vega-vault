@@ -1,0 +1,7 @@
+=== v0.23 v3 COMPOSICION RELACIONAL (DATOS REALES Don Quijote) ===
+train+eval 446s
+D=16: 0.042 (1830 tests, 89 rels, azar=0.011) supera=True
+D=32: 0.032 (1830 tests, 89 rels, azar=0.011) supera=True
+detalle D16: [{"s": "los", "r": "V_tiempo", "o": "mundo", "pred": "V_quijote", "score": 0.335, "hit": false}, {"s": "si", "r": "V_para", "o": "de", "pred": "V_hacer", "score": 0.64, "hit": false}, {"s": "que", "r": "V_sancho", "o": "y", "pred": "V_digo", "score": 0.566, "hit": false}, {"s": "de", "r": "V_manera", "o": "y", "pred": "V_todos", "score": 0.543, "hit": false}, {"s": "las", "r": "DE", "o": "como", "pred": "V_sancho", "score": 0.538, "hit": false}, {"s": "su", "r": "DE", "o": "con", "pred": "V_respondió", "score": 0.408, "hit": false}, {"s": "y", "r": "DE", "o": "él", "pred": "V_dios", "score": 0.36, "hit": false}, {"s": "de", "r": "V_sancho", "o": "la", "pred": "V_dijo", "score": 0.276, "hit": false}]
+
+-> results_v23_v3.json
