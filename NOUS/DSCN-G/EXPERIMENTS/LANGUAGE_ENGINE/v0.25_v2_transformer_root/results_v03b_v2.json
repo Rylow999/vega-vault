@@ -1,0 +1,14 @@
+{
+  "experiment": "v0.3b_v2_memoria_metrica_corr",
+  "hypothesis": "Hibernar (omega vive) mantiene accuracy; borrar (omega=0) la DESTRUYE porque el sistema pierde acceso al concepto.",
+  "params": {
+    "d": 16,
+    "V": 150,
+    "beta": 0.1,
+    "epochs": 3
+  },
+  "acc_base": 0.0589,
+  "acc_hibernado": 0.0589,
+  "acc_borrado": 0.0815,
+  "memoria_real": false
+}
