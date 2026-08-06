@@ -1,0 +1,6 @@
+=== v0.22 v5 ROOT DIRECTOR (contextos MIXTOS + proy SUAVE + MARGIN adapt) ===
+MARGIN adaptativo (p80) = 0.0
+train+eval 3s
+DUDA por tipo de contexto (A=univocoA, B=univocoB, MIX=ambos): {'A': {'duda': 0.0, 'n': 120}, 'B': {'duda': 0.0, 'n': 120}, 'MIX': {'duda': 0.0, 'n': 120}}
+
+-> results_v22_v5.json
