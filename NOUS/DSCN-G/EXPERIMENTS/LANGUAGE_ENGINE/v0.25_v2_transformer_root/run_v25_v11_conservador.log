@@ -1,0 +1,6 @@
+=== v0.25 v11 LOOP CONSERVADOR ===
+ acc_clf baseline=0.559 (118/211)
+ acc_loop=0.697 (147/211)
+ mejora vs baseline=0.137
+LOOP MEJORA BASELINE: reglas conservadoras preservan señal.
+-> results_v25_v11.json
