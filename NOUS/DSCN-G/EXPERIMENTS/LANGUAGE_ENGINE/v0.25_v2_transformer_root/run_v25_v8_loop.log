@@ -1,0 +1,7 @@
+=== v0.25 v8 LOOP CERRADO MINIMO ===
+seq=1330 vocab=41
+baseline acc_decision=0.758
+loop acc_decision=0.550
+mejora=-0.208
+LOOP EMPEORA: el ciclo cerrado introduce ruido.
+-> results_v25_v8.json
