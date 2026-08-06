@@ -1,0 +1,3 @@
+{"sampler":"FATE-v5","seed":58,"dim":8,"budget":2000,"best":0.200000,"mean":0.192349,"std":0.016747,"time_s":0.119,"evals":2000,"raw_obj":0.0000}
+{"sampler":"FATE-v5","seed":11400714819323198543,"dim":8,"budget":2000,"best":0.230769,"mean":0.210268,"std":0.018211,"time_s":0.117,"evals":2000,"raw_obj":0.0000}
+{"sampler":"FATE-v5","seed":4354685564936845412,"dim":8,"budget":2000,"best":0.222222,"mean":0.217119,"std":0.014275,"time_s":0.117,"evals":2000,"raw_obj":0.0000}
