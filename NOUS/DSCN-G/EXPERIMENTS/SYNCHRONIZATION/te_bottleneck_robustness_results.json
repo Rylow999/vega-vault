@@ -1,0 +1,386 @@
+[
+  {
+    "label": "baseline_R4",
+    "partition": "P0_root_vs_periphery",
+    "lags": 1,
+    "theta_death": 0.1,
+    "hijack_steps": 15,
+    "eta_hijack": 0.15,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.596317600040797,
+      0.27199628289134564,
+      12
+    ],
+    "MI_hijack": [
+      0.7773950924049696,
+      0.10684965030736587,
+      12
+    ],
+    "MI_delta": 0.1810774923641726,
+    "TE_baseline": [
+      0.023700393873671118,
+      0.011553688109233216,
+      12
+    ],
+    "TE_hijack": [
+      0.0023805372226593344,
+      0.0017922155840720193,
+      12
+    ],
+    "TE_delta": -0.021319856651011784
+  },
+  {
+    "label": "baseline_R4",
+    "partition": "P0_root_vs_periphery",
+    "lags": 2,
+    "theta_death": 0.1,
+    "hijack_steps": 15,
+    "eta_hijack": 0.15,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.596317600040797,
+      0.27199628289134564,
+      12
+    ],
+    "MI_hijack": [
+      0.7773950924049696,
+      0.10684965030736587,
+      12
+    ],
+    "MI_delta": 0.1810774923641726,
+    "TE_baseline": [
+      0.04401978702167771,
+      0.021485453086735506,
+      12
+    ],
+    "TE_hijack": [
+      0.00420759139212605,
+      0.0017788573633848459,
+      12
+    ],
+    "TE_delta": -0.03981219562955166
+  },
+  {
+    "label": "baseline_R4",
+    "partition": "P1_periphery_split_CONTROL",
+    "lags": 1,
+    "theta_death": 0.1,
+    "hijack_steps": 15,
+    "eta_hijack": 0.15,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 9,
+    "MI_baseline": [
+      16.461414734727644,
+      0.42193949792713586,
+      9
+    ],
+    "MI_hijack": [
+      6.231922636250524,
+      0.8388963786092594,
+      9
+    ],
+    "MI_delta": -10.22949209847712,
+    "TE_baseline": [
+      9.868649107779165e-17,
+      1.8462551915800988e-16,
+      9
+    ],
+    "TE_hijack": [
+      0.008376591178185594,
+      0.006353876077478453,
+      9
+    ],
+    "TE_delta": 0.008376591178185495
+  },
+  {
+    "label": "baseline_R4",
+    "partition": "P1_periphery_split_CONTROL",
+    "lags": 2,
+    "theta_death": 0.1,
+    "hijack_steps": 15,
+    "eta_hijack": 0.15,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 9,
+    "MI_baseline": [
+      16.461414734727644,
+      0.42193949792713586,
+      9
+    ],
+    "MI_hijack": [
+      6.231922636250524,
+      0.8388963786092594,
+      9
+    ],
+    "MI_delta": -10.22949209847712,
+    "TE_baseline": [
+      1.6666664336596105e-10,
+      2.357022274433419e-10,
+      9
+    ],
+    "TE_hijack": [
+      0.0071255676504161465,
+      0.010031727072694998,
+      9
+    ],
+    "TE_delta": 0.007125567483749503
+  },
+  {
+    "label": "baseline_R4",
+    "partition": "P2_root_vs_single_follower",
+    "lags": 1,
+    "theta_death": 0.1,
+    "hijack_steps": 15,
+    "eta_hijack": 0.15,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.596317600040797,
+      0.27199628289134564,
+      12
+    ],
+    "MI_hijack": [
+      0.7772526470911881,
+      0.11052686818143484,
+      12
+    ],
+    "MI_delta": 0.1809350470503911,
+    "TE_baseline": [
+      0.02370039387367123,
+      0.011553688109233493,
+      12
+    ],
+    "TE_hijack": [
+      0.0023133371638917742,
+      0.0018550886113482326,
+      12
+    ],
+    "TE_delta": -0.021387056709779455
+  },
+  {
+    "label": "baseline_R4",
+    "partition": "P2_root_vs_single_follower",
+    "lags": 2,
+    "theta_death": 0.1,
+    "hijack_steps": 15,
+    "eta_hijack": 0.15,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.596317600040797,
+      0.27199628289134564,
+      12
+    ],
+    "MI_hijack": [
+      0.7772526470911881,
+      0.11052686818143484,
+      12
+    ],
+    "MI_delta": 0.1809350470503911,
+    "TE_baseline": [
+      0.044019787021677664,
+      0.02148545308673548,
+      12
+    ],
+    "TE_hijack": [
+      0.004150171186449174,
+      0.002001084615878802,
+      12
+    ],
+    "TE_delta": -0.03986961583522849
+  },
+  {
+    "label": "rediseno_R4",
+    "partition": "P0_root_vs_periphery",
+    "lags": 1,
+    "theta_death": 0.01,
+    "hijack_steps": 150,
+    "eta_hijack": 0.8,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.22462193008317385,
+      0.2058128714462131,
+      12
+    ],
+    "MI_hijack": [
+      3.9385501391777122,
+      0.3631127327010149,
+      12
+    ],
+    "MI_delta": 3.7139282090945382,
+    "TE_baseline": [
+      0.029070304262201484,
+      0.01990657360697031,
+      12
+    ],
+    "TE_hijack": [
+      0.0030196849924824434,
+      0.0027717087640910815,
+      12
+    ],
+    "TE_delta": -0.026050619269719043
+  },
+  {
+    "label": "rediseno_R4",
+    "partition": "P0_root_vs_periphery",
+    "lags": 2,
+    "theta_death": 0.01,
+    "hijack_steps": 150,
+    "eta_hijack": 0.8,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.22462193008317385,
+      0.2058128714462131,
+      12
+    ],
+    "MI_hijack": [
+      3.9385501391777122,
+      0.3631127327010149,
+      12
+    ],
+    "MI_delta": 3.7139282090945382,
+    "TE_baseline": [
+      0.04801549930904758,
+      0.030933032108521448,
+      12
+    ],
+    "TE_hijack": [
+      0.007774607102094783,
+      0.004091173593324473,
+      12
+    ],
+    "TE_delta": -0.0402408922069528
+  },
+  {
+    "label": "rediseno_R4",
+    "partition": "P1_periphery_split_CONTROL",
+    "lags": 1,
+    "theta_death": 0.01,
+    "hijack_steps": 150,
+    "eta_hijack": 0.8,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      6.082128921839203,
+      3.3941459409702692,
+      12
+    ],
+    "MI_hijack": [
+      8.865347384816888,
+      1.3019154862358535,
+      12
+    ],
+    "MI_delta": 2.7832184629776844,
+    "TE_baseline": [
+      2.1046362791334486e-10,
+      2.218207945441958e-10,
+      12
+    ],
+    "TE_hijack": [
+      0.007715517122973353,
+      0.004111857698783519,
+      12
+    ],
+    "TE_delta": 0.007715516912509724
+  },
+  {
+    "label": "rediseno_R4",
+    "partition": "P1_periphery_split_CONTROL",
+    "lags": 2,
+    "theta_death": 0.01,
+    "hijack_steps": 150,
+    "eta_hijack": 0.8,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      6.082128921839203,
+      3.3941459409702692,
+      12
+    ],
+    "MI_hijack": [
+      8.865347384816888,
+      1.3019154862358535,
+      12
+    ],
+    "MI_delta": 2.7832184629776844,
+    "TE_baseline": [
+      4.4320809919103807e-10,
+      6.80304703768578e-10,
+      12
+    ],
+    "TE_hijack": [
+      0.008692034186609465,
+      0.008356470812064596,
+      12
+    ],
+    "TE_delta": 0.008692033743401367
+  },
+  {
+    "label": "rediseno_R4",
+    "partition": "P2_root_vs_single_follower",
+    "lags": 1,
+    "theta_death": 0.01,
+    "hijack_steps": 150,
+    "eta_hijack": 0.8,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.22462193008464984,
+      0.20581287144897203,
+      12
+    ],
+    "MI_hijack": [
+      3.8056428364187798,
+      0.43082676601420394,
+      12
+    ],
+    "MI_delta": 3.58102090633413,
+    "TE_baseline": [
+      0.029070304262062394,
+      0.019906573606826898,
+      12
+    ],
+    "TE_hijack": [
+      0.0034175429723376084,
+      0.003081369704565169,
+      12
+    ],
+    "TE_delta": -0.025652761289724785
+  },
+  {
+    "label": "rediseno_R4",
+    "partition": "P2_root_vs_single_follower",
+    "lags": 2,
+    "theta_death": 0.01,
+    "hijack_steps": 150,
+    "eta_hijack": 0.8,
+    "seeds": 12,
+    "n_seeds_valid_hijack": 12,
+    "MI_baseline": [
+      0.22462193008464984,
+      0.20581287144897203,
+      12
+    ],
+    "MI_hijack": [
+      3.8056428364187798,
+      0.43082676601420394,
+      12
+    ],
+    "MI_delta": 3.58102090633413,
+    "TE_baseline": [
+      0.048015499311431675,
+      0.030933032112331504,
+      12
+    ],
+    "TE_hijack": [
+      0.007763690063229267,
+      0.003925312495199284,
+      12
+    ],
+    "TE_delta": -0.04025180924820241
+  }
+]
