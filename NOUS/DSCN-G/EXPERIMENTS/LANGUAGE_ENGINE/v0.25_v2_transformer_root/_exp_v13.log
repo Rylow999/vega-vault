@@ -1,0 +1,4 @@
+=== v0.13 HIBRIDO grafo + atencion aprendida (desambig. banco) ===
+tests=6000 W1=0.0752 avg(v0.12)=0.0558 ATENCION=0.0553
+
+-> results_v13.json
