@@ -1,0 +1,5 @@
+=== v0.16 COMPOSICION corregida (Don Quijote real) ===
+train 6s
+base=0.0685 podar_refs=0.0685 borrar_nodo=0.0830
+
+-> results_v16_clean.json
