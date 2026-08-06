@@ -1,0 +1,5 @@
+=== v0.3b v3 / v0.16 v3 MEMORIA+COMPOSICION (metrica desagregada) ===
+train 5s
+acc targets HIBERNADOS=0.0834 | targets BORRADOS=0.0879
+
+-> results_v03b_v3.json
