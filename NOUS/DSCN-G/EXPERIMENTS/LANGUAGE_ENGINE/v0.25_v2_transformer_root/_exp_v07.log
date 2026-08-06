@@ -1,0 +1,5 @@
+=== v0.7 ventana de contexto W=3 ===
+entrenado 25s
+accuracy contexto W=3: 0.0589  (v0.6a con W=1 dio 0.1011)
+
+-> results_v07.json
