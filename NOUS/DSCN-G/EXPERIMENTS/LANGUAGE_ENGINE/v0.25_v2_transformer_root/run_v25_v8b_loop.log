@@ -1,0 +1,7 @@
+=== v0.25 v8b LOOP SIN DECODIFICADOR ===
+seq=1330 vocab=41
+baseline acc_decision=0.758
+loop acc_decision=0.417
+mejora=-0.342
+LOOP EMPEORA: el rompedor no era el decodificador.
+-> results_v25_v8b.json
