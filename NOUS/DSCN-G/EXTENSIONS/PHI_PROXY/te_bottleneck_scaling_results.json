@@ -1,0 +1,85 @@
+{
+  "theta_deaths": [
+    0.5,
+    0.2,
+    0.1,
+    0.05,
+    0.02,
+    0.01
+  ],
+  "seeds": 10,
+  "steps": 2000,
+  "window": 300,
+  "method": "TE_bottleneck_P0_lag1_APPROVED_ROUND6",
+  "results": [
+    {
+      "theta_death": 0.5,
+      "N_init": 20,
+      "N_mean": 1.0,
+      "N_std": 0.0,
+      "phi_proxy_TE_mean": NaN,
+      "phi_proxy_TE_std": NaN,
+      "n_valid_seeds": 0,
+      "n_seeds_total": 10
+    },
+    {
+      "theta_death": 0.2,
+      "N_init": 20,
+      "N_mean": 2.7,
+      "N_std": 0.45825756949558405,
+      "phi_proxy_TE_mean": 0.011824629350125382,
+      "phi_proxy_TE_std": 0.007636644940211081,
+      "n_valid_seeds": 7,
+      "n_seeds_total": 10
+    },
+    {
+      "theta_death": 0.1,
+      "N_init": 20,
+      "N_mean": 4.6,
+      "N_std": 0.4898979485566356,
+      "phi_proxy_TE_mean": 0.02172035356394549,
+      "phi_proxy_TE_std": 0.013567895017036547,
+      "n_valid_seeds": 10,
+      "n_seeds_total": 10
+    },
+    {
+      "theta_death": 0.05,
+      "N_init": 30,
+      "N_mean": 8.8,
+      "N_std": 0.4,
+      "phi_proxy_TE_mean": 0.011774565321473574,
+      "phi_proxy_TE_std": 0.008100618941297584,
+      "n_valid_seeds": 10,
+      "n_seeds_total": 10
+    },
+    {
+      "theta_death": 0.02,
+      "N_init": 75,
+      "N_mean": 18.0,
+      "N_std": 0.6324555320336759,
+      "phi_proxy_TE_mean": 0.0101132586429141,
+      "phi_proxy_TE_std": 0.007847509290980933,
+      "n_valid_seeds": 10,
+      "n_seeds_total": 10
+    },
+    {
+      "theta_death": 0.01,
+      "N_init": 150,
+      "N_mean": 29.4,
+      "N_std": 0.9165151389911679,
+      "phi_proxy_TE_mean": 0.008558481064896425,
+      "phi_proxy_TE_std": 0.007962458800031408,
+      "n_valid_seeds": 10,
+      "n_seeds_total": 10
+    }
+  ],
+  "fit": {
+    "r2_vs_logN": 0.3373752025709412,
+    "slope_vs_logN": -0.003086303315436908,
+    "intercept_vs_logN": 0.0195667838545787,
+    "r2_vs_N": 0.3957377686643533,
+    "slope_vs_N": -0.0002943318112581885,
+    "intercept_vs_N": 0.01653627159164999,
+    "better_fit": "N"
+  }
+}
