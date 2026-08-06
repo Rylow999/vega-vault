@@ -1,0 +1,121 @@
+types:
+  Person:
+    required: [name]
+    properties:
+      name: {type: string}
+      email: {type: string}
+      affiliation: {type: string}
+      location: {type: string}
+  
+  Project:
+    required: [name, status]
+    properties:
+      name: {type: string}
+      status: {type: string, enum: [active, inactive, completed]}
+      description: {type: string}
+  
+  Document:
+    required: [title, path]
+    properties:
+      title: {type: string}
+      path: {type: string}
+      summary: {type: string}
+  
+  Concept:
+    required: [name]
+    properties:
+      name: {type: string}
+      description: {type: string}
+  
+  Theorem:
+    required: [name]
+    properties:
+      name: {type: string}
+      description: {type: string}
+  
+  Prediction:
+    required: [name]
+    properties:
+      name: {type: string}
+      description: {type: string}
+
+relations:
+  has_paper:
+    from_types: [Project]
+    to_types: [Document]
+    cardinality: one_to_many
+  
+  authored_by:
+    from_types: [Document]
+    to_types: [Person]
+    cardinality: many_to_one
+  
+  introduces:
+    from_types: [Document]
+    to_types: [Concept]
+    cardinality: one_to_many
+  
+  proves:
+    from_types: [Document]
+    to_types: [Theorem]
+    cardinality: one_to_many
+  
+  predicts:
+    from_types: [Document]
+    to_types: [Prediction]
+    cardinality: one_to_many
+  
+  validated_by:
+    from_types: [Document]
+    to_types: [Document]
+    cardinality: many_to_many
+  
+  unified_with:
+    from_types: [Document]
+    to_types: [Document]
+    cardinality: many_to_many
+  
+  extends:
+    from_types: [Document]
+    to_types: [Document]
+    cardinality: many_to_many
+  
+  uses:
+    from_types: [Document]
+    to_types: [Document]
+    cardinality: many_to_many
+  
+  formalizes:
+    from_types: [Document]
+    to_types: [Document]
+    cardinality: many_to_many
+  
+  discriminates:
+    from_types: [Concept]
+    to_types: [Concept]
+    cardinality: many_to_many
+  
+  classifies:
+    from_types: [Concept]
+    to_types: [Concept]
+    cardinality: many_to_many
+  
+  example_of:
+    from_types: [Concept]
+    to_types: [Concept]
+    cardinality: many_to_many
+  
+  explains:
+    from_types: [Concept]
+    to_types: [Concept]
+    cardinality: many_to_many
+  
+  unifies:
+    from_types: [Concept]
+    to_types: [Prediction]
+    cardinality: many_to_many
+  
+  neurobiological_interpretation:
+    from_types: [Concept]
+    to_types: [Concept]
+    cardinality: many_to_many
