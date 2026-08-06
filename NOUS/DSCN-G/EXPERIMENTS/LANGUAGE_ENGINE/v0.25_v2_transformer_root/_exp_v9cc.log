@@ -1,0 +1,5 @@
+=== v0.9c ROBUSTO (varias semillas, corpus completo, curva monotona) ===
+curva promedio: [0.0024, 0.0006, 0.0004, 0.0003, 0.0003, 0.0002]
+inicial=0.0024 final=0.0002 monotono=True baja=True
+
+-> results_v9c_robusto.json
