@@ -1,0 +1,15 @@
+{
+  "experiment": "v0.23_v4_hebb_3body",
+  "params": {
+    "D": 16,
+    "top_k": 200,
+    "corpus": "donquijote.txt"
+  },
+  "results": {
+    "total_triples": 386917,
+    "in_vocab": 75379,
+    "acc_composition": 0.03559346767667387,
+    "acc_random": 0.026492789769033815,
+    "diff": 0.009100677907640058
+  }
+}
