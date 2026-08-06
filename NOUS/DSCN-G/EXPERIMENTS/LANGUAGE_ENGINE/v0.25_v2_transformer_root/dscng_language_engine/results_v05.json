@@ -1,0 +1,19 @@
+{
+  "experiment": "v0.5_L2_rustico",
+  "hypothesis": "El decoder omega->texto (retrieval + encadenamiento por afinidad) produce secuencias.",
+  "params": {
+    "alpha": 5.0,
+    "d": 8,
+    "corpus_size": 10
+  },
+  "note": "L2 mas rustico: nearest-centroid + salto por afinidad (microllm cavernicola).",
+  "nivel1": {
+    "query": "gato",
+    "decoded": "gato",
+    "ok": true
+  },
+  "nivel2": {
+    "seed": "el",
+    "frase": "el casa el casa el casa el"
+  }
+}
