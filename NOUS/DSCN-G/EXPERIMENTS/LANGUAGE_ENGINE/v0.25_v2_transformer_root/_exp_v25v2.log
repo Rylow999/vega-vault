@@ -1,0 +1,10 @@
+=== v0.25 v2 INTEGRACION TRANSFORMER + ROOT (NOUS v4) ===
+vocab=79 poly=5 mono=2 seq=5280
+1. Entrenando transformer (contexto/sentido, backprop)...
+   Transformer: acc_pred=0.907 (azar=1/79=0.013)
+2. Root/grafo = MEMORIA con vitalidad + dolor + Hebb (SOBRE transformer)...
+   acc_gt (¿root+transformer resuelve polisemia?): 0.546
+   foco_acc (¿vitalidad concentra en slot correcto?): 0.546
+   dolor_max (¿contrae ventana en conflictos?): 0.884
+   VEREDICTO: CICLO NO FUNCIONAL: acc_gt≈azar (root no separa sobre transformer)
+-> results_v25_v2.json
