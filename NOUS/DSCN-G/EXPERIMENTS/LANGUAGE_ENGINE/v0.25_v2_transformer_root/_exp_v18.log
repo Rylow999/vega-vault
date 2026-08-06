@@ -1,0 +1,5 @@
+=== v0.18 REAL transformer completo escalado (D=32) ===
+transformer bp 610s
+v0.18 acc=0.0946  (v0.14d hibrido=0.0958, grafo solo=0.0237)
+
+-> results_v18.json
