@@ -1,0 +1,5 @@
+=== v0.16-bis REFERENCIAS (corpus controlado boda) ===
+boda refs=4 comp={'flores', 'blanco', 'vestido', 'beso'} jaccard=1.000
+jaccard=1.0000 podadas=74 vivos=74
+
+-> results_v16bis.json
