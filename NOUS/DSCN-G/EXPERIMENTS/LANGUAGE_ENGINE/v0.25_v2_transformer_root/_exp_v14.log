@@ -1,0 +1,6 @@
+=== v0.14 HIBRIDO REAL: grafo + transformer rustico 2 capas ===
+grafo entrenado 0s
+transformer entrenado 71s
+acc hibrido=0.0197  (baseline v0.6a=0.1011)
+
+-> results_v14.json
