@@ -1,0 +1,5 @@
+=== v0.19 LIMPIO (dolor = error de prediccion real, evasion dirigida por dato) ===
+transiciones dolorosas=19291  error post-evasion=18761
+veredicto: EVASION REAL (dirigida por dato)
+
+-> results_v19_limpio.json
