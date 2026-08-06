@@ -1,0 +1,14 @@
+=== v0.25 v12 DECODIFICADOR GENERATIVO ===
+ seq=7237 vocab=70
+ entrenando skip-gram...
+ top1=0.020 top5=0.095 (n=200)
+
+ generaciones:
+  fue al banco -> banco banco se se con se remar al con remar
+  el banco aprobo -> choco banco podras choco con se se podras banco choco
+  se tiro al banco -> con se remar se remar al se con se se
+  el bote choco -> retirar podras el el choco choco de choco de temprano
+  la llave de la -> remar con remar con con se con con podras podras
+
+-> results_v25_v12.json
+NO FUNCIONAL: decodificador no captura estructura del corpus.
