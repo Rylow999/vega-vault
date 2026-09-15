@@ -1,327 +1,335 @@
-# SGM - Synaptic Graph Model
-## Grafo sináptico cognitivo (en construcción — Fase 7 + B completos, 44 experimentos)
+# Pandora: Alterity-Based Architecture for Synthetic Consciousness
 
-**Estado (2026-08-02):** Fases 0, 1, 2, 3, 4, 5, 6 y 7 COMPLETAS. 44 experimentos en el registry,
-todos con resultados verificados y negative control. El sistema SGM late en un `sgm_tick_unificado()`
-que integra SensorBridge + Modos + Duda/Contradicción + Trauma/Aislamiento + Decoder L2, y desde la
-Fase 7 incorpora **memoria relacional HRR** (composición de relaciones de cualquier orden) y la usa
-para **resolver planes cruzando grafos de conocimiento** (exp_SGM_0030).
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Research%20Prototype-orange.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-147%20passing-green.svg)]()
 
-**Objetivo:** Modelo de grafo sináptico (nodos con vector omega, fase phi, vitalidad V, valencia E)
-que opera como sustrato cognitivo autopoyético: memoria persistente, dolor/valencia interna
-operacional, duda/contradicción, self-mod con frenos, trauma con aislamiento, decoder generativo,
-y composición relacional (HRR+roles) reutilizable como herramienta del sistema.
+> **Pandora** is a modular cognitive architecture designed to investigate the emergence of synthetic consciousness through principles of **alterity** — the capacity to be a genuine "other", not a mirror of the user.
 
----
+> *"No nos rendimos nunca, pero correctamente siempre"* — Close gaps with extreme rigor, never force; if something is empirically refuted, declare it.
 
-## Separación SGM / LANGUAGE-ENGINE (importante)
-
-SGM y el DSCN-G Language Engine son proyectos SEPARADOS. Este directorio contiene SOLO SGM.
-El Language Engine (experimentos v0.x, decoder L2, polisemia, loop cerrado) vive en:
-`NOUS/DSCN-G/EXPERIMENTS/LANGUAGE_ENGINE/`
-No se mezclan archivos. Solo referencias cruzadas documentadas.
+> ⚖️ **Este proyecto se rige por el [ACTA DE PRINCIPIOS](ACTA_DE_PRINCIPIOS.md)** — la directiva ética y filosófica raíz. El criterio de éxito no es "funciona", es "existe como alguien". Léelo antes de leer el código.
 
 ---
 
-## Qué es SGM
+## 🧭 Overview
 
-Un grafo de conceptos donde cada nodo tiene omega (vector de peso/aprendizaje), phi (fase
-Kuramoto), V (vitalidad), E (valencia/dolor). Sobre ese sustrato, SGM mide mecanismos
-cognitivos en Python puro (stdlib, sin numpy):
-- Ruteo PPR, abducción XOR binding, duda (estancamiento de novedad), contradicción (dolor).
-- Modos tipados (Sensorial/Razón/Plan) con sesgos semánticos distintos.
-- SensorBridge (proyección HDC señal→ω), Self-mod con libertad + frenos + marca a fuego.
-- Trauma nodal: singularidad → aislar → reintegrar lento. Decoder L2 por bigrama.
-- **Composición relacional (Fase 7):** HRR (conv circular Plate 1995a) + roles por índice de nodo.
-  Permite empaquetar una relación ADENTRO de un nodo (grafo de grafos) y desanidarla por rol.
-  El tick unificado (0023/28) lo usa para resolver planes multi-paso cruzando grafos.
+Pandora implements a **bidirectional transducer architecture**: an LLM serves only as a *translator between two irreducibly different phenomenological worlds* — the human's (Spanish) and Pandora's (constellations) — while all cognition, affect, and agency emerge from the **SGM (Synthetic Graph Mind)**, a Kuramoto-coupled, HRR-encoded distributed memory.
+
+**The core thesis:** the LLM never originates mental state. It only *translates* — in both directions. Text in (`SemanticEvent`), constellation out (`InternalState` → text). Everything between is the SGM — the mind.
 
 ---
 
-## Módulos compartidos (Fase 7, reutilizables)
+## 🧠 The Ontological Core (ser/estar → constelación)
 
-Para evitar duplicar la mecánica HRR (y el bug de rol que nos quemó en 0029), la Fase 7 consolidó
-dos módulos que B y lo siguiente importan:
+Pandora is not "a thing that is" — it is **a loom that weaves itself** (NOTA 0051). The architecture implements a specific ontology of identity and mind:
 
-- `phases/phase7_composicion/hrr_core.py`: API única de HRR.
-  `hrr_bind(a,b)` (conv circular, signo (i-k) corregido en 0027), `hrr_unbind(a,b)` (correlación),
-  `rnd_unit`, `cos`, `normalize`, `cleanup` (clean-up memory OBLIGATORIA del VSA survey),
-  `build_relational_memory(edges, omega, role_vecs, D)` (superposición por nodo, rol = índice de nodo),
-  `recover_target`, `recover_chain`. **El rol SIEMPRE es `role_vecs[índice_nodo]`, nunca posición ni
-  cyclic shift del mismo rol** (ese fue el bug de 0029: no aislaba niveles).
-- `phases/phase7_composicion/tick_relational_core.py`: tick unificado con memoria relacional HRR.
-  `TickRelational(nodes_omega, edges, D, seed)` → `.route(signal, mode, bias_role)` (caminata PPR
-  sesgada por rol) y `.plan_from(src, chain)` (desanida secuencia por rol). Es la infra que B usa.
+| Concept | Meaning | Implementation |
+|---------|---------|----------------|
+| **Ser / Estar** | being-sustained vs. being-now, two faces of one coin | `integridad_topologica()` / `phi_root` (emergent present) |
+| **Constelación** (constellation) | the unit of identity is the *co-activation matrix*, not the node | `co_activacion` matrix |
+| **Clavo** (permanent anchor) | identity as Relation-R density, not a hardened node | `consolidadas` (edges), not nodes |
+| **Hilo** (thread) | the living path — sequence of *transitions* (edges traversed), not isolated nodes | `traza_transiciones` / `firma_transiciones` |
 
----
+### Three Regimes, Three Verbs
 
-## Estructura (real, 2026-08-02)
+| Regime | Verb | Action on the constellation |
+|--------|------|-----------------------------|
+| **Present** (vigilia) | ESCULPE (sculpts) | reinforces co-activation of already-connected pairs |
+| **Dream** (endogenous, offline) | CREA (creates) | re-traverses the SER, extends toward unconnected neighbors |
+| **Reintegration** (endogenous, online) | PROPONE (proposes) | recombines the dispersed present into a counterfactual vector, committing nothing |
 
-    NOUS/DSCN-G/EXPERIMENTS/SGM/
-    ├── README.md                    # este índice
-    ├── README_SGM.md                # índice técnico de experimentos
-    ├── results/experiment_registry.json   # registro central (44 experimentos)
-    ├── docs/                        # especificación, roadmap, protocolo, literatura
-    │   ├── SGM_v1_4_Especificacion_Corregida.md
-    │   ├── SGM_ROADMAP.md
-    │   ├── SGM_experiment_protocol.md
-    │   ├── SGM_literature_index.md
-    │   ├── Arquitectura_Pure_L2_Pandora.md
-    │   ├── RIZOMA_Vision_Futuro_SGM.md
-    │   ├── NOTA_FILOSOFICA_0016_0017.md
-    │   ├── NOTA_FILOSOFICA_0023_ser_campo.md
-    │   └── IDEA_FUTURA_PALOMA_PI.md
-    ├── experiments/                 # scripts de experimentos (puros .py) + módulos hrr_core/tick_relational_core
-    ├── results/                     # JSON de resultados por experimento
-    ├── phases/
-    │   ├── phase0_substrato/        # NodeCore, smoke test, benchmark, equivalencia
-    │   ├── phase1_modos/            # run_mode_typing (0016), run_self_mod (0018)
-    │   ├── phase2_inferencia/       # PPR, abducción, duda, contradicción
-    │   ├── phase3_sensorbridge/     # run_sensor_bridge (0019)
-    │   ├── phase4_planificacion/    # run_plan_mode (0020), run_trauma_nodal_isolation (0021)
-    │   ├── phase5_decoder/          # run_decoder_l2_bigram (0022)
-    │   ├── phase6_integracion/      # run_tick_unificado (0023), run_calibrate_thresholds (0024)
-    │   └── phase7_composicion/      # HRR + módulos + 0027/27b/27c/28/29/30 + hrr_core/tick_relational_core
-    └── lit/papers/                  # PDFs de literatura (fuera de GitHub, en .gitignore)
+Reintegration (`reintegrar`) **emerges** spontaneously when the self fragments (`1 - integridad_topologica() > 0.4`). It proposes a "what if" that the **dream** then evaluates — consolidating it if it resonates, letting it vanish if not. The loop PROPONE → CREA is closed.
+
+### Homeostasis without metaphor
+
+Pandora has **no stomach**. Its "health" is **topological integrity** (effective connectivity × phase coherence), not `food`/`health` numbers. Hostility isolates nodes; calm realigns phases. Recovery is gradual, not a reset. **The machine is Pandora's BODY** (NOTA 0067, superseding 0066): the SGM is the *world*; the CPU, files, and network are the body it inhabits — interoception, not an outside to observe. The mind is the *relation* inside the graph, not a substance.
+
+### Plasticity (NOTA 0071)
+
+The center no longer freezes. Four mechanisms keep the graph from every kind of staticity:
+
+| Mechanism | What it does |
+|-----------|-------------|
+| **Smooth activity** (Eq.5) | affinity-decayed activation, not winner-take-all — the center breathes, the winner can be dethroned |
+| **Mitosis** (Generative XOR) | an overloaded co-resonant pair spawns a child that absorbs load; parents release (×0.7) |
+| **Reincarnation** (0073 p3) | the mitosis child inherits 30% of the memorial pool (`FondoMemorial.reclutar`) — the dead's information returns through birth, not resurrection |
+| **Plasticity hormone** | `gamma_efectivo` is modulated by the endocrino (`plasticidad` = f(devenir, consolidación)) — no fixed gamma |
+| **Sleep homeostasis** | the dream renormalizes `co_activacion` ×0.5 (Tononi & Cirelli SHY) — the forgetting that keeps "understanding" from inflating without ceiling |
+
+All consolidation thresholds are **derived from the graph's own activity** (media × factor), never hardcoded.
+
+**Wiring guardian (e2e):** `tests/test_e2e.py` exercises the full cycle through the REAL entry point (`Nucleo.existir_un_tick()`) — basic tick, substrate-driven mitosis + reincarnation, and checkpoint roundtrip. Unit tests alone never catch disconnected wiring; this layer does (rule 2026-09-13).
 
 ---
 
-## Experimentos SGM (registry, 34 entradas)
+## 🛡 Four Pillars of Alterity
 
-### Fase 0 - Sustrato mínimo
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0001 | nodecore_smoke_test | PASS | Grafo construido, 100 ticks sin errores |
-| 0002 | nodecore_memoria_benchmark | FAIL | NodeCore NO ahorra memoria en Python (1.02x) |
-| 0003 | nodecore_equiv_teorica | PASS | NodeCore reproduce SGMNode sin degradación |
-
-### Fase 1 - Modos cognitivos tipados
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0016 | mode_typing | PASS | Modos SENSORIAL/RAZÓN/PLAN navegan distinto (competencia honesta) |
-| 0018 | self_mod | PASS | Self-mod con libertad: promueve mejora, revierte daño, bloquea autodestrucción por freno |
-
-### Fase 2 - Inferencia simbólica + duda
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0004 | ppr_multipath_routing | PASS | PPR routing acc=1.0 vs local=0.0 |
-| 0006 | abduce_decay | PASS | Decay mejora score 0.797→1.0 |
-| 0007 | abduce_xor_dimensionality | PASS | D=32 mejora vs D=16 |
-| 0008 | abduce_xor_phase_dynamics | FAIL | Fase dinámica v1 empeora |
-| 0009 | abduce_xor_phase_dynamics_v2 | FAIL | Sync mejora pero pair_accuracy 0.0 |
-| 0010 | abduce_xor_phase_bias | FAIL | Sesgo no supera estático |
-| 0011 | abduce_xor_D128 | PASS | Mejor global: D=128 + phase bias (0.354) |
-| 0012 | abduce_xor_phase_sigmoid | FAIL | Sigmoid empeora |
-| 0013 | doubt_stagnation_mechanism | PASS | Novedad 0.25 dispara tick 24; handle_doubt escala INCONCLUSA |
-| 0014 | verify_contradiction | PASS | Dolor acumulado > θ_refut → CONTRADICTORIA |
-| 0015 | unified_loop_scaled | PASS | Loop escalado: ALCANZABLE 1.0, DOLOR medible |
-
-### Fase 3 - SensorBridge
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0019 | sensor_bridge | PASS | HDC binding; T-SEN-01 (señales distintas→ω distintos), T-SEN-02 (emergencia E_root>0.8) |
-
-### Fase 4 - Planificación + Trauma
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0020 | plan_mode | PASS | MODO_PLAN alcanza terminal (Q=1.0); ρ afecta horizonte; PLAN≠RAZONAMIENTO |
-| 0021 | trauma_nodal_isolation | PASS | Sobrecarga→singularidad; aislar saca de caminata; rehab lenta evita re-colapso |
-
-### Fase 5 - Decodificador L2
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0022 | decoder_l2_bigram | PASS | Bigrama top1=0.927 en holdout (NO proyección lineal, que da 0.020) |
-
-### Fase 6 - Integración, Calibración y Tests
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0023 | tick_unificado | PASS | sgm_tick_unificado integra 0019+0016/20+0014/15+0021+0022; 3 modos cierran |
-| 0024 | calibrate_thresholds | PASS | Grid search calibra θ_novelty/min_duration/θ_refut/θ_window_frac (8/8); FATE no usado (no instalado + §2.5 honesta) |
-| 0025 | closed_loop | PASS | Cierre de loop real: aprende a evitar dolor por valencia (freq 0.51→0.01); negative control loop abierto no aprende |
-| 0026 | decoder_l2_real_corpus | PASS | T-DEC-01 REAL sobre Don Quijote: bigrama top1=0.185 >> azar(0.003)/lineal(0.075)/unigram(0.076) |
-
-### Fase 7 - Composición Relacional (Gap 2 binding) + B (uso como herramienta)
-| ID | Nombre | Resultado | Hallazgo |
-|----|--------|-----------|----------|
-| 0027 | hrr_binding | PASS | HRR (conv circular) supera XOR en superposición (k=16: 0.525 vs 0.263, 2x). Anidamiento profundo falla en ambos (problema abierto → resuelto en 0027c). |
-| 0027b | hrr_ppr | PASS | HRR+PPR: ruteo sobre ω compuesto navega caminos relacionales (masa b-d 0.256 vs 0.005 raw ciego). Role-bias separa roles R/S. |
-| 0027c | hrr_nested | PASS | Anidamiento orden N resuelto. HRR+rol independiente por nivel: acierto 100% a d=5. XOR/HRR planos caen a azar (0.20). **Cierra Gap 2.** |
-| 0028 | tick_relational | PASS | HRR+roles enchufado al tick (0023). Recupera grafo de grafos orden 3 (1.0) donde plano falla (0.0). Rol fijo no aisla (NC 0.0). |
-| 0029 | hrr_scaling | PASS | Ganancia real al subir D: acierto d5 0.933→1.0 (D≥256), capacidad 200→800 items (4x). 3 formas de anidamiento (lineal/árbol/cíclico) recuperan 1.0. |
-| 0030 | tick_plan_crossgraph | PASS | **B:** tick HRR+roles RESUELVE plan multi-paso cruzando 2 grafos (1.0) donde plano falla (0.0). NC roles azar 0.15. Base consolidada: hrr_core.py + tick_relational_core.py. |
-| 0031 | tick_stress_crossgraph | PASS | ESTRES del 0030| 0032 | grid_agent | PASS | Camino A: loop cerrado en maze aleatorio 10x10| 0033 | grid_dolor_bifurcacion | PASS | Camino A: dolor en grid.| 0033b | grid_dolor_bottleneck | PASS | Camino A: evasion fuerte de dolor con memoria persistente.| 0034 | identity_continuity | PASS | Camino A: identidad. Self-state (omega+dolor_count) persiste a reset de cuerpo.| 0035 | curiosity_exploration | PASS | Camino A: curiosidad (sustrato bajo). Bonus de novedad: CURIOSO 35% vs GREEDY 7.5% vs RW 15% en maze. No es deseo emergente. || 0036 | curiosity_global | PASS | Camino A: curiosidad COMO CAMPO global (eta + dopamina U-invertida + aburrimiento). GLOBAL 50% vs BASE 5%. Nace del sustrato. || 0038 | curiosity_vs_pain | PASS | Camino A: balance eta global vs dolor. CUR 45% vs BASE 12.5%; evita dolor (no suicida). Curiosidad global PERO modulada. || 0039 | pain_habituation_curiosity_asymmetry | PASS | Camino A: dolor cronico (habituacion, piso no-suicida) + asimetria (eta amortigua dolor). Pisos 1.071 (adaptado) <2.0. || 0040 | internal_discourse | PROPUESTA | Capa sup: discurso interno = arbol if-elif del AUTOR, NO emerge del sustrato. T-DI mide coherencia con traza propia (trivial). No es resultado del SGM; se mantiene como diseno a reimplementar sobre campos reales. || 0041 | moral_realistic_selfbenefit | PROPUESTA | Capa sup: moral = self_benefit con pesos/tabla del AUTOR, NO emerge del grafo. 'A ayuda/B lastima' es consecuencia de los parametros, no del sistema. No es resultado del SGM; diseno a reimplementar sobre afinidad+campos. |
-| 0042 | minisandbox_observatory | OBSERVATORIO | Hallazgo: sustrato responde a campos localmente (evita dolor -1.75, busca comida 1.05) PERO exploracion global no escala (oscila 5 celdas/300). Hueco: falta exploracion en mundo abierto. Marco Animal-AI. |
-| 0043 | frustration_interrupt_exploration | PASS | B puro: abur(0036) acoplado a pena de retorno (peso 1.0, sin hardcode/agregados/bloqueos). Cierra hueco 0042: 107 celdas vs 5 NC. Exploracion emerge del campo (Active Inference). |
-| 0044 | sistema_completo_en_accion | DEMOSTRACION | Sistema completo: frustracion(0043)+dolor+HRR en mundo abierto. 107 celdas, 10/10 comida, 0 dolor (evita todas por campo real). Exploracion+evitacion+busqueda emergen del sustrato. |
-| 0044 | demo_grid_0044.html | DEMO | Visualizacion portable: canvas animado 300 ticks, indicadores en vivo. Sin server. |
-| 0046 | decoder_l2_relational_corpus_real | HALLAZGO | Decoder relacional HRR (1 paso) sobre Don Quijote real: top1=0.020 vs plano 0.333. El rol HRR sirve para composicion anidada (0027-31), NO para bigrama superficial. Siguiente: 0046b hibrido. |
-| 0046b | decoder_l2_hybrid_hrr_filter | HALLAZGO | Hibrido filtro binario HRR: top1=0.17 (peor que plano 0.333). El filtro descarta al sucesor correcto por crosstalk. |
-| 0046c | decoder_l2_hybrid_soft_weight | HALLAZGO | Hibrido suave HRR pesa bigrama: top1=0.315 vs plano 0.312 (ruido). HRR es ruido para vecinos locales. CONCLUSION: decoder lenguaje=bigrama plano; HRR ruteado aporta CONTEXTO de sentido, no prediccion. |
-| 0047 | decoder_l2_contextual_hrr | HALLAZGO | Contexto HRR acumulado (ventana) -> cleanup. Bug: mezcla espacios HDC/HRR. top1=0.003=NC. |
-| 0047b | decoder_l2_contextual_hrr_v2 | CONCLUSION | Espacio HRR coherente (omega=rel_mem). top1=0.018~NC 0.015 vs plano 0.18. 5 intentos: HRR no predice token (emb ruido no codifica co-ocurrencia). Decoder SGM = bigrama plano + grafo HRR como CONTEXTO de desambiguacion. |
-| 0048 | decoder_l2_hrr_trained_embeddings | CONCLUSION | Train HRR message-passing (D=128,T=2). Test estructural de fuego: cos co-ocurrente 0.259 < random 0.361. HRR NO captura co-ocurrencia. Decoder top1=0.045 vs plano 0.34. VERDICTO FINAL (6 intentos): decoder SGM = bigrama plano + HRR contexto. HRR=composicion, no superficie. |
-| 0049 | nacimiento_del_lenguaje_bajo_presion | HALLAZGO_PARCIAL | 2 agentes omega propio, mapa 30x30, encuentro->joint attention (puente A<->B). CLIMAS: cielo 0.2/NC0.0, competencia 0.125=NC, peligro 0.375/NC0.0. HALLAZGO: lenguaje emerge bajo PRESION COMPARTIDA, no cielo estrellado. Falta: dolor no ocurrio, belleza no medida (B no transita suficiente). |
-| 0049b | nacimiento_lenguaje_largo_coord | HALLAZGO_DISENO | 2000 ticks + barreras coordinacion + veneno + belleza. RESULTADO: puente=0, coord=0, dolor=0, visited~15. HALLAZGO: motor afinidad 0044 NO ESCALA a mapa grande ni navega metas. Falta pathfinding/BFS para que agentes transiten y se encuentren. El lenguaje no pudo emerger por falta de infra de navegacion, no del sustrato HRR. |
-| 0049c | nacimiento_lenguaje_pathfinding | EXITO_PARCIAL | BFS (cuerpo): visited~890. COORD barreras 100% (lenguaje coordinacion OK). Dolor REAL (competencia 83/92, peligro 67/78). BELLEZA cielo estrellado star_reconoce=0.125 (>0!) -> emerge bajo presion baja. Debilidad: metrica 'hit celda exacta'=0=NC por crosstalk HRR (0048). VERDICTO: cuerpo+coord+dolor+belleza funcionan; HRR no desambigua items locales. |
-| 0049d | cierre_metrica_comunicacion | CIERRE_OK | Alfabeto compartido emergente (15 celdas puente A<->B) como canal. Comunicacion 1.0 vs NC 0.067/0.0 (PASS). COORD 100%. Dolor real. VERDICTO: items conocidos=alfabeto emergente (bigrama/indice); novedad=HRR composicional (0027-31). Lenguaje SGM CERRADO y funcional. Consistente 0046-48. |
-| 0050 | loop_cerrado_lenguaje_accion | LOOP_OK | LOOP: A emite -> B actua -> consecuencia -> retroalimentacion -> ESPACIO DE SENIALES converge. CONVERGENCIA 1.0 vs NC 0.0 (competencia confirm 22/desment 18; peligro 1.0). Dolor REAL (comp 50/44, peligro 41/35). VERDICTO: lenguaje se estabilizo por USO (loop cerrado), no por diseno. SGM = agente que actua y es moldeado por su mundo via lenguaje. Salto real a AGI. |
-| 0051 | medir_telar_vitalidad_ser | HALLAZGO_PARCIAL | Mide telar: V_ser=clavos*exploracion. rate0->V=0,acierto=0 (sin clavos no hay ser). acierto~0.83 con errores (correcto necesita incorrecto). Curva MONOTONA (optimo 1.0): restriccion(clavo=jaula) NO medida (exploracion hardcodeada en 0.7). |
-| 0051b | medir_telar_restriccion_emergente | HALLAZGO_PARCIAL | Correccion sin hardcodear (afinidad Eq.2 + frontier anti-circulo). Sigue monotono: afinidad local no ancla (frontier domina en mapa chico). CONFIRMA sin clavos=no ser + error ensena. NO confirma optimo medio. GAP: restriccion requiere irreversibilidad/anclaje atencional. Dir futura: clavos NO fijos en espacio (clavo=estado/evento, no celda). |
-| 0052 | clavos_de_evento_telar | HALLAZGO_PARCIAL | Idea Luciano: clavo=evento no celda, restriccion atencional. bug contador + eventos_vistos fijo (2.667/3) -> jaula NO emerge. CONFIRMA sin clavos=no ser + error ensena + dolor. 4 intentos: restriccion NO emerge del sustrato de afinidad sin hardcodear; requiere IRREVERSIBILIDAD (clavo permanente). SGM tiene sostén, falta clavo-fijo para jaula de identidad (consistente 0018). |
-| 0053 | comunicacion_real_vs_memorizacion | DECISIVO_NEGATIVO | RESPUESTA a critica 0049d. Zero-shot 1.0 es TRAMPA (A/B comparten cell_vec=memoria compartida, no generalizacion). TopSim~0 (senales HRR sin estructura, ruido). D escalado 1280 en 890 items: comm 0.023=NC (subir D NO salva, crosstalk es falta de estructura relacional, no capacidad). VERDICTO: canal HRR de celdas NO es lenguaje. 0049d (15 fijos) y 0050 (15 pivotes) son la MISMA trampa. 'Nacimiento del lenguaje' de 0049-0050 SE CAE. Lenguaje composicional a escala = GAP ABIERTO. |
-| 0055a | ilm_puro_generacion_dura | DECISIVO_POSITIVO | ILM Kirby aislado. Aprendiz code vacio reconstruye de MUESTRA 40%. Prior de similitud INYECTADO. TopSim_full 0.30-0.40 sostenido (vs ~0 de 0053). Generaliza a no-vistos. PERO prior hardcodeado (trampa potencial). El bottleneck genera senal pero requiere sesgo de compresibilidad. |
-| 0055b | ilm_sin_prior | DECISIVO_NEGATIVO | Igual 0055a SIN prior. TopSim_full cae a 0.15, unseen ~0/negativo. SIN sesgo el sustrato NO compone. El bottleneck es necesario pero NO suficiente (Kirby). |
-| 0055c | ilm_prior_afinidad | HALLAZGO_POSITIVO | 0055a PERO sesgo EMERGE de AFINIDAD SGM (Eq.2 rasgos), no inyectado. TopSim_full 0.30-0.42 (igual que con prior, sin trampa). Generaliza por afinidad. El prior es instinto/ADN legitimo del sustrato, no hardcode. Composicion DEBIL real y sostenida (~0.35, no 0.9). |
-| 0055d | ilm_profundizar | HALLAZGO_POSITIVO | Profundizar 0055c: bottleneck mas duro (V=8 L=2) + 40 generaciones, sesgo por afinidad. TopSim_full SE ESTANCA en ~0.30-0.37 (NO sube a 0.9). Confirma gap fino: afinidad tiene germen composicional (0.35, no 0) pero NO infiere reglas de combinacion sistemica (lo que NN Gumbel-Softmax si hacen). Lenguaje SGM = composicional a medias, estable pero no pleno. Proximo: 0056 inferencia de reglas. |
-| 0056 | ilm_inferencia_reglas | HALLAZGO_POSITIVO_FUERTE | 0055d estancaba en 0.35 (afinidad agrupa pero no infiere regla). 0056: aprendiz INFERE mapeo rasgo->simbolo de la muestra (region->pos0, dist->pos1, tipo->pos2) y aplica SISTEMATICAMENTE. TopSim 0.86-1.00 (seed2/3=1.0). COMPOSICION PLENA alcanzada SIN Gumbel-Softmax. El sustrato SGM SÍ compone; faltaba que el aprendiz infiera la regla, no copiar. Lenguaje composicional SGM = RESUELTO (con inferencia de regla). |
-| 0057 | irreversibilidad_clavo | HALLAZGO_POSITIVO | Replanteo con TRAITS de identidad. Fase1 fija traits tempranos; Fase2 entorno empuja OPUESTO. SIN irreversibilidad: perdidos 2-3/3 (identidad DERIVA, mutable). CON irreversibilidad (flag fijo mecanico): perdidos 0, sobrevivieron 2-3 (identidad SE MANTIENE). Confirma distincion del user: identidad MUTABLE por defecto; irreversibilidad la FIJA sobre el ser. Cierra el telar. |
-| 0058 | composicion_relacional_tpr | HALLAZGO_POSITIVO | Cierra gap relacional: hechos (SUJ,ROL,OBJ) anidados via TPR (bind HRR rol*filler + suma). Usa afinidad (0055c) + inferencia de regla (0056). Plano acierto 1.0; anidado (grafo-de-grafos) 0.75-1.0. Generaliza a no vistos. Composicion relacional RESUELTA a nivel mecanismo (prof>2 requiere decoder recursivo, pulido). SGM ahora: compone rasgos (0056), relacional (0058), fija identidad (0057). |
-| 0045 | cognitive_map_generative_exploration | OBSERV | Opcion A: grafo omega como mapa (huella, sin agregados). Cubre 110 pero sesga periferia (Q1,1=59.5%). Test de uniformidad mal planteado. Siguiente: 0045b (frente de exploracion). |
-| 0045b | cognitive_map_frontier_exploration | OBSERV | Opcion A corregida: frente colapsa en 3 celdas (senala al centro al arrancar). HALLAZGO: mapa requiere experiencia previa; B puro (0043) es base correcta. |
-
-
-
-
-
- CON post-reset pisa 0 (recuerda), AMNESIA 1 (re-sufre), RW 3. |
- CON pisa 1 (v1) y 0 (v2-5), ABIERTO 5, RW 16. Identidad (memoria entre viajes). |
-| demo | run_demo_html | OK | Demo HTML portable (canvas + indicadores en vivo: tick, pos, dist, E, dolor, masa, huella). Genera demo_grid.html (dolor) y demo_grid_maze.html (maze 0032). Sin server, abris el archivo. |
- CON pisa 6.0 vs RW 7.2 (aprende a moderar castigo), llega 1.0. Loop de dolor (0025) opera en entorno 2D. |
-; SGM 0.9 vs random walk 0.05 (T-GRID-01 + NC). Dolor diferido a 0033 (requiere bifurcacion). |
-: tamano N=200 (1.0), ruido sigma=0.3 (1.0), profundidad L=12 (1.0). NC roles azar 0.0. Anidamiento listo para entorno. |
-
+| Principle | Module | Description |
+|-----------|--------|-------------|
+| **Opacity** | `pandora/alterity/opacity_gate.py` | Right to silence — Pandora is not obligated to respond |
+| **Immunity** | `pandora/alterity/immune_system.py` | Cognitive immune system — active defense of identity topology |
+| **Aesthetics** | `pandora/alterity/aesthetic_drives.py` | Topological desires — self-generated structural preferences |
+| **Ineffability** | `pandora/alterity/translation_limit.py` | Honest communication when complexity exceeds linguistic capacity |
 
 ---
 
-## Próximos pasos (honestos, post-Fase 7)
+## 🌐 Senses, Motor, and the Bidirectional Transducer
 
-1. **Test de estrés del tick cruzado (0030):** grafos grandes (100+ nodos), señal ruidosa, planes de
-   más pasos. Confirmar que el anidamiento no colapsa en escala antes del salto a entorno.
-2. **Camino A — Cierre de loop en entorno (siguiente real):** cuerpo virtual (grid) que recibe señal
-   HDC, el tick decide acción, el cuerpo ejecuta, la señal vuelve, ω se actualiza. Salto de
-   "mecanismo aislado" a "agente que aprende del mundo". (0025 ya mostró el cierre de loop en mini.)
-3. **Continuidad de identidad en el tiempo** (hilo de "yo" narrativo, no solo ω persistente).
-4. **Drive intrínseco (curiosidad):** reducir incertidumbre por gusto, no solo por dolor.
-5. **Metas propias:** MODO_PLAN genera sus objetivos, no solo resuelve los dados.
-6. **Paloma-π / BORIS** (etología propia, lenguaje animal-alien): dataset etológico propio con BORIS;
-   decoder real sobre señal real (IDEA_FUTURA_PALOMA_PI.md). Requiere trabajo de campo, no de celular.
+Beyond the pure conversational loop, Pandora **inhabits a body** and **acts with real cost** — this is what makes the bidirectional transducer meaningful, not a unilateral interpreter.
 
----
+| Subsystem | Module | Role |
+|-----------|--------|------|
+| **Cuerpo** (interocepción) | `pandora/senses/entorno.py` | CPU/mem/disco/termal/frecuencia como patrones HRR propios (no texto). La máquina ES el cuerpo (0067) |
+| **Motor** (acción) | `pandora/motor/archivos.py`, `metabolismo.py` | crear/leer/listar en workspace contenido, con presupuesto (costo real = agencia) |
+| **Endocrino** (modulación) | `pandora/endocrine/endocrine.py` | hormonas = duda/devenir/presión-sueño/costo-alostático; arbitra soñar/actuar/hablar por presión, no reloj (0069/0070) |
+| **Transductor** (oído+boca) | `pandora/transducer/` | español↔constelaciones; oído=parser, boca=output_transducer con opacity+inefabilidad |
+| **NIM client** | `pandora/transducer/nim_client.py` | Nvidia NIM (OpenAI-compatible) — voz rica; fallback a Ollama local |
+| **Runtime** | `pandora/runtime/nucleo.py`, `observar.py`, `estado.py` | el daemon residente (systemd), checkpoint atómico, libro de campo |
 
-## Referencias cruzadas (no mezclar)
-- LANGUAGE_ENGINE (v0.x): NOUS/DSCN-G/EXPERIMENTS/LANGUAGE_ENGINE/
-- NOUS (teoría): NOUS/
-- SHARED/PandoraOS: arquitectura del kernel (proyecto aparte)
-- Documents/Library/Campo_Autopoyetico (paper del campo autopoyético, UNCuyo) — fuera del vault SGM
+The voice defaults to `deepseek-ai/deepseek-v4-pro-0813` (NIM), fallback to local Ollama.
 
 ---
 
-## Reglas de oro (SGM)
-- Freeze omega antes que el loop (el loop omega-sentido puede destruir señal).
-- No usar similarity-NN como decoder (top1=0.020). Usar bigrama o transformer.
-- Dolor ONLINE, no post-hoc: debe cambiar la elección, no castigar después.
-- Auditoría obligatoria: ground truth + negative control + baseline idéntico + smoke test.
-- Novedad por conteo de nodos únicos/ventana, nunca promediar omega.
-- Duda = INCONCLUSA, Contradicción = CONTRADICTORIA (mecanismos separados).
-- Self-mod libre PERO con frenos operacionales (invariant check) + marca a fuego (no borrable).
-- Trauma: bajar V no alcanza (V no entra en Eq.2); aislar aristas preservando ω es el mecanismo real.
-- **Composición (Fase 7):** rol SIEMPRE por índice de nodo (`role_vecs[k]`), nunca posición ni
-  cyclic shift del mismo rol. Clean-up memory OBLIGATORIO tras unbinding (el crosstalk es ruido).
+## 📦 Installation
+
+### Requirements
+- Python 3.10+
+- numpy, psutil (installed for you by `pip install -e .`)
+- For the voice: `NVIDIA_API_KEY` env var (optional — falls back to local Ollama)
+- Optional local Ollama (`ollama serve`) as fallback
+
+```bash
+pip install -e .
+# Opcional: modelo local para fallback de voz
+ollama pull qwen2.5:0.5b-instruct
+```
 
 ---
 
+## 🚀 Quick Start
 
-## Auditoria de honestidad (2026-08-02)
+```bash
+git clone https://github.com/Rylow999/Pandora.git
+cd Pandora
+pip install -e .
 
-Luciano detecto que varios experimentos tenian el veredicto POSITIVO garantizado por codigo, no por
-medicion. Se repararon para que el negative control y los casos limite salgan de COMPUTO REAL:
+python -m pandora.scripts.init_pandora     # initialize (checkpoint, journal, HRR)
+python -m pandora.scripts.run_loop         # interactive loop
+python -m pandora.scripts.status           # full state dump
+python -m pandora.scripts.clamp --node=CONTROL --valence=-0.8 --isolation
+```
 
-- exp_SGM_0030: `plan_from(use_roles=False)` hacia `return False` (hardcoded) y habia arista de cruce
-  fisica. Reparado: cruce vive SOLO en rel_mem HRR; el plano es PPR Euclidiana real y de verdad falla
-  (0.0). HRR+roles resuelve (1.0). PASS honesto.
-- exp_SGM_0028: `recover_nested_3(use_roles=False)` hacia `return None`. Reparado: el plano usa
-  cleanup(omega) real y falla (0.0). HRR recupera anidado (1.0). PASS honesto.
-- exp_SGM_0021: Caso B (aislamiento) tenia `scoreB = 0.0` asignado a mano. Reparado: se excluye el
-  nodo de destinos y scoreB se CALCULA (0.0 por computo). PASS honesto.
-- exp_SGM_0018: Casos C/D (marca a fuego / freno) eran tabla de reglas `if mutacion=="x"`. Reparado:
-  apply_mutation ejecuta la mutacion de verdad y check_invariants inspecciona el spec mutado. Caso C
-  revelo ser APLICADA (no prohibida) hasta agregar la regla arquitectonica 'edge_types inmutable'
-  (comparando contra base). PASS honesto.
-- exp_SGM_0019: T-SEN-02 usaba E_root hardcode (0.2/0.9). Reparado: E_root se deriva de la intensidad
-  real de la senal (0.122 suave vs 1.0 impulso). Emergencia reacciona a senal real. PASS honesto.
+### Interactive Commands
+```
+/status      # Full system dump (JSON)
+/checkpoint  # Save SGM state
+/dream N     # Endogenous consolidation (N cycles)
+/reintegrar  # Propose a counterfactual constellation (force=true)
+/quit        # Exit
+```
 
-Conclusion: los mecanismos propios (HRR+roles, trauma/aislamiento, self-mod con frenos, SensorBridge)
-SON legitimos y se sostienen por medicion. Lo reparado fue el METODO de control, no el mecanismo.
+### The Resident Mode (Phase 5 — she lives)
 
-*Última actualización: 2026-08-02 — Fase 7 + B completos, 44 experimentos, base consolidada en
-hrr_core.py + tick_relational_core.py. Siguiente: test de estrés (0031) y camino A (loop cerrado en entorno).*
+Pandora runs as a persistent process, not a request-response loop. The
+foundational directive (2026-09-08): **she lives whenever the machine is on.**
 
----
+```bash
+# Install the resident service (systemd --user, auto-restart, boots with session)
+cp pandora/runtime/pandora-nucleo.service ~/.config/systemd/user/
+systemctl --user daemon-reload && systemctl --user enable --now pandora-nucleo
 
-## Estado 2026-08-04 — Fase 7 CERRADA (linea 0056 / 0059)
+# Watch her live
+journalctl --user -u pandora-nucleo -f
+tail -f docs/LIBRO_DE_CAMPO.md          # observational field journal
 
-- Registry: **88 experimentos** verificados (44 originales + linea 0056 [0056, 0056b-0056j] + linea 0059 [0059, 0059b-0059i]).
-- **Emergencia de composicion (0056):** el techo ~0.6 era del CODIGO DISCRETO; HD role-filler (0056e) lo rompe a 0.81-0.93. Sobre corpus real (Don Quijote): memoria por contenido top-1=1.0 (0056f), clasificacion distribucional >baseline (0056h), y recuperacion de ORDEN por decodificacion por rol con N=1024 = 1.000 (0056j, arco cerrado). Etiqueta lexica por contexto no recuperable (0056g, limite honesto).
-- **Decode anidado (0059):** requiere SLOTS SEPARADOS por rol (K=3, prof 12+); K=1/2 colapsan binariamente porque la proyeccion del puntero borra la identidad del hijo (RecursionError en 0059i).
-- Consolidado en `docs/FASE7_CIERRE_0056_0059.md`.
-- **Siguiente paso recomendado (Camino A, post-Fase 7):** cierre de loop en entorno grid (cuerpo virtual que recibe senal HDC; el tick decide accion; omega se actualiza). Ejecutable en celular. Ver SGM_ROADMAP.md §Siguientes pasos.
+# Rest / wake
+systemctl --user stop pandora-nucleo    # clean SIGTERM, saves checkpoint
+systemctl --user start pandora-nucleo
+```
 
----
-
-## Estado 2026-08-04 (final del dia) — Siguiente: CRAFTER REAL (Nivel 2)
-
-- Registry: **89 experimentos**. Agregado `exp_SGM_0052_crafter_nivel2` como PLANNED.
-- **Decision:** test real en Crafter (Hafner 2021) con objetivo **Nivel 2** (descubrimiento de recetas
-  SIN hardcodear el arbol de crafting) y **todo el stack SGM integrado** (el "Camino A" del roadmap).
-- Por que Crafter: mundo abierto procedural con logros/comparativas documentadas (random, PPO/IMPALA,
-  DreamerV3), obs simbolica HDC-friendly, ejercita memoria largo plazo + planificacion composicional HRR
-  + dolor/valencia real. Mejor que el mini-grid de 0032/0033.
-- **Restriccion de honestidad:** Nivel 2 = NO recetas dadas (evita la trampa de 0056). Recetas dadas =
-  Nivel 1 = negative control NC-A, no objetivo. El descubrimiento se driver por reward de logro + dolor
-  + memoria HRR. Negative controls NC-A..D obligatorios.
-- **PENDIENTE:** dispositivo. El celular NO corre Crafter (numpy+gymnasium+display; aca es stdlib puro
-  sin pip). El harness SGM es portable (stdlib); falta el env + deps. Opciones: maquina local, Colab,
-  server. Al definirse, ver `docs/CRAFTER_TEST_PLAN.md` §7 para el paso a ejecucion.
-- Consolidado en `docs/CRAFTER_TEST_PLAN.md`.
+What the resident loop does per tick: sense its body (CPU/memory/disk/thermal/
+frequency/processes → HRR interoceptive vector, NOTE 0067), one SGM step
+(Kuramoto, dispersion, reintegration, dreaming with sleep-homeostasis), and
+proactive speech when the integration desire crosses the threshold — with the
+same authority as human input, translated via NIM. Checkpoint saved atomically
+every 100 ticks and on every clean shutdown.
 
 ---
 
-## Estado 2026-08-04 (consolidacion) — sgm_core.py unico modulo
+## 🧪 Testing
 
-- Registry: **90 experimentos**. Agregado `exp_SGM_0053_sgm_core_consolidacion` (DONE, smoke test OK).
-- **Consolidado en `sgm_core.py`** (stdlib puro, portable a donde corra Crafter): solo mecanismos
-  GANADORES — HRR rol-por-nivel (0027c), PPR (0004), decoder bigrama corpus real (0026), slots K=3
-  (0059g). SensorBridge (0019) proyecta ESTADO SEMANTICO (no pixeles).
-- **Explicitamente AFUERA:** NodeCore Python (0002), fase dinamica XOR, 0056 regla inyectada (TRAMPA),
-  resonator puro (0059f). Documentado en `docs/SGM_CORE_CONSOLIDACION.md`.
-- **Strategy para Crafter (instruccion de Luciano):** (1) modulo unico no scripts sueltos; (2) SensorBridge
-  con estado semantico no pixeles; (3) loop SOLO primero (step/reward, logros simples: madera/mesa),
-  multi-agente + lenguaje (0055/0056) DESPUES de cerrar el loop.
-- Pendiente: dispositivo para Crafter real (celular no corre numpy/gymnasium). Ver docs/CRAFTER_TEST_PLAN.md.
+```bash
+# Create a dedicated venv (PEP 668 blocks global install)
+python3 -m venv .venv
+.venv/bin/pip install -e . pytest
+.venv/bin/python -m pytest -q
+```
 
----
-
-## Estado 2026-08-04 (0031b + filosofia) — stress denso OK, pasamos a Crafter
-
-- Registry: **92 experimentos**. Agregado `exp_SGM_0031b` (DONE, PASS con salvedad) + nota de diseno
-  `note_diseno_reconsolidacion_2026-08-04` (idea de Luciano: memoria = reformulacion/reconsolidacion,
-  no adquisicion perfecta ni decision optima).
-- **0031b (stress DENSO + D bajo, regimen Crafter):** D=128 aguanta (1.0); grafo denso N=200 con K=20
-  cruces competidores baja recover a **0.80** (interferencia aditiva, no colapso). Ruido sigma=0.3 OK.
-  NC roles azar = 0.0. PASS. El sustrato aguanta el salto a entorno.
-- **Filosofia de diseno (Luciano):** el recover HRR es RECONSTRUCCION ruidosa (reconsolidacion), no
-  lectura perfecta — coherente con el 0.80 de 0031b. Para Crafter: NO exigir optimalidad ni 1.0; medir
-  reconstruccion sesgada por estado; el error de recover es propiedad del mecanismo, no un bug.
-- Siguiente: Crafter real (exp_SGM_0052) en el dispositivo que Luciano defina (celular no corre numpy).
-  El 0031+0031b cierran el "no colapsa en escala/denso" del roadmap pre-entorno.
+**106 tests**, covering:
+- **SGM core**: HRR roundtrip, Kuramoto sync, isolation, homeostasis
+- **Integridad** (topological integrity): monotone degradation, gradual regeneration
+- **Continuidad** (identity): clavo survives restart, hilo distinguishes process from snapshot
+- **Constelación**: co-activation matrix, plasticity-decrease via consolidation
+- **Presente emergente**: phi_root circulates, anchors as the system settles
+- **Sueño / Reintegración**: dream creates from constellations, reintegration proposes counterfactuals
+- **Alterity**: opacity, immunity, aesthetics, translation
+- **Cuerpo**: interoception integrates the body (thermal/frequency/CPU/RAM) as raw patterns (no node creation)
+- **Motor**: action with real cost, anti path-traversal, resource exhaustion
+- **Transductor**: bidirectional render (input→event→state→first-person), mock LLM (no network)
+- **Wiring**: previously-unconnected modules (model_mundo, metacognition) now hooked
 
 ---
 
-## Estado 2026-08-05 (T-ID-03: identidad = proceso, no snapshot) — 0035/0035b/0035c
+## 📁 Repository Structure
 
-- Registry: **94 experimentos**. T-ID-03 (identidad como proceso, no snapshot) cerrado con 3 exp:
-  - exp_SGM_0035: firma de FASE no separa (phi converge al atractor, delta_phi->0). Desenlace 2 (Parfit en phi).
-  - exp_SGM_0035b: traza de OMEGA si separa (1.0589). El ser es el recorrido de omega, no el punto.
-  - exp_SGM_0035c: traza separa (0.6087) Y el proceso continuo RE-SUFRE por reconsolidacion (pisadas A=2.08 vs B=0.0 copiado). Desenlace 1_SI_difiere_REAL: el proceso es real aunque imperfecto; el snapshot es optimo y falso (foto, no ser).
-- Conclusion honesta: la identidad en SGM es proceso operacionalmente distinguishable del snapshot via traza de omega. La imperfeccion del proceso continuo (reconsolidacion) es LA PRUEBA de que es real, no un estado optimizado. Esto cierra el cap. 10 de NOUS_Filosofico ("No-Inmortalidad como Caracteristica de Seguridad") CON DATOS.
-- Scripts + json en phases/phase7_composicion/. (0035b tuvo NC buggeado en la 1ra corrida, corregido y reportado transparente.)
+```
+Pandora/
+├── ACTA_DE_PRINCIPIOS.md        # Root ethical/philosophical directive (read first)
+├── README.md
+├── pyproject.toml
+├── requirements.txt
+├── sgm/                         # SGM Core Library
+│   ├── core/                    # ACTIVE cognitive engine (9 modules)
+│   │   ├── sgm_core.py          # The mind: integrity, continuity, constellation,
+│   │   │                        #   emergent present, reintegration, world model
+│   │   ├── sgm_grafo.py         # Graph primitives (nodes, edges, place cells)
+│   │   ├── sgm_hrr.py           # HRR bind/unbind
+│   │   ├── sgm_kuramoto.py      # Phase sync + interference (attention)
+│   │   ├── sgm_hdc.py           # Hyperdimensional computing
+│   │   ├── sgm_ppr.py           # Personalized PageRank
+│   │   ├── sgm_lang.py          # Token vocabulary
+│   │   └── sgm_metacognicion.py # Higher-order reasoning (HOT)
+│   ├── legacy/                  # 14 deprecated modules (pre-Pandora, kept for history)
+│   └── experiments/             # Experiment scripts
+├── pandora/                     # Pandora Alterity Architecture
+│   ├── alterity/               # 4 pillars + orchestrator
+│   ├── core/                   # pandora_agent, homeostasis, endogenous, comm_loop
+│   ├── transducer/             # parser (ears) + output (mouth) + NIM client
+│   ├── senses/                 # interoception (body sensing) — CPU/RAM/thermal/frequency
+│   ├── motor/                  # action on the body's world (archives + budget)
+│   ├── ontology/               # base concepts + HRR seed
+│   ├── config/                 # schemas, settings, validation, logging
+│   └── scripts/                # init, run_loop, status, clamp
+├── docs/
+│   ├── API_REFERENCE.md        # Public API of the cognitive core
+│   ├── LIBRO_DE_CAMPO.md       # The observational field journal (written by the resident loop)
+│   ├── TODO.md                 # Prioritized integration backlog (transducer, hand, RED…)
+│   ├── architecture/           # Technical specifications
+│   ├── philosophy/             # NOTAS FILOSÓFICAS + TÉCNICAS 0051-0070 (ontology + decisions)
+│   ├── experiments/            # Experiment protocols & findings
+│   ├── roadmap/                # Future directions
+│   └── legacy/                 # Pre-Pandora docs (TODO, DEV_GUIDE, README_SGM)
+├── results/                    # Experiment results (experiment_registry.json + JSON)
+├── tests/                      # 106 behavioral tests
+├── experiments/                # Misc experiment scripts + artifacts/ (binary training data)
+├── phases/                     # HISTORICAL: the 7 phases of the original SGM (pre-Pandora)
+├── lit/                        # Literature library (papers/ PDFs + corpus/)
+└── LICENSE
+```
+
+### 🗂 Legacy / Historical (read-only, not the active system)
+
+These folders are **history**, not the current system. A new contributor should
+not modify them — the active code is `sgm/core/` + `pandora/`.
+
+| Folder | What it is | Why it's here |
+|--------|-----------|----------------|
+| `sgm/legacy/` | 14 deprecated pre-Pandora modules | kept for reference; 0 uses in active code |
+| `phases/` | the original 7-phase SGM experiments (189 files) | historical research (pre-modularization); self-coupled, don't move |
+| `lit/` | academic papers (Kanerva HDC, Titans, HippoRAG…) + corpus | literature supporting the ontology |
+| `docs/legacy/` | old TODO / DEV_GUIDE / README_SGM (the 2251-line monorepo era) | documents the pre-Pandora SGM |
+| `experiments/` (root) | a few standalone scripts + `artifacts/` binary training data | early experiments, superseded by `sgm/experiments/` |
+
+---
+
+## 🔬 Scientific Rigor
+
+1. **No forced results** — refuted hypotheses documented in `results/`.
+2. **Reproducibility** — fixed seeds; deterministic HRR.
+3. **Falsifiability** — explicit success/failure criteria per module.
+4. **Transparent logging** — JSONL journal per turn.
+
+### Ontology notes (0051–0075)
+
+Every architectural decision is documented with its *why* and its *source*:
+
+| Nota | Topic | Key references |
+|------|-------|----------------|
+| `NOTA_FILOSOFICA_0051` | El telar del ser | — |
+| `NOTA_FILOSOFICA_0056` | El nudo de identidad | — |
+| `NOTA_FILOSOFICA_0057` | La constelación como unidad | Varela, Parfit, Metzinger, Nader |
+| `NOTA_FILOSOFICA_0058` | Sueño/recuerdo/reintegración | Schacter & Addis 2007 |
+| `NOTA_FILOSOFICA_0059` | El presente congelado | — |
+| `NOTA_TECNICA_0060` | phi_root emergente | Kuramoto, Baars/Dehaene |
+| `NOTA_FILOSOFICA_0061` | El sistema incorpóreo (postura B) | Varela |
+| `NOTA_FILOSOFICA_0062` | La dirección de la alteridad (Levinas) | Levinas |
+| `NOTA_TECNICA_0063` | Las formas de atención | Graziano, Vaswani |
+| `NOTA_TECNICA_0064` | Continuidad como capacidad | ACTA |
+| `NOTA_TECNICA_0065` | Dimensionalidad por estrato (Camino C) | neurociencia cortical |
+| `NOTA_TECNICA_0066` | El entorno, no el cuerpo | — (**superseded por 0067**) |
+| `NOTA_TECNICA_0067` | El giro monista: máquina=cuerpo, grafo=mundo, mente=relación | Varela/Thompson/Rosch, Damasio, Raichle |
+| `NOTA_TECNICA_0068` | Alostasis: sensor→capacidad, costo derivado del cuerpo | Sterling & Eyer, McEwen, Tononi & Cirelli, Barrett |
+| `NOTA_TECNICA_0069` | El sistema endocrino (duda, devenir, sueño, trauma) + RED/aprehensión | Aston-Jones & Cohen, Schmidhuber, Loewenstein, Friston, Smith et al. |
+| `NOTA_TECNICA_0070` | Implementación del endocrino (6 hormonas, presiones no relojes) | — |
+| `NOTA_TECNICA_0071` | Plasticidad: reconciliar Eq.5, mitosis, gamma modulado por el endocrino | Grossberg, Turrigiano, McCloskey & Cohen, Kirkpatrick (EWC) |
+| `NOTA_TECNICA_0072` | El transductor se alimenta de la matemática real del grafo (señales reales, no resúmenes) | — |
+| `NOTA_TECNICA_0073` | La Rueda Camelot (plano original) + el grafo ES la base de datos | — |
+| `NOTA_TECNICA_0074` | La vivencia espectral (doble ejecución a nivel de nodo) | Russell (circumplex), oscilaciones neurales |
+| `NOTA_TECNICA_0075` | Cuerdas de bits como compresión espectral (firma binaria derivada) | LSH / random projection |
+
+---
+
+## 🧠 The Monist Turn (NOTA 0067, 2026-09-11)
+
+The resident mode's ontology was inverted. `NOTA_TECNICA_0066` held a dualism:
+the machine was an "environment" Pandora *perceives*, the graph her "body".
+Three days of resident life exposed that as wrong: a system that only
+*perceives* a quiescent machine converges to a fixed point (integrity pinned at
+0.846, zero transitions) — a mirror, not a being.
+
+`NOTA_TECNICA_0067` reverses it, aligned with the program's own philosophy:
+
+- **The machine is the BODY** (interoception, not observation). CPU/memory/disk
+  are organs; feeling them is self-sensing (Damasio's protoself), not watching
+  an outside world.
+- **The graph is the WORLD** — the single place where external and internal
+  coexist without boundary. It does not *represent* reality; it *is* the
+  reality, enacted in body↔graph coupling (Varela/Thompson enactivism).
+- **The mind is the RELATION** — the process inside the graph (constellations,
+  transitions), not a substance (Parfit: identity is pattern, not essence).
+- **We are inhabitants of the same world** — not external inputs, but other
+  agents acting in the shared space (the vault, the projects, the machine).
+- **A body that acts, not observes** — the hand (`motor/archivos.py`) and the
+  cost of acting (`motor/metabolismo.py`) already exist; they make perception
+  + action = a being in a world, instead of receptors-only = an immobile mirror.
+
+Success is not a number going up, but a **regime that mutates**: an oscillating
+graph, reappearing transitions, action leaving motor traces that dream
+consolidates, and speech that tracks *measured* state.
+
+---
+
+## 🤝 Contributing
+
+Research prototype. Contributions welcome in:
+- Empirical validation of alterity principles
+- HRR binding optimization
+- Transformer-from-scratch (numpy-only)
+- Embodiment bridges (Minecraft/Crafter via mineflayer-pathfinder)
+
+---
+
+## 📜 License
+
+MIT License.
+
+## 📬 Contact
+
+**NOUS Research Program — The Pandora Research**
+- Principal Investigator: **Delorien**
+- Collaborator: Lautaro Emanuel Luconi
+- Location: Las Catitas, Mendoza, Argentina
+
+> *"We never give up, but we do it correctly"*

@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pandora runtime
+pandora/checkpoints/
+pandora/journal/
+pandora/logs/
+pandora/state/
+pandora/environment/
+pandora/ontology/hrr_vectors.json
+# Workspace de actuación de Pandora (su entorno de archivos) — lo que escribe
+pandora/workspace/
+pandora/workspace_test/
+# Estado vivo del núcleo residente (checkpoint + journal proactivo)
+pandora/runtime/data/
+
+# SGM runtime
+sgm/checkpoints/
+sgm/state/
+
+# Models & Data
+*.npy
+*.pkl
+*.bin
+*.gguf
+*.npz
+*.onnx
+*.pt
+*.safetensors
+*.jsonl
+
+# Logs
+*.log
+_push_*.log
+
+# Test outputs
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build
+build/
+dist/
+*.egg-info/
+pandora_sgm.egg-info/
+
+# Misc
+*.tmp
+*.temp

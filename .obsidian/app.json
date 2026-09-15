@@ -1,3 +1,11 @@
 {
-  "promptDelete": false
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "root",
+  "attachmentFolderPath": "./",
+  "useMarkdownLinks": true,
+  "showFrontmatter": true,
+  "showLineNumber": true,
+  "strictLineBreaks": false,
+  "tabSize": 4
 }

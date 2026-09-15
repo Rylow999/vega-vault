@@ -1,0 +1,19 @@
+# Secretos y keys — NUNCA versionar
+API-KEYS-FOR-SWARM.txt
+*.key
+*.pem
+.env
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.trash/
+
+# Obsidian workspace local ( estado de UI, no contenido )
+.obsidian/workspace*.json
+.obsidian/cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/

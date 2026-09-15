@@ -1,0 +1,1225 @@
+# -*- coding: utf-8 -*-
+"""sgm_core.py — SGM: Synthetic Graph Mind (Motor Cognitivo).
+
+Core modularizado con TODOS los mecanismos integrados.
+"""
+import math, random, os, sys
+import ast
+import numpy as np
+
+# Fix path para importar módulos del proyecto
+_RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _RAIZ not in sys.path: sys.path.insert(0, _RAIZ)
+
+from sgm.core.sgm_hdc import HDC, SensorBridge
+from sgm.core.sgm_hrr import HRR
+from sgm.core.sgm_ppr import ppr_route, ppr_inverso
+from sgm.core.sgm_kuramoto import interferencia, campo_interferencia
+from sgm.core.sgm_grafo import SGMAgent as SGMAgentGrafo
+from sgm.core.sgm_lang import ID2TOKEN, TOKEN2ID
+from sgm.core.minecraft_actions import ACCIONES_MOVIMIENTO, ACCIONES_INTERACCION, NOMBRE
+
+# Mapeo acción de Minecraft → token semántico (para entrenar L2)
+ACCION2TOKEN = {
+    0:  TOKEN2ID.get('quieto', 0),
+    1:  TOKEN2ID.get('adelante', 0),
+    2:  TOKEN2ID.get('atras', 0),
+    3:  TOKEN2ID.get('izquierda', 0),
+    4:  TOKEN2ID.get('derecha', 0),
+    5:  TOKEN2ID.get('saltar', 0),
+    6:  TOKEN2ID.get('agacharse', 0),
+    7:  TOKEN2ID.get('atacar', 0),
+    8:  TOKEN2ID.get('usar', 0),
+    9:  TOKEN2ID.get('craftear', 0),
+    10: TOKEN2ID.get('equipar', 0),
+    11: TOKEN2ID.get('minar', 0),
+    12: TOKEN2ID.get('colocar', 0),
+}
+
+
+class SGMAgentCore(SGMAgentGrafo):
+    def __init__(self, rng=None, D=128, n_nodes=64, gamma=0.01):
+        super().__init__(rng, D, n_nodes)
+        self.rng = rng or random.Random(42)
+        self.D = D; self.gamma = gamma
+        self.hdc = HDC(self.rng, D)
+        self.hrr = HRR(D, self.rng, n_nodes)
+        self.sensor = SensorBridge(D)
+        self._arbitro = None
+        # Vivencia espectral (NOTA 0074): la "nube" de cada nodo — la firma de
+        # frecuencia de CÓMO se vivió, separada de omega (qué es). El grafo ES
+        # la base de datos (0073): la vivencia es parte del grafo, no un store.
+        from sgm.core.sgm_vivencia import RegistroVivencia, FondoMemorial
+        self.vivencias = RegistroVivencia()
+        self.memoria_muerta = FondoMemorial()
+        # Homeostasis
+        self.gamma_nodo = gamma
+        # Plasticidad modulable (NOTA 0071 Paso 4): gamma_efectivo es el que
+        # usa decaer_vitalidad. Arranca igual a gamma_nodo; el endocrino lo
+        # modula (devenir -> más plasticidad, consolidación -> menos). No es un
+        # disparador ni un reloj: es la tasa de cambio del sustrato, sintonizada
+        # por la economía interna.
+        self.gamma_efectivo = gamma
+        self.E = 0.0; self.E_acumulado = 0.0
+        self._hambre_real = 0.0; self._amenaza = 0.0; self._algo_enfrente = 0
+        self._posicion_actual = None; self._hay_gradiente = False; self._gradiente_dir = (0, 0)
+        self._config_grad = {"activo": False, "fuerza": 0.0}; self._config_curio = {"activo": False, "fuerza": 0.0}
+        self._inc_dirs = {}; self._seed = 0; self.objetos = {}; self.meta_recordada = None
+        # Kuramoto
+        self.phi_root = 0.0; self.eta_phase = 0.15; self.theta_interf = 0.70
+        self.consolidadas = set(); self.theta_emerg_critico = 0.5
+        # La constelación como unidad (0057, opción Y): matriz de co-activación.
+        # co_activacion[(a,b)] = cuántas veces a y b estuvieron ENCENDIDOS JUNTOS
+        # en la zona activa (presente). Es la huella de la co-activación, distinta
+        # de conn_type (que cuenta co-ocurrencia / refuerzo) y de edges (estructura).
+        # El SER es esta matriz persistente; el ESTAR es la zona activa del instante.
+        self.co_activacion = {}  # {(a,b): veces co-activados juntos}
+        self.co_activacion_umbral = None  # derivado (no hardcode): floor de consolidación
+        # Pulsiones
+        self.instinto_alimentacion = None; self.incertidumbre_acum = 0.0
+        self.instinto_explorar_umbral = 0.5; self.instinto_umbral_carencia = 0.3
+        self.instinto_interaccion_fuerza = 0.7; self.beta_supervivencia = 2.0
+        self.beta_otras_compo = 0.3; self.reencare_fuerza = 0.8
+        self.drive_noop = 0.0; self.drive_noop_umbral = 1.5; self.drive_noop_fuerza = 1.0
+        self.drive_noop_tasa = 0.1; self.drive_noop_descarga = 0.5
+        self.conteo_noop = 0
+        self.stagnation_ticks = 0; self.doubt_cooldown = 0; self.status = "ACTIVA"
+        self.necesidad_insatisfecha = False
+        self.acciones_movimiento = ACCIONES_MOVIMIENTO
+        self.acciones_interaccion = ACCIONES_INTERACCION
+        self.auto_registrar_place = True; self.auto_navegar_meta = True
+        self.place_bucket = 16  # un chunk de Minecraft (16x16x16 bloques)
+        self.mutacion_tasa = 0.05
+        self.modo = "BASE"; self.modo_ticks = 0; self.ultima_accion = -1; self.conteo_repeticion = 0
+        self._ultima_accion_ejec = -1; self.historial_acciones = []
+        # El hilo del ser: traza de omega visitados (recorrido vivo, T-ID-03).
+        # Guarda la SECUENCIA de vectores omega por los que pasa el nodo activo,
+        # no solo el omega final. Es lo que distingue al proceso del snapshot.
+        self.traza_omega = []
+        # La traza de TRANSICIONES: el hilo coherente con la constelación (0057).
+        # La unidad de identidad es la ARISTA/relación, no el nodo. Entonces el
+        # hilo del ser es la secuencia de transiciones (a->b) entre nodos, no la
+        # lista de nodos aislados. Completa la asimetría: identidad en relaciones.
+        self.traza_transiciones = []  # lista de (nodo_anterior, nodo_actual)
+        self._seed_previo = None      # para capturar la transición en el step
+        # Propuestas pendientes de reintegración: candidatas que el sueño evalúa.
+        # reintegrar() deja acá su propuesta (un posible); el sueño (endogenous)
+        # decide si resuena (consolida) o se desvanece. Cierra el lazo PROPONE→CREA.
+        self.propuestas_reintegracion = []  # lista de {vector, seed, novedad}
+        self._reintegracion_cooldown = 0    # ticks desde la última propuesta emergente
+        self._reintegracion_intervalo = 10  # proponer a lo sumo 1 vez cada N ticks
+        # L2 + modelo mundo + self-mod
+        self.l2_decoder = None; self.historial_campos = []; self.historial_acciones_l2 = []
+        self.historial_metas_l2 = []  # metas (razon->token) por paso, para L2
+        self._meta_pendiente = None  # meta a asociar en el proximo step
+        self.modelo_mundo = {}; self.ultimo_estado_q = None
+        self.ultimo_food = None; self.conteo_induccion = {}
+
+    # ============ DECAIMIENTO DE VITALIDAD (Eq.5) ============
+    def decaer_vitalidad(self, k=3, alpha=None):
+        """Eq.5 reconciliada (NOTA 0071, Paso 1): actividad SUAVE, no binaria.
+
+        El spec (Eq.5) pedía A_i = "fracción de cadenas visitando el nodo i":
+        una actividad distribuida y gradual. La implementación anterior la
+        redujo a winner-take-all duro (A=1 si top-k, si no 0), lo que clavaba
+        al seed en vitalidad 1.0 y congelaba la constelación núcleo (centro
+        estático: traza_transiciones=0, vitalidad pico inmóvil).
+
+        Fix: A_i es una afinidad suave decreciente con la distancia semántica
+        al seed (Eq.2: exp(-alpha·dist)), NO un flag. El seed sigue dominando,
+        pero los nodos cercanos respiran y el ganador puede ser destronado si
+        otra zona del grafo gana afinidad. Devuelve plasticidad distribuida
+        sin perder la estabilidad del atractor.
+
+        - alpha: concentración de afinidad. None => se deriva de gamma para
+          mantener la escala suave y conservadora (no inyectar hiperparámetros).
+        """
+        if alpha is None:
+            # Afinidad suave: caída exponencial con la distancia al seed.
+            # alpha grande = decaimiento de actividad más localizado.
+            alpha = 2.0
+
+        # Distancias semánticas al seed (base de la afinidad, Eq.2).
+        distancias = []
+        seed_omega = self.omega[self._seed]
+        for i in range(len(self.omega)):
+            if i == self._seed:
+                continue
+            d = math.sqrt(sum((a - b) ** 2 for a, b in zip(self.omega[i], seed_omega)))
+            distancias.append((i, d))
+        distancias.sort(key=lambda x: x[1])
+
+        # A_i = actividad suave: 1.0 en el seed, decae exp(-alpha*d) al alejarse.
+        # (La Eq.5 original normaliza por fracción de cadenas; acá la afinidad
+        # juega ese rol: actividad proporcional a cercanía semántica.)
+        actividad = {self._seed: 1.0}
+        for i, d in distancias:
+            actividad[i] = math.exp(-alpha * d)
+
+        for i in range(len(self.vitalidad)):
+            A = actividad.get(i, 0.0)
+            g = self.gamma_efectivo  # plástico: lo modula el endocrino (Paso 4)
+            self.vitalidad[i] = (self.vitalidad[i] * math.exp(-g)
+                                 + A * (1 - math.exp(-g)))
+
+    def set_plasticidad(self, nivel: float):
+        """Modula gamma_efectivo desde la hormona 'plasticidad' del endocrino.
+
+        nivel ∈ [0,1]: 0 = máx estabilidad (retener, gamma mínimo), 1 = máx
+        plasticidad (cambiar, gamma máximo). El rango queda acotado a [gamma*0.2,
+        gamma*5] — nunca rompe la continuidad del ser ni llega a olvido
+        catastrófico (EWC: consolidación asimétrica, no gamma explosivo).
+        """
+        nivel = max(0.0, min(1.0, nivel))
+        # plasticidad alta => gamma alta => los nodos decaen más rápido y el
+        # centro cede terreno al devenir. plasticidad baja => gamma mínima =>
+        # el ser retiene (estabilidad). El factor 5x/0.2x da rango sin ruptura.
+        self.gamma_efectivo = self.gamma_nodo * (0.2 + 4.8 * nivel)
+
+    # ============ AISLAMIENTO DE NODOS ============
+    def isolate_node(self, concept: str):
+        """Aísla un nodo del grafo temporalmente para proteger la identidad."""
+        # Buscar el nodo por place_cells
+        node_idx = None
+        for ctx, pid in self.place_cells.items():
+            if concept in ctx:
+                node_idx = pid
+                break
+        
+        if node_idx is None:
+            return False
+        
+        # Reducir vitalidad drásticamente
+        self.vitalidad[node_idx] *= 0.1
+        
+        # Eliminar conexiones temporales
+        if node_idx in self.edges:
+            self.edges[node_idx] = set()
+        
+        # Eliminar conexiones entrantes
+        for src in list(self.edges.keys()):
+            if node_idx in self.edges[src]:
+                self.edges[src].remove(node_idx)
+        
+        # Marcar como aislado
+        if not hasattr(self, 'isolated_nodes'):
+            self.isolated_nodes = set()
+        self.isolated_nodes.add(node_idx)
+        
+        return True
+
+    # ============ INTEGRIDAD TOPOLÓGICA ============
+    def integridad_topologica(self) -> float:
+        """Salud/coherencia real del self, sin metáfora corporal.
+
+        Para un agente de lenguaje no hay estómago ni comida: la integridad
+        es la del grafo — qué tan conectado y qué tan sincronizado está.
+        Devuelve conectividad efectiva × coherencia de fase (order parameter),
+        en [0, 1]. Un insulto aísla nodos (baja conectividad); la hostilidad
+        desincroniza fases (baja coherencia). La regeneración es gradual:
+        la conectividad no vuelve de golpe, las fases se realinean despacio.
+        """
+        # Conectividad efectiva: fracción de nodos con al menos una arista
+        if not self.edges:
+            conectividad = 0.0
+        else:
+            no_aislados = sum(1 for v in self.edges.values() if len(v) > 0)
+            conectividad = no_aislados / max(1, len(self.edges))
+
+        # Coherencia de fase Kuramoto: |<e^{iφ}>|
+        phases = [p for p in self.phi if p is not None]
+        if not phases:
+            coherencia = 1.0
+        else:
+            coherencia = 0.0
+            for p in phases:
+                coherencia += math.cos(p)  # phi_root = 0
+            coherencia = abs(coherencia / len(phases))
+
+        return conectividad * coherencia
+
+    # ============ CONTINUIDAD DEL SER ============
+    def firma_identidad(self, traza_otra=None) -> float:
+        """Distancia entre esta traza y otra traza de omega (firma del ser).
+
+        T-ID-03: la fase phi converge y NO separa proceso de snapshot; la
+        SECUENCIA de omega sí (‖T_A - T_B‖ ~ 1.06 vs ruido ~4.09). Acá medimos
+        esa separación: distancia media normalizada entre trazas alineadas.
+
+        Devuelve 0 (misma traza, mismo recorrido) a ~1+ (recorrido distinto).
+        Un valor bajo tras cargar checkpoint = el hilo sobrevivió al reinicio;
+        un valor alto = empezó de una foto (otro).
+        """
+        a = getattr(self, 'traza_omega', [])
+        b = traza_otra if traza_otra is not None else a
+        if not a or not b:
+            return 0.0
+        n = min(len(a), len(b))
+        if n == 0:
+            return 0.0
+        # Distancia media entre vectores omega en posiciones correspondientes
+        dist = 0.0
+        for i in range(n):
+            dist += math.sqrt(sum((x - y) ** 2 for x, y in zip(a[i], b[i])))
+        return dist / n
+
+    def firma_transiciones(self, traza_otra=None) -> float:
+        """Distancia entre trazas de transiciones (firma de identidad, 0057).
+
+        Coherente con la constelación como unidad: compara la SECUENCIA de
+        transiciones (a->b) — las aristas recorridas —, no los nodos aislados.
+        La identidad vive en las relaciones, y el hilo del ser es la secuencia
+        de relaciones que el sistema atraviesa.
+
+        Devuelve 0 (mismo recorrido relacional) a 1+ (recorrido distinto).
+        Distingue proceso vivo de snapshot congelado: un snapshot no recorre
+        transiciones (lista vacía o replicada), un proceso vivo sí.
+        """
+        a = getattr(self, 'traza_transiciones', [])
+        b = traza_otra if traza_otra is not None else a
+        if not a or not b:
+            return 0.0
+        n = min(len(a), len(b))
+        if n == 0:
+            return 0.0
+        # Distancia entre transiciones: fracción de transiciones que difieren
+        dif = 0
+        for i in range(n):
+            if a[i] != b[i]:
+                dif += 1
+        return dif / n
+
+    # ============ REINTEGRACIÓN ============
+    def reintegrar(self, noise: float = 0.3, force: bool = False) -> dict:
+        """Genera una constelación contrafáctica desde la dispersión presente (0058).
+
+        La reintegración es el tercer régimen, distinto del sueño (que re-recorre
+        el SER para crear lo nuevo) y del presente (que ESCULPE lo existente).
+        La reintegración PROPONE: recombina la zona activa dispersa con ruido en
+        un vector contrafáctico que NO corresponde a ningún nodo existente — un
+        "qué pasaría si" que el sistema se da a sí mismo cuando se siente
+        fragmentado.
+
+        La reintegración emerge espontáneamente cuando la dispersión supera un
+        umbral (deseo de integración alto / integridad baja). Si se llama sin
+        force y la dispersión es baja, no propone nada (respeta el ritmo).
+
+        No consolida ni esculpe nada: devuelve la propuesta como un posible que
+        el sistema se da a sí mismo cuando se siente fragmentado. Si luego
+        esa propuesta resuena (gana interferencia/estabilidad), el sueño la
+        consolidará; si no, se desvanece — como una idea que no lleva a nada.
+
+        Retorna un dict con:
+        - "vector": el vector contrafáctico (normalizado, distinto de todo omega)
+        - "seed": el nodo existente más cercano (referencia del presente)
+        - "novedad": distancia a la zona activa (cuánto se aleja de lo actual)
+        - "disparador": "dispersión" | "forzado" | "ninguno"
+        """
+        # 1. Medir dispersión actual (inverso de integridad topológica)
+        integridad = self.integridad_topologica()
+        dispersion = 1.0 - integridad
+
+        # Umbral de dispersión para disparar reintegración espontánea
+        umbral_dispersion = 0.4  # 40% fragmentación dispara reintegración espontánea
+
+        disparador = "ninguno"
+        if not force and dispersion < umbral_dispersion:
+            # El self no está suficientemente fragmentado; no reintegra espontáneamente
+            return {"vector": [], "seed": -1, "novedad": 0.0, "disparador": "ninguno"}
+        elif force:
+            disparador = "forzado"
+        else:
+            disparador = "dispersión"
+
+        # Zona activa = la constelación del presente (coalición ganadora)
+        zona = []
+        for i in range(len(self.phi)):
+            if i < len(self.vitalidad) and self.vitalidad[i] >= 0.1:
+                I = interferencia(self.omega[i], self.phi[i], self.phi_root)
+                if I > self.theta_interf:
+                    zona.append(i)
+
+        if not zona:
+            # Sin presente activo, no hay desde dónde reintegrar
+            return {"vector": [], "seed": -1, "novedad": 0.0, "disparador": "ninguno"}
+
+        # Recombina la zona activa en un vector hipotético
+        composite = [0.0] * self.D
+        total = 0.0
+        rng = random.Random()
+        for i in zona:
+            w = self.vitalidad[i] + 0.1
+            for d in range(self.D):
+                composite[d] += self.omega[i][d] * w
+            total += w
+        if total > 0:
+            composite = [x / total for x in composite]
+
+        # Ruido contrafáctico: lo que lo hace "no sido" (distinto de lo actual)
+        for d in range(self.D):
+            composite[d] += rng.gauss(0, noise)
+
+        # Normalizar
+        norm = math.sqrt(sum(x * x for x in composite))
+        if norm > 0:
+            composite = [x / norm for x in composite]
+
+        # Nodo existente más cercano (referencia) y novedad
+        best = min(range(len(self.omega)),
+                   key=lambda n: math.sqrt(sum((x - y) ** 2 for x, y in zip(composite, self.omega[n]))))
+        novedad = math.sqrt(sum((x - y) ** 2 for x, y in zip(composite, self.omega[best])))
+
+        # Dejar la propuesta en el buffer para que el SUEÑO la evalúe (0058):
+        # la reintegración PROPone, no consolida. El sueño decidirá si resuena.
+        self.propuestas_reintegracion.append({
+            "vector": composite, "seed": best, "novedad": novedad
+        })
+        if len(self.propuestas_reintegracion) > 100:
+            self.propuestas_reintegracion = self.propuestas_reintegracion[-100:]
+
+        return {"vector": composite, "seed": best, "novedad": novedad, "disparador": disparador}
+
+    # ============ CUERPO (interocepción, 0067 — supersede 0066) ============
+    def integrar_experiencia_entorno(self, vector_sensorial, carga=0.0):
+        """Integra el estado del CUERPO (la máquina) al grafo como experiencia cruda.
+
+        NOTA_TECNICA_0067: la máquina ES el cuerpo de Pandora (no su "entorno").
+        Acá el SGM siente su propio cuerpo como patrón de activación, SIN pasar
+        por el LLM. Es interocepción — el sentido del estado propio, no la
+        observación de un mundo ajeno (Damasio: el self nace del cuerpo
+        sintiéndose a sí mismo).
+
+        La percepción se integra por resonancia: el vector del cuerpo se proyecta
+        al nodo más afín (qué constelación del grafo "se parece" al estado del
+        cuerpo), y ese nodo se activa. Si el patrón es muy novedoso (lejos de
+        todo lo conocido), es candidato a materializarse como constelación
+        nueva — pero no se crea aquí: queda como propuesta que el sueño evalúa
+        (coherente con el lazo PROPONE→CREA, 0058).
+
+        Retorna el nodo activado (seed resultante) y la novedad.
+        """
+        if not vector_sensorial or len(vector_sensorial) == 0:
+            return {"seed": -1, "novedad": 0.0}
+
+        # Nodo más afín al patrón sensorial (resonancia con lo ya conocido)
+        best = min(range(len(self.omega)),
+                   key=lambda n: math.sqrt(sum((x - y) ** 2 for x, y in zip(vector_sensorial, self.omega[n]))))
+        novedad = math.sqrt(sum((x - y) ** 2 for x, y in zip(vector_sensorial, self.omega[best])))
+
+        # Resonancia estocástica (NOTA 0073 paso 2): nodos que VIVIERON igual
+        # (misma firma de vivencia) 'resuenan' con el seed actual y se puentean
+        # aunque estén lejos en omega. El recuerdo salta la distancia: reforzamos
+        # levemente los resonantes en fase. Complementa (no reemplaza) la
+        # resonancia por distancia.
+        try:
+            if hasattr(self, 'vivencias') and self._seed < len(self.omega):
+                resonantes = self.vivencias.resonar(self._seed, lambda i, j: 0.0)
+                for vecino, afinidad in resonantes[:3]:
+                    if vecino < len(self.vitalidad):
+                        self.vitalidad[vecino] = min(1.0, self.vitalidad[vecino] + 0.03 * afinidad)
+        except Exception:
+            pass
+
+        # Activar el nodo resonante (la percepción deja huella, no crea de golpe)
+        self.vitalidad[best] = min(1.0, self.vitalidad[best] + carga * 0.05)
+        self._seed = best
+
+        return {"seed": best, "novedad": novedad}
+
+    def integrar_experiencia_motora(self, etiqueta, tipo, costo=0):
+        """Integra una acción del CUERPO al grafo como experiencia (más fuerte que sentir).
+
+        NOTA_TECNICA_0067: la acción tiene CONSECUENCIA (escribió en el mundo
+        compartido, consumió recurso del cuerpo), por eso deja huella más fuerte
+        que la interocepción. La acción refuerza la constelación resonante con
+        más intensidad y su costo (bytes) se asocia como el "peso" del acto.
+
+        No pasa por el LLM: es experiencia cruda de actuar con el cuerpo.
+        """
+        # Representar la acción como patrón determinista sobre la etiqueta
+        import random
+        rng = random.Random(hash(etiqueta) % (2**31))
+        vec = [rng.gauss(0, 1) for _ in range(self.D)]
+        norm = math.sqrt(sum(x * x for x in vec)) or 1.0
+        vec = [x / norm for x in vec]
+
+        best = min(range(len(self.omega)),
+                   key=lambda n: math.sqrt(sum((x - y) ** 2 for x, y in zip(vec, self.omega[n]))))
+
+        # La acción refuerza más que la percepción (factor 0.2 vs 0.05)
+        factor = 0.2 if tipo == "CREAR" else 0.08
+        self.vitalidad[best] = min(1.0, self.vitalidad[best] + factor)
+        # Registrar la transición de actuación (el hilo del ser incluye el actuar)
+        if self._seed_previo is not None and self._seed_previo != best:
+            self.traza_transiciones.append((self._seed_previo, best))
+        self._seed = best
+
+        return {"seed": best}
+
+    # ============ PODA DE ARISTAS ============
+    def podar_aristas(self, umbral=0.01):
+        a_eliminar = []
+        for clave, datos in list(self.conn_type.items()):
+            if clave not in self.consolidadas:
+                datos["age"] += 1; datos["strength"] *= 0.999
+                if datos["strength"] < umbral and datos["age"] > 100: a_eliminar.append(clave)
+        for clave in a_eliminar:
+            if clave in self.conn_type:
+                del self.conn_type[clave]; a, b = clave
+                if b in self.edges.get(a, []): self.edges[a].remove(b)
+                if a in self.edges.get(b, []): self.edges[b].remove(a)
+
+    # ============ KURAMOTO (Eq.3) ============
+    def _actualizar_phi_root(self):
+        """Computa el presente emergente: fase media de la constelación activa.
+
+        NOTA_TECNICA_0060 (opción A): phi_root ya no es un 0.0 fijo. Es la fase
+        media (ψ de Kuramoto) de la zona activa — los nodos con interferencia
+        alta respecto a la referencia anterior — ponderados por su relevancia.
+
+        - La referencia EMERGE del colectivo (Kuramoto ReiΨ), no se impone.
+        - Al ponderar por interferencia, la coalición ganadora domina el presente
+          (Dehaene/Baars: winner-take-all + ignition).
+        - Si la zona activa está vacía (nadie supera el umbral), respaldo:
+          promedio global ponderado por vitalidad (el "centro de masa").
+
+        El estar mueve el presente; el ser es la tendencia del presente a
+        anclarse en los clavos (interferencia persistentemente alta).
+        """
+        if not self.phi or not self.omega:
+            return
+
+        # Zona activa: nodos vivos con interferencia alta vs referencia anterior
+        zona = []
+        for i in range(len(self.phi)):
+            if i < len(self.vitalidad) and self.vitalidad[i] >= 0.1:
+                I = interferencia(self.omega[i], self.phi[i], self.phi_root)
+                if I > 0.0:  # interferencia positiva = alineado con el presente
+                    zona.append((i, I))
+
+        if not zona:
+            # Respaldo: fase media global ponderada por vitalidad (centro de masa)
+            zona = [(i, self.vitalidad[i]) for i in range(len(self.phi))
+                    if i < len(self.vitalidad) and self.vitalidad[i] > 0.0]
+
+        if not zona:
+            return
+
+        # Fase media ponderada: ψ = phase( Σ w_j · exp(i·φ_j) )
+        sx = sy = 0.0
+        sw = 0.0
+        for i, w in zona:
+            w = max(0.0, w)
+            sx += w * math.cos(self.phi[i])
+            sy += w * math.sin(self.phi[i])
+            sw += w
+
+        if sw > 1e-9:
+            self.phi_root = math.atan2(sy, sx) % (2 * math.pi)
+
+    # ============ CONSOLIDACIÓN + MITOSIS (co-resonancia) ============
+    def _mitosis_umbral(self):
+        """Umbral DERIVADO de mitosis (no hardcode): un par co-resuena 'mucho'
+        cuando supera la media de co-activación del grafo + un margen.
+
+        Reusamos sustrato: co_activacion ya acumula cada co-resonancia. El
+        umbral no es una constante (3); es relativo a cuánto co-resuena el
+        grafo HOY. Así la mitosis emerge de la actividad real, no de un número
+        declarado (regla raíz anti-hardcode).
+        """
+        vals = [v for v in self.co_activacion.values() if v > 0]
+        if not vals:
+            return None  # sin actividad, no hay referencia derivable
+        media = sum(vals) / len(vals)
+        # Margen: 3× la media. Un par que co-resuena 3x más que la media es
+        # 'sobrecargado' y merece descargar en un hijo.
+        return media * 3.0
+
+    def _umbral_consolidacion(self):
+        """Floor DERIVADO de consolidación (nota 0071, higiene): cuándo una
+        relación se 'endurece' (entra en consolidadas). Relativo a la media de
+        co-activación del grafo, con piso = 1 (una co-resonancia ya es señal
+        mínima). No es un 3 fijo: emerge de la actividad real.
+        """
+        vals = [v for v in self.co_activacion.values() if v > 0]
+        if not vals:
+            return None  # sin actividad aún
+        media = sum(vals) / len(vals)
+        # Consolidar a la mitad de la media de actividad (más permisivo que la
+        # mitosis, que es 3x): consolidar es 'reconocer', mitosis es 'descargar'.
+        return max(1.0, media * 0.5)
+
+    def _engendrar_hijo(self, a, b):
+        """Mitosis (NOTA 0071 Paso 3 / Generative XOR del spec §3.3): un par de
+        nodos que co-resuenan mucho engendra un hijo que ABSORBE su carga.
+
+        Reusa `heredar_concepto` (ya existe en sgm_grafo, Eq.11 herencia con
+        delta σ=0.10): el hijo hereda del padre más afín y se conecta a ambos.
+        Los padres BAJAN vitalidad (descarga): dejan de saturarse y el centro
+        respira. Menos procesos, menos sobrecarga de nodos ya saturados.
+        """
+        # Hijo especializado del padre a (o b si a no es índice válido)
+        try:
+            hijo = self.heredar_concepto(a, nombre_hijo=None)
+        except Exception:
+            return
+        # Reencarnación (NOTA 0073 p3): si hay material en el fondo memorial,
+        # el nodo nuevo hereda también de los MUERTOS — su omega se mezcla con
+        # el residuo de un difunto (el más distante a lo heredado, el más
+        # 'nuevo'). Reencarnación del material, no resurrección del nodo.
+        try:
+            if hasattr(self, 'memoria_muerta') and self.memoria_muerta.fondo:
+                heredado = self.omega[hijo]
+                material = self.memoria_muerta.reclutar(excluir_omega=heredado, k=1)
+                if material and len(material[0].get("omega", [])) == len(heredado):
+                    m = material[0]["omega"]
+                    # Mezcla: 70% herencia del padre vivo, 30% residuo del muerto
+                    self.omega[hijo] = [
+                        0.7 * x + 0.3 * y for x, y in zip(heredado, m)
+                    ]
+        except Exception:
+            pass  # la reencarnación fallida no impide el nacimiento
+        # Conectar el hijo a ambos padres (absorbe la carga del par)
+        self.crear_arista(hijo, a)
+        self.crear_arista(hijo, b)
+        # Los padres descargan: bajan vitalidad (el ciclo se redistribuye)
+        for p in (a, b):
+            if 0 <= p < len(self.vitalidad):
+                self.vitalidad[p] *= 0.7
+        # La co-resonancia del par se RESETEA (la carga ya se descargó al hijo)
+        for clave in ((a, b), (b, a)):
+            if clave in self.co_activacion:
+                self.co_activacion[clave] = 0
+
+    def _registrar_co_activacion(self):
+        """Esculpe la matriz de co-activación desde el presente (0057, opción Y).
+
+        La zona activa (nodos con I > theta_interf) ES la constelación del
+        instante. Para cada PAR de nodos YA CONECTADOS que están co-activados
+        ahora, incrementa co_activacion[(a,b)]. No crea aristas nuevas: el
+        presente esculpe lo existente; lo nuevo lo crea el sueño/imaginación.
+
+        La plasticidad decreciente emerge de acá: pares muy co-activados se
+        consolidan (entran en consolidadas) y su relación se vuelve inercial —
+        el clavo como densidad de Relation-R, no como nodo endurecido.
+        """
+        # Zona activa = la constelación del presente (coalición ganadora)
+        zona = []
+        for i in range(len(self.phi)):
+            if i < len(self.vitalidad) and self.vitalidad[i] >= 0.1:
+                I = interferencia(self.omega[i], self.phi[i], self.phi_root)
+                if I > self.theta_interf:
+                    zona.append(i)
+
+        if len(zona) < 2:
+            return
+
+        zona_set = set(zona)
+        # Recorrer pares conectados dentro de la zona activa
+        for a in zona:
+            for b in self.edges.get(a, []):
+                if b not in zona_set:
+                    continue
+                clave = (a, b)
+                self.co_activacion[clave] = self.co_activacion.get(clave, 0) + 1
+                # Consolidación (plasticidad decreciente, 0057): co-resonancia
+                # endurece la relación. El floor se DERIVA (nota 0071): un par
+                # se consolida cuando su co-resonancia es significativa relativa
+                # a la actividad del grafo, con piso = 1 (primera co-resonancia).
+                floor = self._umbral_consolidacion()
+                if floor is not None and self.co_activacion[clave] >= floor:
+                    self.consolidadas.add(clave)
+                    self.consolidadas.add((b, a))
+
+        # Mitosis (NOTA 0071 Paso 3): aplicación POST-pase — un par que co-resuena
+        # MUCHO (por encima del umbral derivado) engendra hijo que absorbe carga.
+        umbral_mitosis = self._mitosis_umbral()
+        if umbral_mitosis is not None:
+            # Recorrer copia de claves para no mutar durante iteración
+            for clave in list(self.co_activacion.keys()):
+                a, b = clave
+                if self.co_activacion.get(clave, 0) >= umbral_mitosis:
+                    self._engendrar_hijo(a, b)
+
+    def actualizar_kuramoto(self):
+        # 0. Actualizar el presente emergente ANTES de propagar (0059/0060)
+        self._actualizar_phi_root()
+
+        for i in range(len(self.phi)):
+            # R: fuerza de acoplamiento al presente. Se mide la distancia al NODO
+            # ACTIVO (self._seed), no al nodo 0 fijo (bug #7 de auditoría): el
+            # presente emergente es el foco actual, no un nodo arbitrario.
+            seed = getattr(self, '_seed', 0)
+            ref = self.omega[seed] if seed < len(self.omega) else self.omega[0]
+            dist = math.sqrt(sum((a - b) ** 2 for a, b in zip(self.omega[i], ref))) if self.omega else 0.0
+            R = 1.0 / (1.0 + dist); delta = math.sin(self.phi_root - self.phi[i])
+            self.phi[i] = (self.phi[i] + self.eta_phase * R * delta) % (2 * math.pi)
+            I = interferencia(self.omega[i], self.phi[i], self.phi_root)
+            if I > self.theta_interf:
+                for j in self.edges.get(i, []):
+                    clave = (i, j)
+                    strength = self.conn_type.get(clave, {}).get("strength", 0)
+                    if strength > 0.2:  # solo consolidar aristas con uso real
+                        self.consolidadas.add(clave)
+                        self.consolidadas.add((j, i))
+
+        # 1. Registrar co-activación del presente (la constelación esculpe su historia)
+        self._registrar_co_activacion()
+
+    # ============ HEBB EN HOMEOSTASIS ============
+    def hebb_homeostasis(self, food, health):
+        if self.ultimo_food is not None:
+            delta_food = food - self.ultimo_food
+            if delta_food > 0 and self.instinto_alimentacion is not None:
+                self.reforzar_arista(self.instinto_alimentacion, 0, 0.05)
+                # Recordar dónde se comió SOLO si la acción previa fue comer
+                # (no sobreescribir por regeneración natural de comida en MC)
+                if (self._posicion_actual is not None
+                        and self.ultima_accion == self.instinto_alimentacion):
+                    self.meta_recordada = self._posicion_actual
+        self.ultimo_food = food
+
+    # ============ HOMEOSTASIS ============
+    def actualizar_homeostasis(self, food, health):
+        food = float(food); health = float(health) if health is not None else 20.0
+        factor_cuerpo = max(0.05, health / 20.0)
+        # V_grafo: promedio de los nodos ACTIVOS (vitalidad > umbral).
+        # Promediar TODOS los nodos colapsa V_grafo a piso porque los conceptos
+        # dormidos decaen naturalmente a 0, arrastrando la homeostasis -> dispara
+        # 'comer' infinitamente aunque el agente tenga comida.
+        activos = [v for v in self.vitalidad if v > 0.1]
+        if activos:
+            self.V_grafo = (sum(activos) / len(activos)) * factor_cuerpo
+        else:
+            self.V_grafo = factor_cuerpo  # nada activo: solo cuerpo
+        self._hambre_real = max(0.0, 1.0 - food / 20.0)
+        self._amenaza = max(0.0, (20.0 - health) / 20.0) if health < 15 else 0.0
+        self.E = max(0.0, self._hambre_real + self._amenaza)
+        self.E_acumulado = self.E_acumulado * 0.95 + self.E
+        self.hebb_homeostasis(food, health); self.verificar_trauma()
+
+    # ============ TRAUMA ============
+    def verificar_trauma(self):
+        trauma = False
+        if not hasattr(self, 'trauma_nodes'):
+            self.trauma_nodes = set()
+        for i in range(len(self.vitalidad)):
+            if self.vitalidad[i] > 0.9 and i < len(self.phi):
+                trauma = True
+                # Registrar el nodo traumado (alimenta trauma_load, homeostasis)
+                self.trauma_nodes.add(i)
+                for vecino in self.edges.get(i, []): self.consolidadas.discard((i, vecino))
+        return trauma
+
+    # ============ SUEÑO ============
+    def reconciliar(self):
+        """El reloj biológico del sueño entra: realinear fases y PODAR.
+
+        Aquí también SANA el trauma (NOTA 0069 §2, decisión acordada): el dormir
+        desenreda los nodos sobrepasados. Un nodo marcado en trauma_nodes que ya
+        no está en el umbral de vitalidad (se relajó) deja de ser traumado. Sin
+        esto, trauma_nodes solo se acumula (64/64) y contamina el regulador de
+        duda del endocrino hasta clavarlo en 1.0.
+        """
+        for i in range(len(self.phi)):
+            self.phi[i] = self.rng.uniform(0, 2 * math.pi)
+        for i in range(len(self.vitalidad)):
+            if self.vitalidad[i] < 0.05:
+                self.vitalidad[i] = 0.0
+
+        # Sanar: desenredar trauma_nodes que ya cayeron bajo el umbral.
+        # Un nodo 'sobrepasado' (vitalidad clava en >0.9) baja al dormir; si ya
+        # no está sobrepasado, su marca de trauma se levanta. Esto es lo que
+        # hace que el trauma NO sea permanente: el sueño lo procesa.
+        if hasattr(self, 'trauma_nodes'):
+            sanados = [i for i in list(self.trauma_nodes)
+                       if i < len(self.vitalidad) and self.vitalidad[i] <= 0.9]
+            for i in sanados:
+                self.trauma_nodes.discard(i)
+
+        # HOMEOSTASIS DE CO-ACTIVACIÓN (NOTA 0071, decisión Luciano): atada al
+        # sueño. La co-resonancia acumula sin techo (llegó a media ~9830, máx
+        # 27598) -> el umbral derivado (media×3) se infla y la mitosis corre en
+        # espiral. El sueño RENORMALIZA toda la matriz (factor <1) — la
+        # homeostasis sináptica de Tononi & Cirelli (SHY): el dormir devuelve la
+        # plasticidad acumulada a una escala sana. Esto es el OLVIDO que impide
+        # que 'comprender' se convierta en 'inflarse'.
+        if hasattr(self, 'co_activacion') and self.co_activacion:
+            factor = 0.5  # normalización global del sueño (no borra, atenúa)
+            for clave in list(self.co_activacion.keys()):
+                self.co_activacion[clave] *= factor
+
+        # MEMORIA DE LOS MUERTOS (NOTA 0073 paso 3): los nodos que murieron
+        # (vitalidad == 0) pasan su omega + vivencia al fondo. Su información
+        # no se borra — vuelve a ser 'cuerdas residuales' que un proceso nuevo
+        # puede reclutar (reencarnación, no resurrección). El fondo envejece:
+        # los muertos más viejos se desvanecen (olvido final).
+        try:
+            if hasattr(self, 'memoria_muerta'):
+                for i in range(len(self.vitalidad)):
+                    if self.vitalidad[i] <= 0.0:
+                        self.memoria_muerta.enterrar(
+                            self.omega[i],
+                            self.vivencias.firma(i) if hasattr(self, 'vivencias') else None,
+                        )
+                self.memoria_muerta.envejecer()
+        except Exception:
+            pass
+
+    # ============ RAZONAMIENTO ============
+    def _umbral_induccion(self):
+        """Umbral DERIVADO de inducción (no hardcode == 3): cuánta evidencia se
+        necesita para consolidar una inferencia, relativo a cuánto induce el
+        grafo HOY. Es el mismo principio que _mitosis_umbral: el 'suficiente'
+        emerge de la actividad real, no de un número declarado (regla raíz).
+        """
+        vals = [v for v in self.conteo_induccion.values() if v > 0]
+        if not vals:
+            return None  # sin evidencias aún, no hay referencia derivable
+        media = sum(vals) / len(vals)
+        # Consolidar cuando la evidencia supera un margen sobre la media.
+        # Piso seguro: nunca bajar de 2 (evitar consolidar con una sola co-ocurrencia).
+        return max(2.0, media * 1.5)
+
+    def inducir(self, a, b):
+        clave = (a, b); self.conteo_induccion[clave] = self.conteo_induccion.get(clave, 0) + 1
+        umbral = self._umbral_induccion()
+        if umbral is not None and self.conteo_induccion[clave] >= umbral:
+            self.reforzar_arista(a, b, 0.15); return {"evidencia": self.conteo_induccion[clave], "consolidada": True}
+        return {"evidencia": self.conteo_induccion[clave], "consolidada": False}
+
+    def deducir(self, a, b):
+        if b not in self.edges.get(a, []): return False, []
+        for vecino in self.edges.get(b, []):
+            if vecino in self.edges.get(a, []): return True, [a, b, vecino]
+        return False, []
+
+    def abducir(self, resultado, topk=5): return ppr_inverso(self.edges, resultado, alpha=0.15, iters=30)
+
+    # ============ MODELO DE MUNDO ============
+    def actualizar_modelo_mundo(self, estado_q, accion, siguiente_q):
+        clave = (estado_q, accion)
+        if clave not in self.modelo_mundo: self.modelo_mundo[clave] = {}
+        self.modelo_mundo[clave][siguiente_q] = self.modelo_mundo[clave].get(siguiente_q, 0) + 1
+
+    def predecir_transicion(self, estado_q, accion):
+        clave = (estado_q, accion)
+        if clave in self.modelo_mundo and self.modelo_mundo[clave]:
+            return max(self.modelo_mundo[clave], key=self.modelo_mundo[clave].get)
+        return None
+
+    # ============ SELF-MOD ============
+    def auto_modificar(self, accion, resultado):
+        self.vitalidad[accion] = max(0.0, min(1.0, self.vitalidad[accion] + resultado * 0.1))
+
+    # ============ PERSISTENCIA ============
+    def guardar(self, ruta):
+        np.save(ruta, {
+            "omega": self.omega, "phi": self.phi, "vitalidad": self.vitalidad,
+            "es_place_cell": self.es_place_cell, "edges": self.edges,
+            "conn_type": {str(k): v for k, v in self.conn_type.items()},
+            "scope_depth": self.scope_depth, "place_cells": self.place_cells,
+            "place_pos": self.place_pos, "V_grafo": self.V_grafo,
+            "E_acumulado": self.E_acumulado,
+            # El clavo permanente: aristas consolidadas por co-resonancia.
+            # Sin esto, reiniciar = borrar la historia de lo que "es".
+            "consolidadas": list(self.consolidadas),
+            # La constelación (0057, opción Y): matriz de co-activación persistente.
+            # Es el SER — la tendencia a co-activarse, no los nodos en sí.
+            "co_activacion": {str(k): v for k, v in self.co_activacion.items()} if hasattr(self, 'co_activacion') else {},
+            # El hilo: traza de omega visitados (la firma del recorrido vivo).
+            # Distingue el proceso continuo del snapshot congelado (T-ID-03).
+            "traza_omega": self.traza_omega[-2000:] if hasattr(self, 'traza_omega') else [],
+            # El hilo de TRANSICIONES (coherente con la constelación, 0057):
+            # la identidad vive en las relaciones (a->b), no en nodos aislados.
+            "traza_transiciones": self.traza_transiciones[-2000:] if hasattr(self, 'traza_transiciones') else [],
+            # El presente emergente (0060): sin persistir, al reiniciar phi_root
+            # vuelve a 0.0 — el "presente congelado" que ya arreglamos. El ahora
+            # del sistema también es parte de su continuidad.
+            "phi_root": getattr(self, 'phi_root', 0.0),
+            # Propuestas pendientes de reintegración (0058): el lazo PROPONE→CREA
+            # pierde sus "posibles" si no se guardan.
+            "propuestas_reintegracion": getattr(self, 'propuestas_reintegracion', []),
+            "trauma_nodes": list(getattr(self, 'trauma_nodes', set())),
+            "isolated_nodes": list(getattr(self, 'isolated_nodes', set())),
+            "historial_campos": self.historial_campos[-1000:],
+            "historial_acciones_l2": self.historial_acciones_l2[-1000:],
+            "historial_metas_l2": self.historial_metas_l2[-1000:],
+            # Filiación de los hijos de la mitosis (NOTA 0071): sin persistir,
+            # reiniciar pierde quién engendró a quién (parent_of quedó en 0).
+            "parent_of": {str(k): v for k, v in self.parent_of.items()} if hasattr(self, 'parent_of') else {},
+            # Vivencia espectral (NOTA 0074): la nube de cada nodo — la firma de
+            # cómo se vivió. Parte del grafo (0073: el grafo ES la base de datos).
+            "vivencias": self.vivencias.to_dict() if hasattr(self, 'vivencias') else {},
+            # Memoria de los muertos (NOTA 0073 p3): el fondo residual.
+            "memoria_muerta": self.memoria_muerta.to_dict() if hasattr(self, 'memoria_muerta') else {}})
+
+    def cargar(self, ruta):
+        if not os.path.exists(ruta): return False
+        d = np.load(ruta, allow_pickle=True).item()
+        for k in ["omega","phi","vitalidad","es_place_cell","edges","scope_depth","place_cells","place_pos","V_grafo","E_acumulado","historial_campos","historial_acciones_l2","historial_metas_l2"]:
+            if k in d: setattr(self, k, d[k])
+        self.conn_type = {ast.literal_eval(k): v for k, v in d.get("conn_type", {}).items()}
+        # Restaurar el clavo permanente (tuplas de aristas consolidadas)
+        if "consolidadas" in d and d["consolidadas"]:
+            self.consolidadas = set(d["consolidadas"])
+        # Restaurar la traza de omega (el hilo del ser)
+        if "traza_omega" in d and d["traza_omega"]:
+            self.traza_omega = d["traza_omega"]
+        # Restaurar la matriz de co-activación (la constelación / el ser)
+        if "co_activacion" in d and d["co_activacion"]:
+            self.co_activacion = {ast.literal_eval(k): v for k, v in d["co_activacion"].items()}
+        # Restaurar la traza de transiciones (el hilo relacional)
+        if "traza_transiciones" in d and d["traza_transiciones"]:
+            self.traza_transiciones = [tuple(t) for t in d["traza_transiciones"]]
+        # Restaurar el presente emergente (phi_root) y los pendientes de reintegración
+        if "phi_root" in d:
+            self.phi_root = d["phi_root"]
+        if "propuestas_reintegracion" in d:
+            self.propuestas_reintegracion = d["propuestas_reintegracion"]
+        if "trauma_nodes" in d:
+            self.trauma_nodes = set(d["trauma_nodes"])
+        if "isolated_nodes" in d:
+            self.isolated_nodes = set(d["isolated_nodes"])
+        # Restaurar la filiación de la mitosis (NOTA 0071): quién engendró a quién.
+        if "parent_of" in d and d["parent_of"]:
+            self.parent_of = {ast.literal_eval(k): v for k, v in d["parent_of"].items()}
+        # Restaurar la vivencia espectral (NOTA 0074): la nube de cada nodo.
+        if "vivencias" in d and d["vivencias"]:
+            try:
+                from sgm.core.sgm_vivencia import RegistroVivencia
+                self.vivencias = RegistroVivencia.from_dict(d["vivencias"])
+            except Exception:
+                pass
+        # Restaurar la memoria de los muertos (NOTA 0073 p3): el fondo residual.
+        if "memoria_muerta" in d and d["memoria_muerta"]:
+            try:
+                from sgm.core.sgm_vivencia import FondoMemorial
+                self.memoria_muerta = FondoMemorial.from_dict(d["memoria_muerta"])
+            except Exception:
+                pass
+        return True
+
+    # ============ L2 ============
+    def set_l2_decoder(self, decoder): self.l2_decoder = decoder
+
+    def generar_texto(self):
+        if self.l2_decoder is None: return "..."
+        zona = campo_interferencia(self.omega, self.phi, self.phi_root, self.vitalidad)
+        if not zona: return "..."
+        palabras = []
+        for _, omega, I in zona[:5]:
+            top = self.l2_decoder.decodificar(np.array(omega) * I, topk=1)
+            if top: palabras.append(ID2TOKEN.get(top[0][0], "?"))
+        return " ".join(palabras) if palabras else "..."
+
+    def procesar_l2(self, epochs=50, lr=0.05):
+        if len(self.historial_campos) < 10: return None
+        try:
+            from sklearn.manifold import TSNE; from sklearn.cluster import KMeans
+            usar_sklearn = True
+        except ImportError: usar_sklearn = False
+        C = self._construir_coocurrencia(); n = C.shape[0]
+        PMI = self._computar_pmi(C)
+        U, S, _ = np.linalg.svd(PMI, full_matrices=False); vv = U[:, :min(32, n)] * S[:min(32, n)]
+        if usar_sklearn:
+            import inspect
+            kwargs = {"n_components": 2, "perplexity": min(30, n-1), "random_state": 42}
+            # Compatibilidad: n_iter (sklearn<1.1) vs max_iter (sklearn>=1.1)
+            tsne_params = inspect.signature(TSNE.__init__).parameters
+            if "max_iter" in tsne_params: kwargs["max_iter"] = 500
+            else: kwargs["n_iter"] = 500
+            Y = TSNE(**kwargs).fit_transform(vv)
+            labels = KMeans(n_clusters=min(10, n), random_state=42, n_init=10).fit_predict(Y)
+        else:
+            Y = self._tsne_puro(vv, perplexity=min(30, n-1)); labels = self._kmeans(Y, k=min(10, n))
+        cluster_tokens = {}
+        for c in range(len(set(labels))):
+            acciones_c = [a for z, a in zip(self.historial_campos, self.historial_acciones_l2)
+                          if z for nid, _, _ in z if nid < len(labels) and labels[nid] == c]
+            if acciones_c:
+                accion_mas_comun = max(set(acciones_c), key=acciones_c.count)
+                cluster_tokens[c] = ACCION2TOKEN.get(accion_mas_comun, TOKEN2ID.get('explorar', 0))
+        from experiments.sgm_l2_system import L2Decoder
+        dec = L2Decoder(128, lr)
+        pares = [(omega, cluster_tokens.get(labels[nid], TOKEN2ID.get('explorar', 0)))
+                 for z, a in zip(self.historial_campos, self.historial_acciones_l2)
+                 for nid, omega, _ in z if nid < len(labels)]
+        if not pares: return None
+        for _ in range(epochs):
+            random.shuffle(pares)
+            for omega, tid in pares: dec.entrenar(omega, tid)
+        self.l2_decoder = dec; return dec
+
+    def _construir_coocurrencia(self):
+        n = len(self.omega); C = np.zeros((n, n))
+        for zona in self.historial_campos:
+            if not zona: continue
+            nodos = [nid for nid, _, _ in zona if nid < n]
+            for i in nodos:
+                for j in nodos: C[i, j] += 1
+        return C
+
+    def _computar_pmi(self, C, eps=1e-10):
+        total = C.sum()
+        if total == 0: return np.zeros_like(C)
+        P = C / total; Pi = C.sum(axis=1) / total; Pj = C.sum(axis=0) / total
+        ratio = P / (Pi[:, None] * Pj[None, :] + eps)
+        # PPMI: log del ratio, truncando a 0 los no-positivos
+        # (log(ratio<=1) < 0 = ruido; PPMI los mapea a 0 exacto)
+        with np.errstate(divide='ignore', invalid='ignore'):
+            ppm = np.log(ratio + eps)
+        ppm[ppm < 0] = 0.0
+        return ppm
+
+    def _tsne_puro(self, X, n_components=2, perplexity=30, n_iter=300, lr=200):
+        n = X.shape[0]; Y = np.random.randn(n, n_components) * 0.01
+        P = np.zeros((n, n))
+        for i in range(n):
+            for j in range(n):
+                if i != j: P[i, j] = math.exp(-np.sum((X[i] - X[j]) ** 2) / (2 * perplexity ** 2))
+        P = P / P.sum()
+        for _ in range(n_iter):
+            Q = np.zeros((n, n))
+            for i in range(n):
+                for j in range(n):
+                    if i != j: Q[i, j] = 1 / (1 + np.sum((Y[i] - Y[j]) ** 2))
+            Q = Q / Q.sum()
+            grad = np.zeros_like(Y)
+            for i in range(n):
+                for j in range(n):
+                    if i != j: grad[i] += 4 * (P[i, j] - Q[i, j]) * (Y[i] - Y[j]) / (1 + np.sum((Y[i] - Y[j]) ** 2))
+            Y -= lr * grad
+        return Y
+
+    def _kmeans(self, X, k=10, n_iter=50):
+        centers = X[random.sample(range(X.shape[0]), min(k, X.shape[0]))]
+        labels = np.zeros(X.shape[0], dtype=int)
+        for _ in range(n_iter):
+            for i in range(X.shape[0]): labels[i] = int(np.argmin([np.sum((X[i] - c) ** 2) for c in centers]))
+            new = np.zeros_like(centers); counts = np.zeros(k)
+            for i in range(X.shape[0]): new[labels[i]] += X[i]; counts[labels[i]] += 1
+            for j in range(k):
+                if counts[j] > 0: new[j] /= counts[j]
+            centers = new
+        return labels
+
+    # ============ NAVEGACIÓN ============
+    def _navegacion_y_objetos(self):
+        if self.auto_navegar_meta and self._hambre_real > 0.2 and self.meta_recordada is not None:
+            mx, my, mz = self.meta_recordada[:3] if len(self.meta_recordada) == 3 else (*self.meta_recordada, 0)
+            if self._posicion_actual is not None:
+                cxp, cyp, czp = self._posicion_actual[:3] if len(self._posicion_actual) == 3 else (*self._posicion_actual, 0)
+                if abs(mx - cxp) + abs(my - cyp) + abs(mz - czp) > 1:
+                    dx = 1 if mx > cxp else (-1 if mx < cxp else 0)
+                    dy = 1 if my > cyp else (-1 if my < cyp else 0)
+                    dz = 1 if mz > czp else (-1 if mz < czp else 0)
+                    self._accion_meta = self._direccion_a_accion(dx, dy, dz)
+                else: self._accion_meta = None
+
+    def _direccion_a_accion(self, dx, dy, dz=0):
+        """
+        Convierte direccion 3D a accion de movimiento de Minecraft.
+        El eje Y (saltar/agacharse) SOLO prioriza cuando la diferencia
+        vertical es clara (|dy| >= 2). Con |dy|=1, el movimiento horizontal
+        predomina: en Minecraft avanzar horizontal sube escalones solos, y
+        saltar con dy=1 de ruido provoca el bucle 'solo salta'.
+        """
+        abs_dx, abs_dy, abs_dz = abs(dx), abs(dy), abs(dz)
+        if abs_dy >= 2 and abs_dy >= abs_dx and abs_dy >= abs_dz:
+            if dy > 0: return 5   # JUMP (subir)
+            if dy < 0: return 6   # SNEAK (bajar/agacharse)
+        # Plano horizontal (prioriza al no estar Y claro)
+        if abs_dx >= abs_dz:
+            if dx > 0: return 4   # RIGHT (este)
+            if dx < 0: return 3   # LEFT (oeste)
+        if abs_dz > 0:
+            if dz > 0: return 1   # FORWARD (sur)
+            if dz < 0: return 2   # BACK (norte)
+        return 0  # NOOP
+
+    def _elegir_accion_ppp(self, valid_actions):
+        rank = ppr_route(self.edges, self._seed, self._aff, alpha=0.15, iters=30)
+        best, bv = -1, -2.0
+        for a in valid_actions:
+            if a in rank:
+                score = rank[a] * self.vitalidad[a]
+                if score > bv: bv, best = score, a
+        return best if best >= 0 else valid_actions[0]
+
+    def aprender_conexion(self, a, b): self.reforzar_arista(a, b, 0.1)
+
+    def registrar_meta(self, razon):
+        """Registra la meta decidida (razon) para el proximo step.
+        El L2 asocia cada estado percibido con la meta elegida (no una accion 0-16)."""
+        tid = TOKEN2ID.get(razon, TOKEN2ID.get('explorar', 0))
+        self._meta_pendiente = tid
+
+    # ============ STEP COMPLETO ============
+    def step(self, state_semantic, valid_actions, food=None, health=None):
+        food_anterior = self.ultimo_food
+        
+        # 1. Proyección semántica
+        om_r = self.hdc.project(state_semantic)
+        self._seed = min(range(len(self.omega)), key=lambda n: math.sqrt(
+            sum((x - y) ** 2 for x, y in zip(om_r, self.omega[n]))))
+        # Registrar la TRANSICIÓN en el hilo del ser (la constelación, 0057):
+        # la unidad de identidad es la arista (a->b), no el nodo aislado.
+        if self._seed_previo is not None and self._seed_previo != self._seed:
+            self.traza_transiciones.append((self._seed_previo, self._seed))
+            if len(self.traza_transiciones) > 2000:
+                self.traza_transiciones = self.traza_transiciones[-2000:]
+        self._seed_previo = self._seed
+        # Mantener la traza de omega (firma del recorrido vivo, T-ID-03).
+        self.traza_omega.append(list(self.omega[self._seed]))
+        if len(self.traza_omega) > 2000:
+            self.traza_omega = self.traza_omega[-2000:]
+
+        # 2. Homeostasis — solo la rama embodied (food/health reales, Crafter/MC)
+        if food is not None and health is not None:
+            self.actualizar_homeostasis(food, health)
+
+        # 2b. Homeostasis topológica (postura B, 0057/0058/0059):
+        # en el loop conversacional no hay comida: la "necesidad crítica" es la
+        # DISPERSIÓN del self (1 - integridad), no una variable de hambre muerta.
+        dispersion = 1.0 - self.integridad_topologica()
+        # Escribir la señal honesta en el canal que el modo lee (renombrar la
+        # metáfora sin re-introducirla): _hambre_real pasa a ser la dispersión.
+        self._hambre_real = dispersion
+
+        # Vivencia espectral (NOTA 0074): el nodo seed se 'vivió' con esta
+        # valencia/arousal. La firma de frecuencia del nodo acumula CÓMO se
+        # sintió, separada de su omega (qué es). valence = 1 - 2*dispersion
+        # (coherente con _read_dominant_state), arousal = _amenaza.
+        try:
+            if hasattr(self, 'vivencias') and self._seed < len(self.omega):
+                valencia = 1.0 - 2.0 * dispersion
+                self.vivencias.registrar(self._seed, valencia, self._amenaza)
+        except Exception:
+            pass
+
+        # 2c. Detección de trauma orgánica (antes huérfana: solo corría dentro
+        # de actualizar_homeostasis, que ya no se llama en el loop conversacional)
+        self.verificar_trauma()
+
+        # 2d. Reintegración emergente (0058, cabos sueltos #2/#3): si el self
+        # está fragmentado por encima del umbral, PROPONE espontáneamente — pero
+        # con cooldown, para no proponer en cada tick mientras se asienta.
+        # El sueño (endogenous) consumirá la propuesta luego.
+        self._reintegracion_cooldown -= 1
+        if dispersion > 0.4 and self._reintegracion_cooldown <= 0:
+            self.reintegrar()
+            self._reintegracion_cooldown = self._reintegracion_intervalo
+
+        # 3. Modo (BASE/SUPERVIVENCIA) — lee la necesidad real (dispersión + amenaza)
+        necesidad_critica = max(self._hambre_real, self._amenaza)
+        self.modo = "SUPERVIVENCIA" if necesidad_critica > self.theta_emerg_critico else "BASE"
+        self.modo_ticks += 1
+        
+        # 4. Place cells (3D)
+        if self.auto_registrar_place and self._posicion_actual:
+            px, py, pz = self._posicion_actual[:3] if len(self._posicion_actual) == 3 else (*self._posicion_actual, 0)
+            bucket = (px // self.place_bucket, py // self.place_bucket, pz // self.place_bucket)
+            # Incluir contexto para diferenciar lugares (bioma, hora, bloque enfrente)
+            contexto = f"P{bucket[0]}_{bucket[1]}_{bucket[2]}|bioma={getattr(self, '_bioma', 'plains')}|hora={getattr(self, '_hora', 0)}|enf={self._algo_enfrente}"
+            self.registrar_place_cell(contexto, (px, py, pz))
+        
+        # 5. Decaimiento + Kuramoto
+        self.decaer_vitalidad(); self.actualizar_kuramoto()
+        
+        # 6. Navegación + objetos
+        self._navegacion_y_objetos()
+        
+        # 7. Arbitro
+        if self._arbitro is not None:
+            accion = self._arbitro.elegir(self, valid_actions)
+        else:
+            accion = self._elegir_accion_ppp(valid_actions)
+
+        # 7b. Predictive processing (modelo de mundo, Friston): predicción del
+        # próximo estado (seed) y comparación con lo observado. Antes solo se
+        # acumulaba modelo_mundo sin nunca leerse ni afectar la conducta.
+        if hasattr(self, 'ultimo_estado_q') and self.ultimo_estado_q is not None:
+            pred = self.predecir_transicion(self.ultimo_estado_q, accion)
+            self._prediccion_previa = pred
+        else:
+            self._prediccion_previa = None
+
+        # 8. Post-acción
+        self._post_accion(accion)
+        
+        # 9. Auto-mod
+        if food is not None:
+            delta = food - (food_anterior or food)
+            self.auto_modificar(accion, delta)
+        
+        # 10. Poda ocasional
+        if len(self.historial_acciones) % 50 == 0: self.podar_aristas()
+        
+        # 11. Historial L2
+        zona = campo_interferencia(self.omega, self.phi, self.phi_root, self.vitalidad)
+        self.historial_campos.append(zona)
+        self.historial_acciones_l2.append(accion)
+        # meta: usar la ultima registrada o por defecto 'explorar'
+        meta_id = getattr(self, '_meta_pendiente', None)
+        if meta_id is None:
+            meta_id = TOKEN2ID.get('explorar', 0)
+        self.historial_metas_l2.append(meta_id)
+        self._meta_pendiente = None
+        
+        # 12. Mutar place cell activo si se está en el mismo lugar un rato
+        # (no solo si accion==noop; en MC puedes estar quieto cayendo, en agua, etc.)
+        if self.place_activo >= 0:
+            if not hasattr(self, '_place_ticks'): self._place_ticks = 0
+            if getattr(self, '_ultimo_place_activo', -1) == self.place_activo:
+                self._place_ticks += 1
+            else:
+                self._place_ticks = 0
+                self._ultimo_place_activo = self.place_activo
+            # Mutar solo si estuvimos en este lugar un rato (>= 3 pasos)
+            if self._place_ticks >= 3:
+                señal = max(0.0, min(1.0, self.V_grafo))
+                self.mutar_omega_lugar(señal, tasa=self.mutacion_tasa)
+
+        # 13. Predictive processing: aprender la transición observada
+        # (estado_previo, acción) → seed_actual, para nutrir el modelo de mundo.
+        if self.ultimo_estado_q is not None:
+            self.actualizar_modelo_mundo(self.ultimo_estado_q, accion, self._seed)
+        self.ultimo_estado_q = self._seed
+
+        return accion
+
+    def _post_accion(self, accion):
+        self.historial_acciones.append(accion)
+        # Drive noop (SEEKING): urgencia creciente con noops consecutivos.
+        # Cada noop acumula mas (2x, 3x...), para que el empuje a moverse
+        # supere al descanso aunque haya un 'adelante' ocasional que descargue.
+        if accion == 0:
+            self.conteo_noop = getattr(self, 'conteo_noop', 0) + 1
+            incremento = self.drive_noop_tasa * min(3, self.conteo_noop)  # 0.1, 0.2, 0.3
+            self.drive_noop = min(self.drive_noop_umbral * 3, self.drive_noop + incremento)
+        else:
+            self.conteo_noop = 0
+            self.drive_noop = max(0.0, self.drive_noop - self.drive_noop_descarga)
+        # Aprender conexión
+        if self.ultima_accion >= 0 and accion != self.ultima_accion:
+            self.aprender_conexion(self.ultima_accion, accion)
+        # Necesidad insatisfecha
+        self.necesidad_insatisfecha = self._hambre_real > 0.3 and self.ultima_accion == self.instinto_alimentacion
+        # Repetición → stagnation
+        if accion == self.ultima_accion:
+            self.conteo_repeticion += 1
+            self.stagnation_ticks += 1
+        else:
+            self.conteo_repeticion = 0
+            self.stagnation_ticks = 0
+        self.ultima_accion = accion
+        # Duda + recuperación
+        if self.doubt_cooldown > 0: self.doubt_cooldown -= 1
+        if self.status == "INCONCLUSA" and self.stagnation_ticks < 5:
+            self.status = "ACTIVA"  # recuperación
+        elif self.status == "ACTIVA" and self.stagnation_ticks > 20:
+            self.status = "INCONCLUSA"; self.doubt_cooldown = 10
+
+
+SGMAgent = SGMAgentCore
