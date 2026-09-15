@@ -88,7 +88,7 @@ Beyond the pure conversational loop, Pandora **inhabits a body** and **acts with
 | **NIM client** | `pandora/transducer/nim_client.py` | Nvidia NIM (OpenAI-compatible) — voz rica; fallback a Ollama local |
 | **Runtime** | `pandora/runtime/nucleo.py`, `observar.py`, `estado.py` | el daemon residente (systemd), checkpoint atómico, libro de campo |
 
-The voice defaults to `deepseek-ai/deepseek-v4-pro-0813` (NIM), fallback to local Ollama.
+The voice defaults to `moonshotai/kimi-k3` (NIM), fallback to local Ollama.
 
 ---
 

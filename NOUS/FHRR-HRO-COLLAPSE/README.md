@@ -4,6 +4,11 @@
 **Location:** General Alvear, Mendoza, Argentina  
 **License:** MIT  
 
+> **v2 (2026-09-15):** Validación cruzada con HRR real — la ley de rho es universal
+> pero con **topologías diferentes por álgebra**. En HRR real (gaussianos +
+> convolución circular) aparece **anti-resonancia en rho=1**: colapso catastrófico
+> exactamente donde FHRR es singular. Ver `docs/INFORME_TRANSFERENCIA.md`.
+
 ---
 
 ## Summary
@@ -27,6 +32,25 @@ Three regimes emerge:
 The previously reported "binary collapse" at high superposition is **not** a capacity limit of the resonator network. It is an artifact of Regime I: when `rho < 1` the Gram matrix is singular, and the custom `mat_inv` routine produces an invalid inverse that destroys decoding. Pure resonator decoding (without Gram correction) works perfectly across all tested configurations.
 
 The `rho = 1` boundary is particularly subtle: the pseudo-inverse (`pinv`) repairs Regime I by truncating near-zero modes, but it **fails** at the square boundary because the smallest eigenvalue is above the truncation threshold yet still amplifies noise. Only the pure resonator (no Gram matrix) succeeds here, producing a clean double dissociation.
+
+## Cross-algebra validation: HRR real
+
+The rho-law is **universal**, but its topology is **algebra-specific**:
+
+| Regime | FHRR (complex phases) | HRR real (Gaussian + circular convolution) |
+|--------|-----------------------|--------------------------------------------|
+| rho < 1 | Gram singular → collapse | Gram works perfectly (1.000) |
+| rho = 1 | partial collapse (0.80) | **catastrophic anti-resonance (0.167)** |
+| rho > 1 | stable | stable (0.95–1.00) |
+
+In **both** algebras: the `pure` resonator decoder works across the whole grid
+(0.95–1.00), and the `gradient` decoder collapses on every multi-role case
+(continuous optimization vs discrete selection). The HRR anti-resonance at
+rho = 1 is hypothesized to be destructive interference in circular convolution
+— open problem, see Line B in `docs/INFORME_TRANSFERENCIA.md`.
+
+**Reproducibility:** fixed seeds (BlockBundle=7, make_fact=42), all outputs in
+`data/`. Full transfer report: `docs/INFORME_TRANSFERENCIA.md`.
 
 ---
 

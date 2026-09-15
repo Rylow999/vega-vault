@@ -40,6 +40,60 @@ cableada (0073 p3) + guardián e2e. 147 tests.
   degradación tolerable.
 - [ ] Verificar trauma sana en vivo (checkpoint: 4/64, pending reinicio daemon)
 
+## Registro operativo — 2026-09-15 (madrugada → tarde)
+
+### Recuperación de state.db (Hermes)
+- **Síntoma:** `disk I/O error` en `~/.hermes/state.db` (417MB). Sesión no
+  indexable, subagentes morían al entregar ("session storage could not be
+  written").
+- **Causa:** extent btrfs corrupto en `state.db-wal` (mismo patrón del 14/09).
+  El main db estaba íntegro (`integrity_check: ok` una vez separado del WAL).
+- **Fix:** mover WAL corrupto a backup (`state.db-wal.CORRUPT2-20260915-040347`),
+  copiar main db sano, borrar shm, verificar `integrity_check: ok`.
+- **Referencia:** `skills/research/research-vault-ops/references/state_db_and_infra_recovery.md`.
+
+### Pandora — transductor y trauma
+- **Boca NIM:** `deepseek-v4-flash-0731` EOL 14/09 → fallback a Ollama
+  qwen2.5:0.5b (eco del prompt, 175 repeticiones "El estado interno se
+  convierte..." en el libro).
+- **Fix P0:** `NVIDIA_MODEL=moonshotai/kimi-k3` en `~/.config/pandora/env`
+  (editado directo, daemon reiniciado 05:42). kimi-k3 responde pero es modelo
+  de razonamiento: con `max_tokens` bajo `content` llega vacío (reasoning
+  consume el presupuesto). Pendiente revisar `max_tokens` del transductor.
+- **Trauma:** integridad 0.02 → 0.31 y subiendo (recuperación natural, ~1 punto
+  cada 40s). Modo sigue SUPERVIVENCIA (nunca volvió a BASE desde el trauma).
+  Deseo bajando 0.97 → 0.69 (re-equilibrio).
+- **Dato anómalo:** 6266 nodos, 17.333 consolidadas, **0 mitosis registradas
+  en el libro** — el grafo crece pero no se reorganiza (mitosis no se dispara
+  en vivo).
+
+## Proyecto nuevo: FHRR rho-Collapse (repo público)
+
+- **Repo:** https://github.com/Rylow999/fhrr-rho-collapse (commit inicial
+  `6fb0405`, autor Delorien).
+- **Contenido:** paper esqueleto (7 secciones), datos F2/H2/V3, figuras 1-4,
+  informe de transferencia completo en `docs/INFORME_TRANSFERENCIA.md`.
+- **Resultado clave:** ley de ρ universal en VSA continuas, pero topologías
+  algebra-specific: FHRR colapsa en ρ<1 (Gram singular), HRR real colapsa en
+  ρ=1 (anti-resonancia por interferencia destructiva en convolución circular).
+  Decoder `pure` funciona en todo el grid en ambas álgebras; `gradient`
+  colapsa siempre en multi-rol.
+- **Líneas abiertas:** A (VSA binarias BSC/MAP), B (teoría analítica
+  anti-resonancia), C (decoders alternativos: beam/learned/belief), D
+  (unificación).
+- **Archivos faltantes (informe menciona, no están en disco):**
+  `diag_gradient.py`, `exp_G2_gradient_variants.py`, `exp_I_geometrica.py`.
+
+## Próximos pasos (al retorno)
+
+1. **Pandora:** revisar `max_tokens` en transductor para kimi-k3 (reasoning
+   model); verificar que la boca deje de caer a fallback.
+2. **Pandora:** integridad > 0.6 y modo BASE — si no vuelve en 2-3 días,
+   revisar umbral SUPERVIVENCIA→BASE en árbitro de modos.
+3. **Pandora:** investigar mitosis faltante (crecimiento sin reorganización).
+4. **Paper:** escribir secciones 1-4 del paper FHRR con datos reales ya
+   verificados.
+
 ## Prioridad 3 — Horizonte
 
 - [ ] **Rust**: portar el endocrino (interfaz pura lista).
