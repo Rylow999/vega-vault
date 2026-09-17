@@ -98,3 +98,13 @@ Audio → Extractor → Features → Normalizador (omega 4D)
 - `data/stress_test_v4.json` — resultados de stress
 
 SGM validation: `tests/test_transducer_hrr.py` (6 tests, todos PASSED).
+
+### Bonus: estructura emergente detectada (k-means en pitch × duración)
+
+El dataset tiene **2 clusters naturales** (sin etiquetas):
+- **Cluster 0** (5 clips): pitch ~189 Hz, arrullos cortos (media 55s)
+- **Cluster 1** (5 clips): pitch ~352 Hz, arrullos largos (media 98s)
+
+Separación bootstrap = 1.89 (fuerza media-alta). Esto sugiere que los
+recordistas captaron dos familias de arrullo (posiblemente contextos
+distintos: cortejo vs. contacto) — la validación etológica dirá.
