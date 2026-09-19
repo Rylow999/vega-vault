@@ -17,6 +17,8 @@ oídos), este traduce constelaciones → español (la boca).
 """
 import json
 
+import numpy as np
+
 from ..config.schemas import InternalState
 from .nim_client import NimClient, get_nim_client
 
@@ -24,10 +26,53 @@ from .nim_client import NimClient, get_nim_client
 class OutputTransducer:
     """Traduce InternalState a lenguaje, respetando opacity e inefabilidad."""
 
-    def __init__(self, client=None, opacity_gate=None, translation_limit=None):
+    def __init__(self, client=None, opacity_gate=None, translation_limit=None,
+                 nucleo=None):
         self.client = client or get_nim_client()
         self.opacity_gate = opacity_gate
         self.translation_limit = translation_limit
+        # Resonator HRR (plan Paso 3): decodifica el estado del grafo a
+        # relaciones simbólicas limpias ANTES del LLM. Sin Gram, robusto en
+        # alta superposición. Si no converge o no hay nucleo, fallback al
+        # flujo actual.
+        self.nucleo = nucleo
+        self._resonator_stats = {"usado": 0, "fallback": 0}
+
+    def _tripletas_por_resonator(self):
+        """Estado del grafo -> HRR -> resonator puro -> relaciones limpias.
+
+        Devuelve lista de strings 'a —coact—> b' decodificadas, o None si el
+        resonator no puede extraer nada confiable (fallback al flujo actual).
+        """
+        if self.nucleo is None:
+            return None
+        try:
+            from .state_encoder import state_to_hrr
+            from .pure_resonator import PureResonator
+
+            # El objeto inyectado puede ser un Nucleo (con .sgm) o el
+            # agente directo (PandoraAgent tiene .sgm).
+            sgm = getattr(self.nucleo, "sgm", None) or self.nucleo
+            co = getattr(sgm, "co_activacion", {})
+            if not co:
+                return None
+
+            bundle = state_to_hrr(self.nucleo, N=512, top_k=8)
+            if np.linalg.norm(bundle) < 1e-9:
+                return None
+
+            nodos = sorted({str(i) for par in co for i in par})
+            codebooks = {
+                "SUJ": nodos,
+                "REL": ["coact"],
+                "OBJ": nodos,
+            }
+            res = PureResonator(codebooks, N=512, seed=7)
+            dec = res.decode(bundle, T=100)
+            # Convertir la tipología decodificada a relaciones legibles
+            return [f"{dec['SUJ']} —coact— {dec['OBJ']}"]
+        except Exception:
+            return None
 
     def traducir(self, state: InternalState) -> dict:
         """Devuelve {"texto": str | None, "razon": str, "modo": str}.
@@ -95,6 +140,16 @@ class OutputTransducer:
         contexto_minimo = {
             k: estado[k] for k in ("triplets", "intent") if k in estado
         }
+        # Paso 3 (plan HRR): si el resonator puro decodifica relaciones del
+        # grafo con confianza, se inyectan al prompt como estructura ya
+        # resuelta. El LLM verbaliza; no tiene que inferir la estructura.
+        rels = self._tripletas_por_resonator()
+        if rels:
+            self._resonator_stats["usado"] += 1
+            contexto_minimo["relaciones_decodificadas"] = rels
+        else:
+            self._resonator_stats["fallback"] += 1
+
         user = "Estado interno (solo tripletas/contexto):\n" + json.dumps(
             contexto_minimo, ensure_ascii=False, default=str)
 

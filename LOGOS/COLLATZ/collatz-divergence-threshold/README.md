@@ -103,3 +103,44 @@ MIT License — See LICENSE file for details.
 ---
 
 *Per Aspera, Ad Astra.*
+
+---
+
+## 2026-09-18 — La convergencia como invariante entre observadores (RHO_LAW)
+
+Experimento en `NOUS/RHO_LAW/experiments/exp_collatz_multi_observer.py`
+(161 órbitas: impares hasta 100k + campeones):
+
+| Observador | Umbral | Resultado |
+|---|---|---|
+| O1: f_P | 0.7075 | **0 cruces** (máx 0.369) |
+| O2: drift 2-adico | 0 | **0 positivos** (máx -5.02) |
+| O3: ratio N/P | 3.0 | **redundante con O1** — las 3 órbitas con ratio≥3 convergen (f_P≈0.23, drift -14 a -17) |
+| S4: resonator HRR sobre la secuencia | — | **nivel azar** (0.15-0.28) |
+
+**Hallazgos:**
+
+1. **Los observadores independientes (O1, O2) coinciden 161/161**: la
+   convergencia es invariante entre espacios (enteros, log₂, 2-adico) y
+   observadores. Es propiedad del **sustrato** (drift<0), no de cómo se mira.
+
+2. **El ratio N/P ≥ 3 NO implica divergencia**: las órbitas con pocas
+   visitas a P convergen más rápido. El umbral del ratio solo funciona en
+   una dirección.
+
+3. **El resonator HRR ve solo azar en la secuencia de pasos** — consistente
+   con DDSD (medida invariante plana en log): la secuencia es pseudorandom
+   **por diseño**. La información está en el drift (el promedio), no en los
+   pasos individuales.
+
+4. **El forzado de observador no rompe la equidistribución** (experimento
+   `exp_collatz_forzado.py`): forzar la medición (ε≥0.10 cruza f_P* en la
+   medición) NO genera divergencia real — termination rate 1.00 en todos
+   los ε. La divergencia de sustrato (a≥4, drift≥0) es la única real.
+
+**Conexión con la ley ρ** ([`Rylow999/fhrr-rho-collapse`](https://github.com/Rylow999/fhrr-rho-collapse)):
+en VSA el observador tiene una banda crítica (κ∈[10³,10⁴]) donde colapsa.
+En Collatz, NINGÚN observador encuentra divergencia — el sustrato la impide.
+La tesis filosófica del programa: el colapso es relativo al observador;
+cuando ni el observador ni el instrumento lo producen, queda la estructura
+irreducible del sustrato.

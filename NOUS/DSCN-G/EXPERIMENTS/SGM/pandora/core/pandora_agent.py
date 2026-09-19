@@ -122,7 +122,8 @@ class PandoraAgent:
         from pandora.transducer.nim_client import NimClient
         self.output_transducer = OutputTransducer(client=NimClient(),
                                                   opacity_gate=None,
-                                                  translation_limit=None)
+                                                  translation_limit=None,
+                                                  nucleo=self)
 
         # Memoria
         self.journal = Journal(self.config.journal_path)
