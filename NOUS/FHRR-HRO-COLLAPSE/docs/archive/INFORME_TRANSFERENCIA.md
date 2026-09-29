@@ -327,24 +327,22 @@ python exp_I_geometrica.py > ../data/out_I.txt
 
 ## 5. Líneas de Investigación Abiertas
 
-### 5.1 Línea A: VSA Binarias (Prioridad Alta)
+### 5.1 Línea A: VSA Binarias — **CERRADA (Exp 11b/18b, 2026-09-20/21)**
 
-**Objetivo:** Testear si la ley de ρ aplica a BSC (Binary Spatter Codes) y MAP (Multiply-Add-Permute).
+**Estado:** Cerrada con data persistida y replicación causal.
 
-**Contexto:** Tests preliminares (V2) dieron resultados ambiguos. BSC funcionó mal en todos los casos, pero el test era simplificado (sin resonator, sin Gram).
+**Resultado:**
 
-**Tareas concretas:**
-1. Implementar `BSCBundle` con resonator completo (análogo a `HRRRealBundle`)
-2. Implementar `MAPBundle` con resonator completo
-3. Correr el grid de ρ completo (mismo que H2) con 4 decoders (gram/pure/pinv/gradient)
-4. Comparar con FHRR y HRR real
+| Caso BSC | κ mediano | gram | dual_same |
+|---|---|---|---|
+| ρ=0.80 (K=3) | 1.3e2 | 0.999 | 0.999 |
+| **ρ=1.00 (K=3)** | **4.7e3** | **0.214** | **0.995** |
+| ρ=1.33 (K=3) | ~1e15 | 0.979 | 0.982 |
+| ρ=1.50 (K=2, n_cv=48) | ~4e15 | 0.966 | 0.973 |
 
-**Criterio de éxito:**
-- Si BSC/MAP muestran transición en ρ=1 → ley universal para todas las VSA
-- Si BSC/MAP no muestran transición → ley específica de VSA continuas
-- Si muestran comportamiento diferente → mapear el espacio completo de topologías
+**Además (Exp 18b, causa):** la intervención dual con el mismo M⁻¹ rescata BSC en ρ=1 (gram 0.192 → dual_same 0.995, +0.80 pareado). La Frame-Dual Stability Principle transfiere de álgebra.
 
-**Estimación:** 1 semana de trabajo
+**Queda abierto:** MAP ya tiene su control (single-shot), BSC quedó con réplica. Lo pendiente es una **implementación independiente** del harness para sacar el "provisional".
 
 ---
 

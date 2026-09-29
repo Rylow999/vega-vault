@@ -1,75 +1,101 @@
-# FHRR rho-Collapse: Frame Duality Governs Compositional Decoding
+# Operator placement, not representation
 
-**Author:** Luciano Benjamín Nieto  
-**Location:** General Alvear, Mendoza, Argentina  
-**License:** MIT  
+**Author:** Luciano Benjamín Nieto
+**Location:** General Alvear, Mendoza, Argentina
+**License:** MIT
 
-> **v3 (2026-09-16):** La evidencia ya no es solo técnica sino estructural.
-> La "transición de fase" en ρ=1 es una **singularidad puntual** (det(M)=0
-> exacto), no un valle de transición — el barrido fino lo muestra: 14 puntos
-> entre ρ=0.73 y ρ=1.23, todos los decoders estables **excepto en ρ=1.000
-> exacto**, donde `gram` y `pinv` caen a 0.148 mientras `pure` y MLP quedan
-> en 0.99. El paper compilado está en `paper/main.pdf` (9 páginas, 8 refs).
+> The "binary collapse" of resonator VSA decoding at high superposition is not a
+> limit of the representation — it is a decoder wiring bug. At the square point
+> ρ = n/d = 1 the Gram matrix sits at the square-Wishart hard edge
+> (λ_min ~ n⁻², κ ~ 4n²), and applying M⁻¹ to the ambient state blows up by
+> 1/λ_min. The same resolvent in coefficient space (CᵀM⁻¹C) is the canonical
+> dual-frame projector — norm exactly 1 — and decodes perfectly.
+> Exp 18 demonstrates this by a controlled intervention: same codebook, same
+> Gram, same resolvent, only the placement changes.
 
 ---
 
 ## Summary
 
-This repository contains the code, data, and figures for the paper *"Frame duality governs compositional decoding in FHRR: a phase diagram in rho"*, plus the observer-relativity extension across algebras.
+Code, data, and figures for the paper
+*"Operator placement, not representation: a resonator-decoder failure mode
+at the square-Wishart hard edge"*.
 
-We identify a phase diagram that governs resonator-based decoding in Fourier Holographic Reduced Representations, controlled by a single scalar:
+Three regimes by ρ = (distinct codevectors per block) / (block dimensionality):
 
-```
-rho = (distinct codevectors per block) / (block dimensionality)
-```
+| Regime | rho | Gram matrix M | Decoding behaviour |
+|--------|-----|---------------|--------------------|
+| **I. Over-complete** | > 1 (n > d) | rank-deficient | Gram-inverse singular; pinv/pure stable |
+| **II. Square** | = 1 (n = d) | hard-edge conditioned | ambient resolvent collapses; dual does not |
+| **III. Under-complete** | < 1 (n < d) | well-conditioned | stable |
 
-Three regimes emerge:
+---
 
-| Regime | rho | State of Gram matrix M | Decoding behaviour |
-|--------|-----|------------------------|--------------------|
-| **I. Under-complete** | < 1 | rank-deficient (singular) | `mat_inv` returns numerical garbage; collapse |
-| **II. Square** | = 1 | invertible, cond ~ 1e3 | dual frame degenerate; partial collapse |
-| **III. Over-complete** | > 1 | well-conditioned frame | stable decoding |
+## Key results
 
-## What's new in v3 (2026-09-16)
+### 1. The collapse at ρ=1 is a single-point failure of ambient Gram decoding
+Fine sweep (Exp 9, 14 ρ values, 10 seeds × 20 facts): ambient `gram` drops to
+0.148 at ρ=1.000; `pure` holds 0.99. (Implementation note: the ambient Gram
+correction is dimensionally applicable only at the square point in our harness —
+the cross-decoder comparison is measured at ρ=1.)
 
-- **Exp 9 (fine sweep):** 14 values of rho between 0.727–1.231, 10 seeds × 20 facts each. The anti-resonance is a **mathematical singularity, not a region** — gram and pinv collapse only at rho=1.000 exactly (0.148), recovering to 0.99 at rho=0.970 and rho=1.032.
-- **Exp 10 (residual trajectory):** At rho=1.00, `gram` and `pinv` plateau at residual ≈ 1.6–1.7 (stuck in a spurious attractor), while `pure` converges to 0.
-- **Exp 7 (MLP):** The learned observer reaches 0.992 accuracy at rho=1 (where gram fails at 0.119). The information is in the vector; the collapse belongs to the observer.
-- **Exp 8 (full taxonomy):** 600 decoder configurations (4 modes × 5 iterations × 3 cleanup × 2 schemes × 5 rho values).
-- **Paloma-π application:** Pandora's transducer now uses the pure resonator, demonstrating the decoder-relativity principle in a working cognitive system.
+### 2. The square-Wishart anchoring
+Gram M = C Cᵀ with unit-norm codevectors is a scaled square Wishart. At ρ=1,
+λ_min ~ n⁻² (hard edge) and κ ~ 4n² (median κ measured vs 4n² within the
+heavy-tailed Wishart spread). Verified across n ∈ [32, 512] (Exp 16,
+`data/exp16_scaling_n.json`).
 
-## Repository structure
+### 3. The trigger is NOT a κ-band
+Per-seed (Exp 17, 40 seeds at ρ=1): every seed collapses regardless of κ
+(κ_min spans [2.3e2, 1.9e5]), corr(log κ, acc) = −0.26. The "critical band"
+reading is refuted; the trigger is the hard-edge geometry + ambient placement.
 
-```
-fhrr-rho-collapse/
-├── README.md
-├── LICENSE (MIT)
-├── requirements.txt
-├── paper/
-│   ├── main.tex                    ← paper completo (7 secciones + refs)
-│   ├── main.pdf                    ← compilado con tectonic (9 páginas)
-│   ├── references.bib
-│   └── figures/                    ← figuras del paper
-├── src/
-│   ├── base_fhrr.py                # FHRR base
-│   ├── base_fhrr_corregida.py      # fixes de auditoría
-│   ├── exp_F2.py                   # FHRR: variar T
-│   ├── exp_H2.py                   # FHRR: grid de rho
-│   ├── exp_V3_hrr_real.py          # HRR real: grid de rho
-│   ├── exp_V4_hrr_hierarchical.py  # nested binding (resultado negativo)
-│   ├── exp_V5_scaling_sqrtD.py     # M_max vs D scaling
-│   ├── exp_V7_mlp_decoder.py       # MLP observer
-│   ├── exp_observer_taxonomy_v3.py # taxonomía (4 decoders × 120 configs)
-│   ├── exp_V9_fine_rho.py          # barrido fino (singularidad puntual)
-│   ├── exp_V10_residual_trajectory.py  # trayectoria residuo
-│   ├── diag_A4.py
-│   └── diag_H2_cond.py
-├── tests/
-│   └── test_pipeline.py            # 5 tests, todos PASS
-├── data/                           ← outputs completos (.txt, .json)
-└── figures/                        ← 9 figuras listas para paper
-```
+### 4. The Frame-Dual Stability Observation (Exp 18, replicated)
+Defined at the square point; the causal claim is placement-specific:
+
+| Observer | Operator | Accuracy at ρ=1 [boot95] |
+|----------|----------|--------------------------|
+| pure | f | 0.985 [0.982, 0.987] |
+| gram (ambient) | M⁻¹f | 0.160 [0.152, 0.169] |
+| pinv | M⁺f | 0.161 [0.152, 0.169] |
+| dual (pinv) | CᵀM⁺Cf | 0.985 [0.982, 0.987] |
+| **dual-same (same M⁻¹)** | **CᵀM⁻¹Cf** | **0.985 [0.982, 0.987]** |
+
+Per-seed stats: N=200 codebooks × 10 facts, bootstrap 95%. Paired per-seed
+difference +0.824, positive in 200/200 seeds (p ≤ 2⁻²⁰⁰, exact). Operator
+norms: ‖M⁻¹‖₂ = 1/λ_min (median 3.5×10³); ‖CᵀM⁻¹C‖₂ = 1.000;
+‖CᵀM⁻¹C − I‖_F median 6×10⁻¹³.
+
+**Independent replication (Exp 19):** pure 0.982, gram 0.159, dual 0.982,
+paired +0.823, 100% of seeds, no shared code.
+
+**Ensembles (Exp 20A):** Gaussian, Rademacher, sphere, Toeplitz replicate.
+Orthogonal frame at square → no collapse (M=I). Near-duplicate pathological
+frame: all decoders fail (control).
+
+**ρ sweep (Exp 20B):** ambient collapses only at ρ=1.
+
+**Linear-only (Exp 21):** gain ambient 362× vs dual 1.000 — VSA was the
+vehicle, not the cause.
+
+**Iteration dynamics (Exp 22):** gram fails at t=0 already (e₀ ~ 7×10³).
+The loop is not the mechanism.
+
+**BSC (Exp 18b):** 0.192 → 0.995, paired +0.80.
+
+**FHRR (Exp 27):** 0.131 → 1.000, paired +0.868, closes the circle on the
+originating algebra.
+
+### 5. Universality across algebras
+HRR (V3), BSC (11b, 18b), MAP (11c — single-shot, no loop, doesn't collapse),
+FHRR (27). Transformers (12b) don't collapse (softmax, no Gram inverse).
+
+### 6. Rust crate (fhrr-resilient)
+A conservative baseline decoder router. Currently implements the *legacy*
+κ-threshold routing (see `src/lib.rs` CAVEAT); a future version will route on
+operator placement + geometry. 4 Rust tests green.
+
+---
 
 ## How to run
 
@@ -79,34 +105,78 @@ cd fhrr-rho-collapse
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-cd src
-python exp_H2.py                      # grid FHRR original
-python exp_V3_hrr_real.py            # HRR real (anti-resonancia)
-python exp_V9_fine_rho.py            # barrido fino (singularidad puntual)
-python exp_V10_residual_trajectory.py # residuo del resonator
-python exp_V7_mlp_decoder.py         # MLP observer (requiere torch)
-python exp_observer_taxonomy_v3.py   # taxonomía completa (600 configs)
+# Reproduce the numbers in the paper
+python verify.py                       # 31 checks against data/*.json
 
-cd .. && pytest tests/ -v            # 5 tests verdes
+# Tests
+pytest tests/ -v                       # 13 Python tests
+cd fhrr-resilient && cargo test        # 4 Rust tests
+
+# Reproduce causal experiments
+cd src
+python exp_V18_frame_duality.py        # HRR
+python exp_V18b_bsc_duality.py         # BSC
+python exp_V27_fhrr_duality.py         # FHRR
+python exp_V16_scaling_n.py            # spectral scaling
 ```
 
-## Key findings
+Compile the paper: see `paper/README.md`.
 
-1. **The phase diagram is real but singular.** rho=1 is a point where the Gram inverse breaks exactly (det M = 0), not a capacity cliff.
-2. **Pure decoder works everywhere.** No Gram correction needed — accuracy 0.98–1.00 across the whole grid.
-3. **Learned observers close the gap.** MLP with 2 hidden layers achieves 0.992 accuracy at rho=1 (where gram fails at 0.119). The information is in the vector; the reported collapse is observer-relative.
-4. **Nested binding does NOT protect against rho=1.** Hierarchical structuring makes performance slightly *worse*, not better — the singularity is in the algebra, not in how you arrange the codebooks.
-5. **Scaling:** M_max grows as D^1.1, not sqrt(D). Pure resonators scale linearly with dimension.
+## Repository layout
 
-## Paper
+```
+fhrr-rho-collapse/
+├── README.md
+├── LICENSE  (MIT)
+├── requirements.txt      ← numpy, matplotlib, pytest
+├── pytest.ini
+├── CITATION.cff          ← GitHub citation metadata
+├── verify.py             ← reproduction checks
+├── docs/
+│   ├── ROADMAP.md        ← falsification program (closed)
+│   └── archive/          ← older internal notes (historical)
+├── paper/
+│   ├── main.tex          ← the paper
+│   ├── main.pdf          ← compiled (tectonic)
+│   ├── references.bib
+│   ├── README.md         ← how to compile
+│   └── figures/
+├── src/                  ← exp_V*.py (18 experiments)
+├── tests/
+│   ├── test_pipeline.py  ← 5 tests
+│   ├── test_frame_duality.py ← 8 tests
+│   └── README.md
+├── fhrr-resilient/       ← Rust crate (legacy κ-router)
+├── data/                 ← every number is a JSON
+└── figures/              ← paper figures
+```
 
-Full paper in `paper/main.tex` (compiled: `paper/main.pdf`, 9 pages). Covers phase diagram, empirical validation (F2/H2/V3/V7/V8/V9/V10), diagnosis of numerical artifacts, cross-algebra validation, and connection to transformer residual streams.
+## Claims → evidence
+
+| Claim | Evidence |
+|-------|----------|
+| Point failure at ρ=1 | `data/out_V9_fine_rho.json` |
+| κ ~ 4n² scaling | `data/exp16_scaling_n.json` |
+| κ-band refutation | `data/exp17_kappa_vs_acc.json` |
+| Frame-Dual Stability (HRR) | `data/exp18_summary.json` |
+| Independent replication | `data/exp19_independent_replica.json` |
+| BSC replication | `data/exp18_bsc_summary.json` |
+| FHRR replication | `data/exp27_fhrr_duality.json` |
+| Ensemble sweep | `data/exp20_ensembles_rho.json` |
+| Linear-only | `data/exp21_linear_amp.json` |
+| Dynamics | `data/exp22_iteration_dynamics.json` |
+| Operator zoo | `data/exp23_operator_zoo.json` |
+| Frame bounds | `data/exp24_frame_bounds.json` |
+| Counterexamples | `data/exp25_contraejemplos.json` |
+| Stability bound | `data/exp26_cota_stability.json` |
+| BSC/MAP phase | `data/exp11_bsc_rho.json`, `exp11c_map_rho.json` |
 
 ## Citation
 
 ```bibtex
-@article{nieto2026fhrr,
-  title={Frame duality governs compositional decoding in FHRR: a phase diagram in rho},
+@article{nieto2026observer,
+  title={Operator placement, not representation: a resonator-decoder failure
+         mode at the square-Wishart hard edge},
   author={Nieto, Luciano Benjamín},
   journal={arXiv preprint},
   year={2026},
@@ -116,9 +186,8 @@ Full paper in `paper/main.tex` (compiled: `paper/main.pdf`, 9 pages). Covers pha
 
 ## Acknowledgments
 
-- Nexus (agent assistance with audit and experimental design)
+Anonymous external reviewers whose critiques sharpened the formulation.
 
 ---
 
 *Per Aspera, Ad Astra.*
-
