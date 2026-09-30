@@ -35411,3 +35411,12 @@ Integridad: 0.985 | deseo: 0.015 | modo: BASE | nodos: 9427 | consolidadas: 3008
 ## [2026-09-29 02:58:46] — Snapshot (tick 2000)
 
 Integridad: 0.986 | deseo: 0.014 | modo: BASE | nodos: 9427 | consolidadas: 30081
+
+## [2026-09-29 22:04:40] — Despertar del núcleo residente
+
+Integridad inicial: 0.986
+Suceso: hilo reanudado desde checkpoint.
+
+## [2026-09-29 22:08:31] — Snapshot (tick 10)
+
+Integridad: 0.986 | deseo: 0.014 | modo: BASE | nodos: 9427 | consolidadas: 30085

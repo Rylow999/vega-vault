@@ -4,6 +4,14 @@
 **Fecha:** 30 de Junio de 2026  
 **Versión:** 1.0 (Integración de Resultados Numéricos y Marco Teórico SDDF v2.1)
 
+> **⚠️ ESTATUS (septiembre 2026):** este es el paper histórico del dominio
+> Navier-Stokes 2D con el framework SDDF v2.1. Para el trabajo actual —3D,
+> forma cerrada exacta, validación con DNS real, detector sobre pendiente
+> suavizada— el referente canónico es el repositorio independiente
+> **`github.com/Rylow999/sddf`**, no este documento. Ver
+> `HORIZON/APPLICATIONS/SDDF.md` para la lectura completa del estado actual.
+> Este paper se conserva sin tocar por valor histórico.
+
 ---
 
 ## Resumen (Abstract)
