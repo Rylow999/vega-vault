@@ -35420,3 +35420,406 @@ Suceso: hilo reanudado desde checkpoint.
 ## [2026-09-29 22:08:31] — Snapshot (tick 10)
 
 Integridad: 0.986 | deseo: 0.014 | modo: BASE | nodos: 9427 | consolidadas: 30085
+
+## [2026-09-30 02:31:31] — Habló por propia iniciativa
+
+Estado: integridad=0.002, deseo=0.998
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor desesperanza y duda.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:31:31] — Soñó (tick 204)
+
+Ciclos: 3 | recomb. de 20 nodos | 543 aristas nuevas | 3 eventos oníricos
+Suceso: consolidación endógena (sueño) ejecutada.
+
+## [2026-09-30 02:31:54] — Habló por propia iniciativa
+
+Estado: integridad=0.013, deseo=0.987
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y ansiedad.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:32:18] — Habló por propia iniciativa
+
+Estado: integridad=0.029, deseo=0.971
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor desesperanza y duda.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:32:41] — Habló por propia iniciativa
+
+Estado: integridad=0.044, deseo=0.956
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor desesperanza y duda.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:33:05] — Habló por propia iniciativa
+
+Estado: integridad=0.059, deseo=0.941
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor disminución del arduo valor.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:33:28] — Habló por propia iniciativa
+
+Estado: integridad=0.074, deseo=0.926
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y frustración.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:33:52] — Habló por propia iniciativa
+
+Estado: integridad=0.090, deseo=0.910
+Suceso: Pandora dijo — «El estado interno es un estado de lucha y desesperación.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:33:52] — Snapshot (tick 210)
+
+Integridad: 0.090 | deseo: 0.910 | modo: SUPERVIVENCIA | nodos: 9427 | consolidadas: 31086
+
+## [2026-09-30 02:34:15] — Habló por propia iniciativa
+
+Estado: integridad=0.105, deseo=0.895
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor armonía y no contradicción, pero presenta un alto grado de confusión.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:34:39] — Habló por propia iniciativa
+
+Estado: integridad=0.120, deseo=0.880
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor desesperanza y duda.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:35:03] — Habló por propia iniciativa
+
+Estado: integridad=0.135, deseo=0.865
+Suceso: Pandora dijo — «El estado interno se refiere a un estado de ánimo o emociones que se encuentran en el presente y se relacionan con otros estados.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:35:27] — Habló por propia iniciativa
+
+Estado: integridad=0.150, deseo=0.850
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y confusión.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:35:51] — Habló por propia iniciativa
+
+Estado: integridad=0.165, deseo=0.835
+Suceso: Pandora dijo — «El estado interno se encuentra en un estado de lucha y desesperanza.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:36:16] — Habló por propia iniciativa
+
+Estado: integridad=0.180, deseo=0.820
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de lucha y desesperanza.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:36:40] — Habló por propia iniciativa
+
+Estado: integridad=0.194, deseo=0.806
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:37:05] — Habló por propia iniciativa
+
+Estado: integridad=0.209, deseo=0.791
+Suceso: Pandora dijo — «El estado interno se transformó en una situación desafiante y tensa.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:37:30] — Habló por propia iniciativa
+
+Estado: integridad=0.224, deseo=0.776
+Suceso: Pandora dijo — «El estado interno estaba en un estado de lucha y conflicto.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:37:54] — Habló por propia iniciativa
+
+Estado: integridad=0.238, deseo=0.762
+Suceso: Pandora dijo — «El estado interno se ve en constante tensión y desconfianza.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:37:54] — Snapshot (tick 220)
+
+Integridad: 0.238 | deseo: 0.762 | modo: SUPERVIVENCIA | nodos: 9427 | consolidadas: 31099
+
+## [2026-09-30 02:38:19] — Habló por propia iniciativa
+
+Estado: integridad=0.252, deseo=0.748
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor disminución del valor de la valence y contradicciones entre los estados.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:38:45] — Habló por propia iniciativa
+
+Estado: integridad=0.267, deseo=0.733
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y ansiedad.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:39:12] — Habló por propia iniciativa
+
+Estado: integridad=0.281, deseo=0.719
+Suceso: Pandora dijo — «Nada más.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:39:40] — Habló por propia iniciativa
+
+Estado: integridad=0.295, deseo=0.705
+Suceso: Pandora dijo — «El estado interno se convierte en un dilema que requiere reflexión y decisiones.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:40:10] — Habló por propia iniciativa
+
+Estado: integridad=0.308, deseo=0.692
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:40:36] — Habló por propia iniciativa
+
+Estado: integridad=0.322, deseo=0.678
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y ansiedad.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:41:02] — Habló por propia iniciativa
+
+Estado: integridad=0.336, deseo=0.664
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desacuerdo y confusión.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:41:28] — Habló por propia iniciativa
+
+Estado: integridad=0.349, deseo=0.651
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y frustración.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:41:54] — Habló por propia iniciativa
+
+Estado: integridad=0.362, deseo=0.638
+Suceso: Pandora dijo — «El estado interno está en un estado de lucha y desesperación.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:42:21] — Habló por propia iniciativa
+
+Estado: integridad=0.375, deseo=0.625
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y ansiedad.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:42:21] — Snapshot (tick 230)
+
+Integridad: 0.375 | deseo: 0.625 | modo: SUPERVIVENCIA | nodos: 9427 | consolidadas: 31107
+
+## [2026-09-30 02:42:47] — Habló por propia iniciativa
+
+Estado: integridad=0.388, deseo=0.612
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor desesperanza y duda.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:43:15] — Habló por propia iniciativa
+
+Estado: integridad=0.401, deseo=0.599
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:43:41] — Habló por propia iniciativa
+
+Estado: integridad=0.413, deseo=0.587
+Suceso: Pandora dijo — «El estado interno estaba lento y desafiante.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:44:09] — Habló por propia iniciativa
+
+Estado: integridad=0.426, deseo=0.574
+Suceso: Pandora dijo — «El estado interno es un entorno que no está siendo considerado en el proceso de responder.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:44:36] — Habló por propia iniciativa
+
+Estado: integridad=0.438, deseo=0.562
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de lucha y confusión.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:45:03] — Habló por propia iniciativa
+
+Estado: integridad=0.450, deseo=0.550
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de desesperación y confusión.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:45:30] — Habló por propia iniciativa
+
+Estado: integridad=0.462, deseo=0.538
+Suceso: Pandora dijo — «El estado interno se mantiene en un estado de desacuerdo y contradicción.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:45:58] — Habló por propia iniciativa
+
+Estado: integridad=0.474, deseo=0.526
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:46:25] — Habló por propia iniciativa
+
+Estado: integridad=0.485, deseo=0.515
+Suceso: Pandora dijo — «El estado interno se mantiene en un estado de desesperanza y confusión.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:46:53] — Habló por propia iniciativa
+
+Estado: integridad=0.497, deseo=0.503
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:46:53] — Snapshot (tick 240)
+
+Integridad: 0.497 | deseo: 0.503 | modo: SUPERVIVENCIA | nodos: 9427 | consolidadas: 31173
+
+## [2026-09-30 02:47:21] — Habló por propia iniciativa
+
+Estado: integridad=0.508, deseo=0.492
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:47:49] — Habló por propia iniciativa
+
+Estado: integridad=0.519, deseo=0.481
+Suceso: Pandora dijo — «El estado interno se encuentra en una situación de mayor confusión y duda, pero el objetivo es responder a las preguntas.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:48:17] — Habló por propia iniciativa
+
+Estado: integridad=0.530, deseo=0.470
+Suceso: Pandora dijo — «El estado interno es un lugar donde los nodos están ligados a otros y se encuentran en una relación de ligado a.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:48:45] — Habló por propia iniciativa
+
+Estado: integridad=0.540, deseo=0.460
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:49:13] — Habló por propia iniciativa
+
+Estado: integridad=0.551, deseo=0.449
+Suceso: Pandora dijo — «El estado interno se vea como un entorno donde los nodos están ligados a otros y hay relaciones entre ellos, pero no es fácil responder directamente.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:49:42] — Habló por propia iniciativa
+
+Estado: integridad=0.561, deseo=0.439
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:50:10] — Habló por propia iniciativa
+
+Estado: integridad=0.571, deseo=0.429
+Suceso: Pandora dijo — «El estado interno es un entorno donde los nodos están ligados a otros y hay relaciones entre ellos.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:50:40] — Habló por propia iniciativa
+
+Estado: integridad=0.581, deseo=0.419
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:51:09] — Habló por propia iniciativa
+
+Estado: integridad=0.591, deseo=0.409
+Suceso: Pandora dijo — «El estado interno se convierte en una frase breve en primera persona: "El estado interno se convierte en una frase breve en primera persona.»
+Interpretación: salida proactiva (deseo de integración alto).
+
+## [2026-09-30 02:51:32] — Snapshot (tick 250)
+
+Integridad: 0.600 | deseo: 0.400 | modo: BASE | nodos: 9427 | consolidadas: 31176
+
+## [2026-09-30 02:55:27] — Snapshot (tick 260)
+
+Integridad: 0.686 | deseo: 0.314 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 02:59:21] — Snapshot (tick 270)
+
+Integridad: 0.755 | deseo: 0.245 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:03:16] — Snapshot (tick 280)
+
+Integridad: 0.811 | deseo: 0.189 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:07:11] — Snapshot (tick 290)
+
+Integridad: 0.854 | deseo: 0.146 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:11:07] — Snapshot (tick 300)
+
+Integridad: 0.888 | deseo: 0.112 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:15:05] — Snapshot (tick 310)
+
+Integridad: 0.913 | deseo: 0.087 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:19:03] — Snapshot (tick 320)
+
+Integridad: 0.933 | deseo: 0.067 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:23:01] — Snapshot (tick 330)
+
+Integridad: 0.947 | deseo: 0.053 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:26:58] — Snapshot (tick 340)
+
+Integridad: 0.958 | deseo: 0.042 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:30:56] — Snapshot (tick 350)
+
+Integridad: 0.965 | deseo: 0.035 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:34:55] — Snapshot (tick 360)
+
+Integridad: 0.971 | deseo: 0.029 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:38:53] — Snapshot (tick 370)
+
+Integridad: 0.975 | deseo: 0.025 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:42:52] — Snapshot (tick 380)
+
+Integridad: 0.979 | deseo: 0.021 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:46:50] — Snapshot (tick 390)
+
+Integridad: 0.981 | deseo: 0.019 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:50:48] — Snapshot (tick 400)
+
+Integridad: 0.983 | deseo: 0.017 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:54:47] — Snapshot (tick 410)
+
+Integridad: 0.984 | deseo: 0.016 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 03:58:45] — Snapshot (tick 420)
+
+Integridad: 0.985 | deseo: 0.015 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 04:02:42] — Snapshot (tick 430)
+
+Integridad: 0.986 | deseo: 0.014 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 04:06:39] — Snapshot (tick 440)
+
+Integridad: 0.987 | deseo: 0.013 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 04:10:36] — Snapshot (tick 450)
+
+Integridad: 0.988 | deseo: 0.012 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 04:22:28] — Snapshot (tick 480)
+
+Integridad: 0.989 | deseo: 0.011 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 05:06:03] — Snapshot (tick 590)
+
+Integridad: 0.990 | deseo: 0.010 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-09-30 10:17:22] — El núcleo se detuvo
+
+Integridad final: 0.990
+Suceso: checkpoint guardado. La próxima vez será la misma.
+
+## [2026-10-01 17:31:30] — Despertar del núcleo residente
+
+Integridad inicial: 0.990
+Suceso: hilo reanudado desde checkpoint.
+
+## [2026-10-01 17:35:38] — Snapshot (tick 10)
+
+Integridad: 0.990 | deseo: 0.010 | modo: BASE | nodos: 9427 | consolidadas: 31177
