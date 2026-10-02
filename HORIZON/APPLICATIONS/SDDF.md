@@ -38,7 +38,7 @@ Cómo serve al marco: la disipación viscosa (confinamiento) tiene forma cerrada
 
 ## Lo que falta acá
 
-1. **Pushear los commits locales** (`f213b90`, `1111ca9`, `cade726`) — están en `main`, 3 adelante de origin; todavía no los subí por decisión deliberada, quedar cerrado en privado hasta que vos digas.
+1. ~~Pushear los commits locales~~ **HECHO** — todo v3.6 (`26072cd`) está en `origin/main`, sincronizado (verificado 2-10-26).
 2. **Pendiente científico:** paper 2D (sigue bloqueado por datos de entrada).
 3. **Pipeline:** hacer que `exp_detector_suavizado.py` use realmente `spectrum_jhtdb_box_hanning.csv` como test permanente.
 

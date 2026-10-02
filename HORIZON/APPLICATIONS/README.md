@@ -9,7 +9,7 @@ marco y en qué estado está su integración.
 | proyecto | repositorio | qué aporta al marco | estado de la integración |
 |----------|-------------|---------------------|--------------------------|
 | SDDF / Navier-Stokes | `github.com/Rylow999/sddf` | observable con Fc cerrada, confinamiento con forma analítica | **sólida** — ver `SDDF.md` |
-| fhrr-rho-collapse | `github.com/Rylow999/fhrr-rho-collapse` | colocación del operador; colapso y reparación dual | **sólida** — ver §7 del informe |
+| fhrr-rho-collapse | `github.com/Rylow999/fhrr-rho-collapse` | colocación del operador; colapso y reparación dual; universalidad del hard edge (Exp 28: λ_min ~ n⁻², unit-norm = Wishart) | **sólida** — ver §7 del informe |
 | DSCN-G | `NOUS/DSCN-G` en este vault | núcleo cognitivo; vitalidad, N_ss*≤4.93 | parcial — test de la predicción pendiente |
 | Pandora | `github.com/Rylow999/Pandora` | agente cognitiva residente, observadores anidados forzando colapso controlado | planeado — colapso generativo *controlado*, su caso |
 | Quantum v9.1 | `NOUS/Quantum` | decoherencia como colapso | parcial — análoga, no causal |

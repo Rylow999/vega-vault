@@ -204,6 +204,8 @@ Per-seed: N=200 codebooks × 10 facts, diferencia pareada +0.824, positiva en 20
 
 **Estado:** integración **sólida** — intervención controlada, causa demostrada. Ver `README.md` del repo y `Apéndice C.1`.
 
+**Aporte nuevo (Exp 28, 27-09-26): convergencia del hard edge y universalidad del confinamiento.** Con 200-1200 semillas por tamaño (n hasta 1024), el exponente de λ_min(n) en el punto cuadrado es **-2.058** (cola n≥256: -2.061) — λ_min ~ n⁻² confirmado (el -1.6 de Exp 16 con pocas semillas era ruido de muestreo de valores extremos). Y el codebook normalizado-por-fila (un constraint global por realización) comparte la MISMA ley de borde duro que el ensemble Wishart literal: medianas de λ_min·n² dentro del 2% en n=512, KS two-sample ≤ 0.06 en todo n — la predicción asintótica de Chen-Liu-Zhou (arXiv:1002.3975), verificada experimentalmente. Lectura para el marco: la ley de confinamiento es independiente del contenido de cada realización — es propiedad estructural del ensemble, no de los estados. Segundo puente trans-dominio: lo que dispara el punto crítico vive en las COLAS de la distribución (fhrr: Exp 17, todos los semillas colapsan sin importar κ; SDDF: el detector corta por el ruido concha-a-concha del espectro) — las colas son propiedad de la ley, no del contenido.
+
 ---
 
 ## 8. Integración con DDSD (Collatz)
