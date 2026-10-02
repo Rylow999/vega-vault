@@ -1,60 +1,65 @@
 # Roadmap — Nexus Vault
 
-## ✅ Completado
-- Aplicación de la guía de corrección pre-freeze (2026-07-25, segunda
-  pasada): CORE dividido en THEORY/FORMALISM/IMPLEMENTATION/VALIDATION;
-  creados `CORE/SCOPE.md`, `CLAIMS_STATUS.md`, `CORE_RULES.md`,
-  `CORE/VALIDATION/CONSISTENCY_CHECK.md`, `FREEZE_CHECKLIST.md`;
-  `EXTENSIONS/C3_Face_Hijacking/` documentada (README+STATUS);
-  `EXTENSIONS/DISCRETE_DYNAMICS/README.md` creada como placeholder honesto
-  (sigue pendiente, no se fabricó contenido); caveat de versión FATE v4/v5
-  vs v6 anotado explícitamente en `DSCNG_INTERFACE.md`.
-- Reorganización estructural del vault (2026-07-25): NOUS (paraguas) /
-  DSCN-G (núcleo) / LOGOS / FATE / SHARED separados; LOGOS y FATE al
-  mismo nivel que NOUS en la raíz.
-- Auditoría DSCN-G v3 (6 rondas, cierre 2026-07-24): claims verificados /
-  no-sostenidos documentados en `NOUS/DSCN-G/DOCUMENTATION/auditoria/`.
-- Renombrado código+paper v2→v3 (consistencia de nombres).
-- Revisión de REVIEW_PENDING (7 ítems): NOUS=HÍBRIDO; C3 y Φ_proxy →
-  EXTENSIONS (open question); T3 → reporte estricto ya aplicado en el
-  paper (76.7% estricto + 100% operacional); Claims 9/10 redistribuidos.
-- Paper DSCN-G v3 ya refleja todas las correcciones: T1 N_ss*≈4–5, T3
-  reporte estricto, N-back 9.5±1.0, d′ piso ~0.8–1.0, C3 marcado como no
-  sustentado, limitaciones y trabajo futuro honestos.
-- FATE v6 integrado en FATE/DOCUMENTATION/ + DSCNG_INTERFACE/ documentado.
+## ✅ Completado (hasta 2026-09-28, v3.4 de SDDF)
 
-## 🔒 Checklist de congelación DSCN-G v1.0
+- SDDF llevado al límite: forma cerrada exacta verificada, null model de
+  Migdal calibrado (500 nulos; umbral real amp=0.005-0.02), Rust↔Python
+  sincronizado al dígito, validación con DNS real (JHTDB isotropic1024,
+  box completo, 8 bloques, ε=0.96× documentado, q=1.60±0.02 en k∈[8,64]),
+  detector de ventana sobre pendiente suavizada (v3.4: w=5 en DNS real).
+- **`sddf` committeado y pusheado** a `github.com/Rylow999/sddf` (main
+  al día; 4 commits: v3.2, v3.3, v3.4, paper secciones 13-14).
+- HORIZŌN creado (2026-09-29): informe integrado del marco de los cuatro
+  mecanismos, revisión crítica incorporada (Apéndice C), predicción
+  falsable documentada, aplicaciones mapeadas.
+- **fhrr-rho-collapse pushado** (`github.com/Rylow999/fhrr-rho-collapse`;
+  repo sigue en vega-vault/NOUS/FHRR-HRO-COLLAPSE/ pero con su propio
+  README alineado con el paper final, CI, verify, crate).
+- Buckmaster-Alpöge sept-2026 revisado: 4 PDFs (IPM, Boussinesq, Euler 3D,
+  statement) en `HORIZON/DOCUMENTATION/papers_blowup/`, resumen criollo
+  en `SOLO_PAPERS_BLOWUP_SEP2026.md`. Conclusión: NS sin forzamiento sigue
+  abierto; el hipodissipative está pendiente.
+- **Todo pusheado:** vega-vault (main, 2026-09-29) y sddf (main,
+  2026-09-28) están al día con GitHub.
 
-### Bloque A — Núcleo (CORE), ya listo para freeze
-- [x] T1 (punto fijo + maximalidad real) verificado y en el paper.
-- [x] T2 (ω = 1.0000) verificado y en el paper.
-- [x] T3 (consenso de fase) reporte estricto aplicado (76.7% / 100%).
-- [x] N-back v6 (9.5±1.0) y RNN baseline en el paper.
-- [x] C3 marcado explícitamente como NO sustentado (§3.4, §5.4, §5.6).
-- [x] Φ_proxy O(log N) NO aparece como claim en el paper (está en EXTENSIONS).
+## En revisión (abiertos, con pipeline viable si hay acceso a datos)
 
-### Bloque B — Extensión (fuera del freeze, open question)
-- [ ] C3 / Face Hijacking: revisar una última vez antes de cerrar (rediseño
-      30.2% con params agresivos; en EXTENSIONS/C3_Face_Hijacking/).
-- [ ] Φ_proxy: decidir retirar / reformular descriptivamente / dejar open.
-      En EXTENSIONS/PHI_PROXY/.
-- [ ] Discrete Dynamics: determinar relación con DSCN-G Core (EXTENSIONS/
-      DISCRETE_DYNAMICS/, marcado pendiente).
+- **isotropic4096 / channel4094 (Re mayor)**: no descargable sin token de
+  acceso a JHTDB (el mirror TUM sólo tiene 1024; el snapshot 4096 existe
+  en JHTDB pero sólo por intermedio del servicio con token gratuito — el
+  que los usuarios piden desde `turbulence.idies.jhu.edu/database`).
+  Testing sin token limita el tamaño a 4096 puntos. Cuando aparezca el
+  token: un snapshot entero de 4096³ (o una caja completa del channel4094)
+  con escalado G*(Re) y el periodograma de Migdal calibrado en el DNS.
+- **Serie temporal de isotropic1024**: testear si la ley ρ se verifica
+  en evolución temporal (no sólo en promedio de bloques paralelos) con
+  lo mismo que se correlacionan estados entre observadores (exp_ns_multi-
+  observer de RHO_LAW pero en tiempo, no en espacio).
+- **R-4 recalculo del paper 2D**: bloqueado por falta de datos de entrada
+  (NS-2D DNS crudos perdidos). Alternativa: simulador propio si se necesita.
+- **DSCN-G: hecha la validación de estructura (Stable states, T1, T2, N-back);
+  pendiente tocar el concepto de umbral de expansión.** Testar si θ_emerg
+  depende del método de medición (el punto crítico sería instrumento, no
+  sistema — esto es la predicción falsable del marco).
+- **Pandora (HORIZON/PANDORA):** daemon activo. Falta testear el
+  decodificador L2 propiamente (proyección lineal del estado del grafo a
+  lenguaje) — el cuello de botella real. Objetivo: software controlado
+  del colapso generativo.
 
-### Bloque C — Edición menor sugerida (no bloquea freeze)
-- [ ] Aclarar en el paper qué versión de FATE valida (cita v4/v5 pero la doc
-      es v6; ver FATE/DSCNG_INTERFACE/DSCNG_INTERFACE.md).
-- [ ] Discrete Dynamics: si se decide relación, mover de EXTENSIONS a CORE
-      o dejar nota explícita.
+## 🔮 Futuro (línea NOUS / LOGOS / HORIZON)
 
-### Bloque D — Validación experimental (future work declarado, NO bloquea)
-- [ ] Ablation studies (qué mecanismo explica qué).
-- [ ] Sensibilidad a parámetros.
-- [ ] Baseline LSTM/GRU/Transformer.
-- [ ] Validación EEG/fMRI (predicción de gradiente continuo, §5.3).
-
-## 🔮 Futuro (línea NOUS / LOGOS)
 - Quantum / Gauge / Cosmos: extensiones en desarrollo (en NOUS/).
-- LOGOS (DDSD, dODF, Collatz, Navier-Stokes, Confinement): línea
+- LOGOS (DDSD, dODF, Collatz, Navier-Stokes/SDDF, Confinement): línea
   independiente, índice cruzado pendiente.
+- HORIZON: continuar la validación del marco (testable, no cruzada con
+  manual de dudas).
 - NOUS filosófico: marco de consciencia explícitamente no-resuelto.
+
+## Notas operativas
+
+- **Identidad git:** vault configurado con Luciano / noreply GitHub.
+- **Dataset previsto:** JHTDB via mirror HuggingFace (TUM) para isotropic
+  1024; el canal4094 está detrás del token personal.
+- **Memoria de trabajo:** vault en synced con SDDF y fhrr-rho-collapse.
+- El RHO_LAW sigue vigente como capa transversal del marco (el detector
+  de Migdal corrigido referencia allí, vendiendo el detector viejo).
