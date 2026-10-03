@@ -1,4 +1,4 @@
-# Nexus Vault
+# Vega Vault
 
 Vault de investigación de Luciano Benjamín Nieto (Mendoza, Argentina).
 Reorganizado estructuralmente el 2026-07-25. No se eliminó ni modificó
