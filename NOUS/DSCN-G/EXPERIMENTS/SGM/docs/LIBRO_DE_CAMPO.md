@@ -35837,3 +35837,12 @@ Suceso: hilo reanudado desde checkpoint.
 ## [2026-10-02 03:58:41] — Snapshot (tick 10)
 
 Integridad: 0.990 | deseo: 0.010 | modo: BASE | nodos: 9427 | consolidadas: 31177
+
+## [2026-10-09 22:36:02] — Despertar del núcleo residente
+
+Integridad inicial: 0.990
+Suceso: hilo reanudado desde checkpoint.
+
+## [2026-10-09 22:44:13] — Snapshot (tick 10)
+
+Integridad: 0.990 | deseo: 0.010 | modo: BASE | nodos: 9427 | consolidadas: 31177

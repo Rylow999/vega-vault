@@ -223,6 +223,19 @@ Conexión: Expansión = rama 3n+1; Contracción = rama n/2; Compresión = balanc
 
 ---
 
+**Auditoría 10-10-26 (Método Integral):** el programa Collatz fue auditado
+completo bajo el protocolo. Estado: teoremas probados A1-A8 (entre ellos el
+Teorema del Signo: todo patrón expansivo periódico tiene punto fijo x*<0 —
+los ciclos negativos −5/−17 son exactamente esos puntos fijos); el cierre
+de la divergencia queda CONDICIONAL a la hipótesis [H] (núcleo de paridad:
+los bits de los depósitos 2-ádicos se comportan como monedas), abierta,
+con toda la evidencia computacional a favor y ninguna en contra. Las
+herramientas estadísticas (Haar/Cramér/Kesten) quedan formalmente
+descartadas como cierre (medida cero de los enteros) y retenidas como
+caracterización del comportamiento típico. Barreras identificadas con
+forma exacta: medida, criba, puente. Este dominio pasa de "parcial" a
+"condicional con teoremas parciales" en la tabla epistémica.
+
 ## 9. Integración con DSCN-G
 
 | Claim | Estado | Detalle |
@@ -272,6 +285,44 @@ Símbolos: H (espacio de Hilbert, I_total); M (matriz de Gram); CᵀM⁻¹C (pro
 5. ¿Puede el lenguaje unificado predecir nuevos fenómenos? (Falsabilidad.)
 
 ---
+
+## 12½. Metodología: el Método Integral (10-10-26)
+
+Toda investigación bajo este marco sigue el protocolo formalizado en
+`DOCUMENTATION/METODO_INTEGRAL.md`. Reglas operativas:
+
+1. **Evidencia no es prueba.** Verificación finita ≠ propiedad universal;
+   simulación falsa o estima, nunca demuestra. Todo resultado lleva estado
+   obligatorio: probado / conjetura / heurística / evidencia / barrera.
+2. **Dominio explícito.** ∀n∈ℕ no es ∀n∈ℤ ni "casi todo μ". Sin dominio
+   declarado, la afirmación es humo.
+3. **Un No-Go no es imposibilidad.** Herramienta que falla = barrera
+   metodológica de esa clase, no veredicto lógico. Prohibido "indecidible"
+   sin prueba de independencia.
+4. **No trivialidad.** Un concepto cuenta solo si produce barrera, cota,
+   reducción con hipótesis más débiles, predicción falsable o verificación
+   no trivial. Lo demás es decoración.
+5. **Cambio de espacio solo con puente.** Toda reformulación (dual,
+   2-ádica, espectral) exige teorema de puente que controle la propiedad
+   original. Sin puente: reformulación, no resultado.
+6. **A7 — la imposibilidad se desplaza.** La dificultad reaparece como
+   constante no controlada, hipótesis no probada o frontera no eliminable.
+   Es la forma operativa del marco: el límite se reubica; detectar dónde
+   reaparece es el diagnóstico central.
+
+**Aplicación a la tabla epistémica del marco:** la etiqueta "sólida" exige
+intervención controlada CON teorema de puente (SDDF: forma cerrada + DNS
+real; fhrr: colocación con identidad CᵀM⁻¹C exacta). Las "parciales" son
+analogías con estructura pero sin puente causal demostrado — y así quedan
+declaradas. El marco mismo es conjetura organizadora con predicción
+falsable: ni teorema ni decoración.
+
+**Estado del programa Collatz bajo el protocolo (referente de aplicación):**
+teoremas A1-A8 PROBADOS (signo, depósitos, ν₃=0, martingala Haar, Cramér,
+relación binaria); cierre CONDICIONAL a [H] núcleo de paridad (abierto,
+evidencia fuerte, ninguna en contra); barreras de medida/criba/puente con
+forma exacta. Detalle: `github.com/Rylow999/collatz-last-theorem`,
+`docs/cramer_rachas.md` §auditoría.
 
 ## 13. Conclusión
 

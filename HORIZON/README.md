@@ -22,6 +22,8 @@ HORIZON/
 ├── APPLICATIONS/        aplicaciones de LOGOS y NOUS dentro del marco
 │                        (SDDF, fhrr-rho-collapse, DSCN-G, ...)
 └── DOCUMENTATION/       decisiones de diseño, estado, roadmap
+    └── METODO_INTEGRAL.md  ← el protocolo de rigor (10-10-26):
+                           estados obligatorios, evidencia≠prueba, puentes
 ```
 
 ## Qué es el marco (en una frase)
@@ -37,14 +39,21 @@ meta-dinámica que cambia el régimen.
 
 ## Estado epistémico (honesto)
 
-| Integración | Estatus | Por qué |
-|-------------|---------|---------|
-| fhrr-rho-collapse (§7) | **sólida** | intervención controlada: mismo codebook/Gram/resolvente, sólo cambia la colocación — 200/200 semillas |
-| SDDF / Navier-Stokes | **sólida** | forma cerrada exacta G[u]=(25/12)lnRe + b(δ); validada en DNS real (q=1.60±0.02, ε por gradientes 0.96× del documentado) |
-| Collatz / DDSD (§8) | **parcial** | la deriva es numérica; A3 discrimina, pero el confinamiento es teorema, no control |
-| Quantum v9.1 (§5) | **parcial** | decoherencia es proceso físico real; la traducción a "colapso generativo" es analógica |
-| Gauge (§6) | **parcial** | tensión de cuerda aproximada; herencia de λ₂=4 es re-etiquetado |
-| Gödel (§3) | **especulativa (útil)** | "indemostrable = inaccesible" es una traducción, no un teorema |
+| Integración | Estatus (protocolo) | Por qué |
+|-------------|--------------------|---------|
+| fhrr-rho-collapse (§7) | **sólida** — intervención controlada con puente probado | mismo codebook/Gram/resolvente, sólo cambia la colocación; identidad CᵀM⁻¹C demostrada algebráicamente; 200/200 semillas = evidencia concordante (no cierra, concuerda) |
+| SDDF / Navier-Stokes | **sólida** — teorema + validación concordante | G[u]=(25/12)lnRe es teorema; DNS q=1.60±0.02, ε 0.96× = evidencia empírica que no cierra pero el puente ES el teorema (protocolo: se declara la diferencia) |
+| Collatz / DDSD (§8) | **condicional con teoremas parciales** — AUDITADO 10-10-26 | A1-A8 PROBADOS (Teorema del Signo: periódico expansivo ⟹ x*<0); divergencia CONDICIONAL a [H] núcleo de paridad (abierto, evidencia fuerte a favor); Haar/Cramér descartados como cierre (medida cero), retenidos como tipicidad; barreras: medida/criba/puente |
+| Quantum v9.1 (§5) | **analógica** — sin puente causal | decoherencia es proceso físico real; "colapso generativo" no tiene teorema de puente (protocolo 4.2) |
+| Gauge (§6) | **analógica** — sin puente causal | tensión de cuerda aproximada; herencia de λ₂=4 = re-etiquetado (estructura sin puente) |
+| Gödel (§3) | **traducción especulativa (útil)** | "indemostrable = inaccesible" es analogía interpretativa; NO es claim de indecidibilidad (protocolo 1.4) |
+
+**Nota de auditoría (10-10-26, Método Integral):** estados con etiquetado
+obligatorio. Cambios vs versión anterior: Collatz sube de "parcial" a
+"condicional con teoremas parciales" (A1-A8 probados, [H] explícita);
+Quantum/Gauge reciben la causa formal ("analógica: sin puente causal");
+Gödel explicita que no es claim de indecidibilidad. SDDF/fhrr: "sólida"
+conserva el estatus y ahora declara la división teorema/evidencia.
 
 ## Predicción falsable (lo que convierte el marco en teoría)
 
