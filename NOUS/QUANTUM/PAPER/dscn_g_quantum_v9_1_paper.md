@@ -14,14 +14,14 @@ Independent manuscript. No external funding. No conflict of interest.
 We extend the digital DSCN-G substrate to a quantum framework formalizing connective interference as superposition of states in Hilbert space. Version 9.1 provides exhaustive rigorous proofs and numerical verification for all three quantum results.
 
 **Main contributions v9.1:**
-- **Conjecture Q1 — Structural Decoherence:** Proven via saddle-node bifurcation + Lindblad einselection
+- **Conjecture Q1 — Structural Decoherence:** Derivacion heuristica (bifurcacion saddle-node + einselection como mecanismo postulado); NO demostracion formal [auditoria 2026-10-11]
 - **Lemma 6.2 — Anderson Localization:** Rigorous proof via Lattice Green's Functions + Dyson equation
-- **Conjecture Q3 — Chain Entanglement:** Proven via Lieb-Robinson bounds
-- **Exact Spectral Gap:** λ₂ = 4 proven algebraically (verified numerically)
+- **Conjecture Q3 — Chain Entanglement:** Prueba esbozada via Lieb-Robinson; incompleta en este documento [auditoria 2026-10-11]
+- **Exact Spectral Gap:** λ₂ = 4 algebra exacta; verificacion numerica declarada pero AUSENTE en disco [auditoria 2026-10-11]
 - **Thermodynamic Derivation:** D = 3 emergence via Erdős-Taylor + Mermin-Wagner
 - **Hagedorn Mechanism:** Corrected l_coh ∈ [2, 35] l_P
 - **Logarithmic RG Flow:** α(N) = α₀·(log₂ N)^(−2π/D) with β = 2π/D verified at 0.00% error
-- **Numerical Simulations:** All conjectures verified via Python simulations
+- **[REMOVIDO 2026-10-11, auditoria]:** el claim anterior de simulaciones Python verificadas no tiene artefactos en el vault; ver AUDITORIA_METODO_INTEGRAL_2026-10-11.md
 
 ---
 

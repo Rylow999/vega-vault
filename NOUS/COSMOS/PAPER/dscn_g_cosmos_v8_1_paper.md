@@ -17,7 +17,7 @@ We present version 8.1 of the DSCN-G-Cosmos formalism, incorporating **Effective
 
 **Verification results (this edition):**
 - **Prediction (a) VERIFIED:** δH₀/H₀ = 3.49% vs CosmicFlows-4 4.1% ± 0.9% (0.68σ)
-- **Prediction (b) VERIFIED:** d(ΔH)/dz < 0 mathematically proven for all z > 0
+- **Prediction (b) — derivacion matematica interna:** d(ΔH)/dz < 0 probado algebraicamente dentro del modelo [auditoria: la etiqueta VERIFIED se reserva para verificacion contra artefactos]
 - **Prediction (c) VERIFIED:** θ(0.65) = 0.777° vs DESI DR9 0.78° (0.39% error)
 - **Prediction (d) VERIFIED:** H₀^local = 73.13 vs SH0ES 73.04 ± 1.04 (0.09σ)
 - **Logarithmic RG flow VERIFIED:** β = 2.0944 fit vs 2π/D = 2.0944 theory (0.00% error)
