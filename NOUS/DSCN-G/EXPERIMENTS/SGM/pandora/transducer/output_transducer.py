@@ -57,11 +57,31 @@ class OutputTransducer:
             if not co:
                 return None
 
-            bundle = state_to_hrr(self.nucleo, N=512, top_k=8)
+            # top_k=4 (FIX 2026-10-11, medido contra el grafo real): con
+            # dedup de espejos, k<=4 decodifica SUJ y OBJ top-1 correctos;
+            # k>=6 introduce interferencia entre relaciones (el hub domina).
+            bundle = state_to_hrr(self.nucleo, N=512, top_k=4)
             if np.linalg.norm(bundle) < 1e-9:
                 return None
 
-            nodos = sorted({str(i) for par in co for i in par})
+            # FIX (2026-10-11): las claves de co_activacion llegan como
+            # STRING "(a, b)" tras el checkpoint; iterar el string daba
+            # CARACTERES sueltos ("(", "3", ","...) como "nodos" — un
+            # codebook de 14 simbolos basura. Parsear a pares reales:
+            import ast as _ast
+            def _parse_key(k):
+                if isinstance(k, tuple) and len(k) == 2:
+                    return k
+                if isinstance(k, str):
+                    try:
+                        t = _ast.literal_eval(k)
+                        if isinstance(t, tuple) and len(t) == 2:
+                            return t
+                    except (ValueError, SyntaxError):
+                        pass
+                return None
+            pares = [p for p in (_parse_key(k) for k in co) if p is not None]
+            nodos = sorted({str(i) for par in pares for i in par})
             codebooks = {
                 "SUJ": nodos,
                 "REL": ["coact"],
