@@ -1,0 +1,27 @@
+{
+ "fase": "MNEME FASE 0",
+ "D": 4096,
+ "n_codebook": 500,
+ "n_pares_co": 25551,
+ "PR_M1a": {
+  "acc": 1.0,
+  "pass": true,
+  "trials": 200
+ },
+ "PR_M1b": {
+  "top1": 0.375,
+  "top5": 1.0,
+  "pass_top5": true
+ },
+ "PR_M1c": {
+  "acc_top5": 0.02702702702702703,
+  "n_casos": 37,
+  "bm25": "no-aplica (indices sin texto)"
+ },
+ "veredicto": {
+  "M1a": "PASS",
+  "M1b": "PASS",
+  "M1c": "FAIL"
+ },
+ "tiempo_s": 55.84994435310364
+}

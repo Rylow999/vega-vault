@@ -189,7 +189,25 @@ valor cuando hay webhooks externos — y eso no es requisito de Pandora.
 
 ## 5. Fases con criterios de salida (checklist ejecutable)
 
-**FASE 0 — hoy mismo (script, sin tocar Pandora):**
+**FASE 0 — RESULTADO (2026-10-11, corrida):**
+
+| Predicción | Resultado | Veredicto |
+|---|---|---|
+| PR-M1a (cleanup k=1, D=4096, 500 nodos) | **1.0000** | **PASS** |
+| PR-M1b (k=8 roles superpuestos) | top-1 0.375, **top-5 1.000** | **PASS** (por top-5) |
+| PR-M1c (multi-hop por vecindad-hash) | 0.027 | **FAIL** |
+
+**Lectura del FAIL de PR-M1c (la barrera declarada §4.2, ocurrió):** el
+encoder por hash de nombres numéricos no codifica semántica del grafo —
+la superposición no puede contener traza de Z si el vector de Z no
+comparte estructura con el de X. El mecanismo (binding/unbinding/cleanup)
+está VALIDADO (M1a/M1b); lo refutado es el ENCODER por vecindad-hash.
+**Rediseño (barrera 2 de la guía): fases aprendidas de las
+co-activaciones reales del grafo** (phase = ángulo del vector de
+activación normalizado del nodo), no hash del nombre. Este encoder es
+el primer trabajo de MNEME-1 real.
+
+**FASE 0 — original (para registro):**
 - [ ] Script `exp_mneme_0.py`: 500 nodos reales del grafo → codebook
 - [ ] PR-M1a medido y documentado (≥99%: PASS/FAIL)
 - [ ] PR-M1b medido (≥85%: PASS/FAIL)
