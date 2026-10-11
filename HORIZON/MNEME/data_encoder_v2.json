@@ -1,0 +1,10 @@
+{
+ "encoder": "co-activaciones",
+ "D": 2048,
+ "T1_cleanup": 0.41,
+ "T2_top5_k8": 0.75,
+ "T3_multihop": 0.04693140794223827,
+ "n_casos": 277,
+ "vs_hash": 0.027,
+ "tiempo_s": 41.42325687408447
+}

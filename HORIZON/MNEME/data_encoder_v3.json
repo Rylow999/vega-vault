@@ -1,0 +1,9 @@
+{
+ "alpha_star": 1.6,
+ "cleanup": 1.0,
+ "multihop": 0.039711191335740074,
+ "D": 2048,
+ "vs_v1_hash": 0.027,
+ "vs_v2_coact": 0.047,
+ "n_multihop": 277
+}
