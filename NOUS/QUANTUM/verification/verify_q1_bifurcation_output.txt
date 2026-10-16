@@ -1,0 +1,1 @@
+{'stiffness_zero_at': 1.570796, 'expected_pi_over_2': 1.570796, 'ok': True, 'lindblad_gamma_dec': 'NOT_REPRODUCIBLE_FROM_TEXT (operator L_k absent)'}

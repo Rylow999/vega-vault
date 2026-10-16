@@ -1,0 +1,92 @@
+[
+  {
+    "eps": 0.0,
+    "f_P_mean": 0.5543,
+    "f_P_max": 0.5968,
+    "n_crossing_threshold": 0,
+    "frac_crossing": 0.0,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.05,
+    "f_P_mean": 0.5864,
+    "f_P_max": 0.6585,
+    "n_crossing_threshold": 0,
+    "frac_crossing": 0.0,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.1,
+    "f_P_mean": 0.5904,
+    "f_P_max": 0.7179,
+    "n_crossing_threshold": 1,
+    "frac_crossing": 0.1,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.15,
+    "f_P_mean": 0.6372,
+    "f_P_max": 0.75,
+    "n_crossing_threshold": 1,
+    "frac_crossing": 0.1,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.2,
+    "f_P_mean": 0.6426,
+    "f_P_max": 0.7,
+    "n_crossing_threshold": 0,
+    "frac_crossing": 0.0,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.21,
+    "f_P_mean": 0.6549,
+    "f_P_max": 0.7561,
+    "n_crossing_threshold": 1,
+    "frac_crossing": 0.1,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.25,
+    "f_P_mean": 0.6842,
+    "f_P_max": 0.7692,
+    "n_crossing_threshold": 4,
+    "frac_crossing": 0.4,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.3,
+    "f_P_mean": 0.6845,
+    "f_P_max": 0.8065,
+    "n_crossing_threshold": 4,
+    "frac_crossing": 0.4,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.4,
+    "f_P_mean": 0.7047,
+    "f_P_max": 0.8021,
+    "n_crossing_threshold": 7,
+    "frac_crossing": 0.7,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  },
+  {
+    "eps": 0.5,
+    "f_P_mean": 0.7988,
+    "f_P_max": 0.8646,
+    "n_crossing_threshold": 9,
+    "frac_crossing": 0.9,
+    "termination_rate": 1.0,
+    "orbit_length_median": 42.0
+  }
+]

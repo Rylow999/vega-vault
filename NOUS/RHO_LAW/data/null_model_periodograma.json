@@ -1,0 +1,74 @@
+{
+  "null_distribution": {
+    "n": 500,
+    "mean": 0.00023209180532091065,
+    "median": 0.00019974923150079568,
+    "p95": 0.0004532462391588648,
+    "p99": 0.00047791693527102956
+  },
+  "tests_con_senal": [
+    {
+      "amp": 0.0,
+      "omega_inyectada": 2.0,
+      "p_emp_mean": 0.4810800000000001,
+      "p_emp_std": 0.3147985285861419,
+      "frac_detected_p05": 0.08,
+      "snr_old_mean": 10.184906116592943,
+      "omega_detectada_median": 2.405513878469617,
+      "n_trials": 50,
+      "frac_detected_bonferroni": 0.0,
+      "pasa_bonferroni": false
+    },
+    {
+      "amp": 0.002,
+      "omega_inyectada": 2.0,
+      "p_emp_mean": 0.81348,
+      "p_emp_std": 0.2460639949281487,
+      "frac_detected_p05": 0.0,
+      "snr_old_mean": 6.564045869756309,
+      "omega_detectada_median": 2.374706176544136,
+      "n_trials": 50,
+      "frac_detected_bonferroni": 0.0,
+      "pasa_bonferroni": false
+    },
+    {
+      "amp": 0.005,
+      "omega_inyectada": 2.0,
+      "p_emp_mean": 0.8099599999999999,
+      "p_emp_std": 0.2721844933128998,
+      "frac_detected_p05": 0.0,
+      "snr_old_mean": 7.989969130100369,
+      "omega_detectada_median": 3.1333458364591147,
+      "n_trials": 50,
+      "frac_detected_bonferroni": 0.0,
+      "pasa_bonferroni": false
+    },
+    {
+      "amp": 0.02,
+      "omega_inyectada": 2.0,
+      "p_emp_mean": 0.00712,
+      "p_emp_std": 0.026836273958953397,
+      "frac_detected_p05": 0.94,
+      "snr_old_mean": 26.87058994923271,
+      "omega_detectada_median": 2.5345211302825703,
+      "n_trials": 50,
+      "frac_detected_bonferroni": 0.0,
+      "pasa_bonferroni": false
+    },
+    {
+      "amp": 0.05,
+      "omega_inyectada": 2.0,
+      "p_emp_mean": 0.0,
+      "p_emp_std": 0.0,
+      "frac_detected_p05": 1.0,
+      "snr_old_mean": 25.559719424343417,
+      "omega_detectada_median": 2.5085271317829454,
+      "n_trials": 50,
+      "frac_detected_bonferroni": 1.0,
+      "pasa_bonferroni": true
+    }
+  ],
+  "n_frecuencias": 4000,
+  "alpha_bonferroni": 1.25e-05,
+  "tiempo_total_s": 1091.7209885120392
+}

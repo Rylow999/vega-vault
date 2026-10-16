@@ -1,0 +1,119 @@
+{
+  "lemma": "4.1 (iii): lambda_2(L) = 4 for all m >= 3",
+  "method": "exact circulant Laplacian eigenvalues",
+  "rows": [
+    {
+      "m": 3,
+      "N": 8,
+      "k_bar": 5,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 4,
+      "N": 16,
+      "k_bar": 7,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 5,
+      "N": 32,
+      "k_bar": 9,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 6,
+      "N": 64,
+      "k_bar": 11,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 7,
+      "N": 128,
+      "k_bar": 13,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 8,
+      "N": 256,
+      "k_bar": 15,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 9,
+      "N": 512,
+      "k_bar": 17,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 10,
+      "N": 1024,
+      "k_bar": 19,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 11,
+      "N": 2048,
+      "k_bar": 21,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 12,
+      "N": 4096,
+      "k_bar": 23,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 13,
+      "N": 8192,
+      "k_bar": 25,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 14,
+      "N": 16384,
+      "k_bar": 27,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 15,
+      "N": 32768,
+      "k_bar": 29,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    },
+    {
+      "m": 16,
+      "N": 65536,
+      "k_bar": 31,
+      "lambda2": 4.0,
+      "abs_err": 0.0,
+      "ok": true
+    }
+  ],
+  "all_ok": true
+}

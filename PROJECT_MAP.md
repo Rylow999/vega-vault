@@ -30,15 +30,16 @@ nexus-vault/
 │   │   │                     #     DISCRETE_DYNAMICS/ (pendiente, placeholder) /
 │   │   │                     #     PHI_PROXY / T3_Review (resuelto, vacío)
 │   │   └── ARCHIVE/          #   DSCN_G (v1) + DSCN_G_v2 (OBSOLETE, no destructivo)
-│   ├── QUANTUM/  PAPER/ NOTES/   # DSCN-G-Quantum v9.1
-│   ├── GAUGE/    PAPER/ NOTES/   # DSCN-G-Gauge (NOUS Paper 6)
-│   ├── COSMOS/   PAPER/ NOTES/   # DSCN-G-Cosmos v8.1 (NOUS Paper 3)
+│   ├── QUANTUM/  PAPER/ verification/   # DSCN-G-Quantum v9.1
+│   ├── GAUGE/    PAPER/ verification/   # DSCN-G-Gauge (NOUS Paper 6)
+│   ├── COSMOS/   PAPER/ verification/   # DSCN-G-Cosmos v8.1 (NOUS Paper 3)
+│   ├── RHO_LAW/  domains/ experiments/  # ley de rho trans-dominio (inline 2026-10-15; canonico: Rylow999/rho-law)
 │   ├── DOCUMENTATION/            # NOUS filosófico/técnico
 │   └── PANDORA/                  # daemon vivo (systemd), repo GitHub Rylow999/Pandora
 ├── LOGOS/                    # Papeles hermanos (NO DSCN-G) — RAÍZ, mismo nivel que NOUS/HORIZON
 │   ├── DDSD/  PAPER/ NOTES/
 │   ├── DODF/  PAPER/ NOTES/
-│   ├── COLLLATZ/  PAPER/ NOTES/   (Complexity + Structural)
+│   ├── COLLATZ/  PAPER/ NOTES/   (Complexity + Structural)
 │   ├── NAVIER_STOKES/  PAPER/ NOTES/   (paper 2D histórico; ver repo sddf)
 │   └── CONFINEMENT/  PAPER/ NOTES/
 ├── FATE/                     # Aplicación (desacoplada) — RAÍZ

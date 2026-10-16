@@ -1,0 +1,15 @@
+m= 3 N=     8 k_bar=  5.0 lambda2=4.000000000000 err=0.0e+00 OK
+m= 4 N=    16 k_bar=  7.0 lambda2=4.000000000000 err=0.0e+00 OK
+m= 5 N=    32 k_bar=  9.0 lambda2=4.000000000000 err=0.0e+00 OK
+m= 6 N=    64 k_bar= 11.0 lambda2=4.000000000000 err=0.0e+00 OK
+m= 7 N=   128 k_bar= 13.0 lambda2=4.000000000000 err=0.0e+00 OK
+m= 8 N=   256 k_bar= 15.0 lambda2=4.000000000000 err=0.0e+00 OK
+m= 9 N=   512 k_bar= 17.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=10 N=  1024 k_bar= 19.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=11 N=  2048 k_bar= 21.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=12 N=  4096 k_bar= 23.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=13 N=  8192 k_bar= 25.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=14 N= 16384 k_bar= 27.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=15 N= 32768 k_bar= 29.0 lambda2=4.000000000000 err=0.0e+00 OK
+m=16 N= 65536 k_bar= 31.0 lambda2=4.000000000000 err=0.0e+00 OK
+ALL OK

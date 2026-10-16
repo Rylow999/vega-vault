@@ -1,0 +1,29 @@
+[
+  {
+    "a": 3,
+    "drift": -0.415,
+    "f_P_star_theory": 0.7067,
+    "f_P_emp_max": 0.5968,
+    "f_P_emp_mean": 0.5487,
+    "termination_rate": 1.0,
+    "orbit_lengths_mean": 40.25
+  },
+  {
+    "a": 5,
+    "drift": 0.3219,
+    "f_P_star_theory": null,
+    "f_P_emp_max": 0.75,
+    "f_P_emp_mean": 0.5377,
+    "termination_rate": 0.125,
+    "orbit_lengths_mean": 2578.125
+  },
+  {
+    "a": 7,
+    "drift": 0.8074,
+    "f_P_star_theory": null,
+    "f_P_emp_max": 0.6047,
+    "f_P_emp_mean": 0.4358,
+    "termination_rate": 0.125,
+    "orbit_lengths_mean": 49.125
+  }
+]

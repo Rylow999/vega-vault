@@ -64,7 +64,18 @@ hipótesis; solo separa para facilitar la revisión rigurosa posterior.
 | SDDF / Navier-Stokes | **sólido** — forma cerrada exacta, validado en DNS real |
 | fhrr-rho-collapse | **sólido** — intervención controlada (200/200 semillas) |
 | DSCN-G (núcleo) | validado parcialmente (T1/T2 ✅, T3 ⚠️, C3/Φ ❌) |
-| Collatz / DDSD | parcial — teorema de deriva exacto; colapso conjetura |
-| Quantum v9.1, Gauge | parcial — análogas, no causales |
+| Collatz / DDSD | parcial — teorema de deriva exacto; colapso conjetura; A6 formalizado en Lean 4 + Mathlib (v17, 9 teoremas sin sorry) |
+| Quantum v9.1, Gauge, Cosmos | parcial — λ₂=4 y predicciones (a)-(d) verificados con artefacto (2026-10-15); RG de Quantum sec 8.3 inconsistente (hallazgo); análogas, no causales |
 | Gödel (en HORIZON) | especulativa útil — traducción marcada explícitamente |
 | Pandora | en construcción — daemon activo, decodificador L2 pendiente |
+
+
+## Novedades 2026-10-15
+
+- `NOUS/RHO_LAW/` dejado autocontenido: estaba como submódulo roto (directorio
+  vacío); se inlineó el repo canónico [`Rylow999/rho-law`](https://github.com/Rylow999/rho-law).
+- `NOUS/QUANTUM`, `NOUS/COSMOS`, `NOUS/GAUGE`: cada carpeta ahora es un
+  paquete completo (paper + verification/ + README + CHANGELOG separado).
+  Verificación reproducible: λ₂=4 exacto (m=3..16), predicciones (a)-(d) de
+  Cosmos reproducidas, MC de Gauge reproducido en 2 hosts. Hallazgo honesto:
+  la tabla RG de Quantum §8.3 no sigue la ley declarada (β_fit=0.26 vs 2π/D).

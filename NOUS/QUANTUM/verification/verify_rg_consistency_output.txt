@@ -1,0 +1,2 @@
+quantum_sec_8_3: beta_fit=0.2635 vs 2pi/D=2.0944 (rel err 87.419%)
+cosmos_sec_4_3: beta_fit=2.0977 vs 2pi/D=2.0944 (rel err 0.16%)

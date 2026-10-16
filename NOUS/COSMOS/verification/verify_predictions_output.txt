@@ -1,0 +1,5 @@
+pred_a_anisotropy -> {'dH_z': 2.3538, 'aniso_percent': 3.4923, 'paper_claim': 3.49, 'obs': '4.1 +- 0.9 (CosmicFlows-4)', 'compat_sigma': 0.675, 'ok': True}
+pred_b_monotonic -> {'strictly_decreasing_on_grid': True, 'method': 'analytic: dH/dz = -(dH0/z_tau) exp(-z/z_tau) < 0 for z>0'}
+pred_c_angular -> {'theta_deg': 0.7769, 'paper_claim': 0.777, 'desi': 0.78, 'error_percent': 0.398, 'ok': True}
+pred_d_H0_local -> {'H0_local': 73.13, 'paper_claim': 73.13, 'shoes': '73.04 +- 1.04', 'compat_sigma': 0.087, 'ok': True}
+monte_carlo_sec7 -> {'status': 'NOT_REPRODUCIBLE_FROM_TEXT', 'reason': 'stochastic model unspecified in the paper (Appendix J absent)'}
