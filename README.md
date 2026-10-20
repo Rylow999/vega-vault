@@ -64,7 +64,7 @@ hipótesis; solo separa para facilitar la revisión rigurosa posterior.
 | SDDF / Navier-Stokes | **sólido** — forma cerrada exacta, validado en DNS real |
 | fhrr-rho-collapse | **sólido** — intervención controlada (200/200 semillas) |
 | DSCN-G (núcleo) | validado parcialmente (T1/T2 ✅, T3 ⚠️, C3/Φ ❌) |
-| Collatz / DDSD | parcial — teorema de deriva exacto; colapso conjetura; A6 formalizado en Lean 4 + Mathlib (v17, 9 teoremas sin sorry) |
+| Collatz / DDSD | parcial — teorema de deriva exacto; colapso conjetura; A6 formalizado en Lean 4 + Mathlib (v24, 9 teoremas sin sorry; build verificado 2026-10-20) |
 | Quantum v9.1, Gauge, Cosmos | parcial — λ₂=4 y predicciones (a)-(d) verificados con artefacto (2026-10-15); RG de Quantum sec 8.3 inconsistente (hallazgo); análogas, no causales |
 | Gödel (en HORIZON) | especulativa útil — traducción marcada explícitamente |
 | Pandora | en construcción — daemon activo, decodificador L2 pendiente |
