@@ -122,4 +122,4 @@ Si no encontramos estructura, también es un resultado: las señales de paloma
 en la base son holísticas (cada arrullo es una unidad), no composicionales.
 Eso lo decía la literatura clásica. V2 le pone el número.
 
-*Per aspera.*
+*Per Aspera, Ad Astra.*

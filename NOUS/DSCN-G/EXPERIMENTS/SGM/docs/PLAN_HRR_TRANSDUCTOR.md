@@ -186,4 +186,4 @@ FHRR (que pagamos con datos reales) para resolver un problema conocido en
 el transductor: la eco y la fragilidad de la boca. Si no funciona, nada
 cambia; si funciona, la boca se vuelve local, barata y robusta.
 
-Per aspera.
+Per Aspera, Ad Astra.

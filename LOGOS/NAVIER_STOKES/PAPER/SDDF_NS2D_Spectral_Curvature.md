@@ -473,7 +473,7 @@ We have presented a spectral framework for Navier-Stokes regularity based on dis
 
 ---
 
-**Per aspera, ad astra.** 🚀
+**Per Aspera, Ad Astra.** 🚀
 
 *This framework is offered as a research direction, not a completed proof. Rigorous development of Gaps 1-7 is the immediate next step.*
 
