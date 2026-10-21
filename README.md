@@ -1,81 +1,87 @@
 # Vega Vault
 
-Vault de investigación de Luciano Benjamín Nieto (Mendoza, Argentina).
-Reorganizado estructuralmente el 2026-07-25. No se eliminó ni modificó
-contenido científico; solo se reubicó. Backup previo:
+Research vault of Luciano Benjamín Nieto (Mendoza, Argentina).
+Structurally reorganized on 2026-07-25. No scientific content was deleted or
+modified — it was only relocated. Prior backup:
 `nexus-vault_BACKUP_20260725_002225.tar`.
 
-## ¿Qué es qué?
+## What is what
 
-- **HORIZŌN** (`HORIZON/`, raíz, nuevo **2026-09-29**) — El apartado de la
-  unión LOGOS+NOUS. Contiene: el informe integrado del marco unificado de
-  los cuatro mecanismos (expansión, contracción, compresión, colapso
-  generativo), la revisión crítica de Nexus como Apéndice C, la predicción
-  falsable testeable en DSCN-G (¿el punto crítico depende del instrumento
-  de medición o del sistema?), y las aplicaciones. Incluye **Pandora** como
-  caso de aplicación del marco (observadores anidados forzando colapso
-  generativo controlado). No toca LOGOS ni NOUS: los usa.
-- **NOUS** (`NOUS/`) — Paraguas de la teoría DSCN-G. Contiene el núcleo
-  **DSCN-G** (motor cognitivo / marco de sistemas dinámicos autoorganizados)
-  y sus extensiones (**QUANTUM**, **GAUGE**, **COSMOS**), más la
-  documentación filosófica en `NOUS/DOCUMENTATION/`.
-- **DSCN-G** (`NOUS/DSCN-G/`) — Núcleo teórico principal. Definición,
-  principios, arquitectura, modelos, mecanismos centrales, fundamentos
-  verificables y limitaciones. NO incluye conciencia emergente ni C3
-  (eso va a EXTENSIONS). `CORE/` está subdividido en `THEORY/` (qué propone),
-  `FORMALISM/` (índice de ecuaciones/teoremas del paper), `IMPLEMENTATION/`
-  (código) y `VALIDATION/` (resultados + `CONSISTENCY_CHECK.md`). El estado
-  de cada afirmación está indexado en `CLAIMS_STATUS.md`; el criterio para
-  admitir algo nuevo al núcleo está en `CORE_RULES.md`.
-- **LOGOS** (`LOGOS/`, raíz) — Papeles hermanos que NO son DSCN-G
-  (DDSD, dODF, Collatz, Navier-Stokes, Confinement). Conservados como
-  línea independiente, al mismo nivel que NOUS y FATE. Navier-Stokes tiene
-  nota de estatus que remite al repo independiente `github.com/Rylow999/sddf`
-  donde está el trabajo actual (3D, forma cerrada, DNS real).
-- **FATE** (`FATE/`, raíz) — Aplicación / sistema construido USANDO DSCN-G
-  (engine de drug discovery sobre ChEMBL). DESACOPLADO del núcleo
-  teórico; la interfaz se documenta en `FATE/DSCNG_INTERFACE/`.
-- **SHARED** (`SHARED/`) — Sistema del agente Nexus (identidad, grafo de
-  conocimiento, memoria). NO es ciencia DSCN-G.
-- **Master-Document/** (raíz) — Documento de consolidación NOUS Paper 0;
-  une todos los dominios (NOUS + LOGOS).
+- **HORIZON** (`HORIZON/`, root, new **2026-09-29**) — The LOGOS+NOUS junction.
+  Contains: the integrated report of the unified framework of the four
+  mechanisms (expansion, contraction, compression, generative collapse), the
+  critical review by Nexus as Appendix C, the falsifiable prediction testable
+  in DSCN-G (does the critical point depend on the measurement instrument or
+  on the system?), and the applications. Includes **Pandora** as an
+  application case of the framework (nested observers forcing controlled
+  generative collapse). It does not touch LOGOS or NOUS: it uses them.
+- **NOUS** (`NOUS/`) — The umbrella of DSCN-G theory. Contains the **DSCN-G**
+  core (cognitive engine / framework of self-organizing dynamical systems)
+  and its extensions (**QUANTUM**, **GAUGE**, **COSMOS**), plus the
+  philosophical documentation in `NOUS/DOCUMENTATION/`.
+- **DSCN-G** (`NOUS/DSCN-G/`) — The main theoretical core. Definition,
+  principles, architecture, models, central mechanisms, verifiable grounds
+  and limitations. Does NOT include emergent consciousness or C3 (that goes
+  to EXTENSIONS). `CORE/` is subdivided into `THEORY/` (what it proposes),
+  `FORMALISM/` (index of the paper's equations/theorems),
+  `IMPLEMENTATION/` (code) and `VALIDATION/` (results +
+  `CONSISTENCY_CHECK.md`). The status of every claim is indexed in
+  `CLAIMS_STATUS.md`; the criterion for admitting something new to the core
+  is in `CORE_RULES.md`.
+- **LOGOS** (`LOGOS/`, root) — Sibling papers that are NOT DSCN-G
+  (DDSD, dODF, Collatz, Navier-Stokes, Confinement). Kept as an independent
+  line, at the same level as NOUS and FATE. Navier-Stokes carries a status
+  note pointing to the independent repo `github.com/Rylow999/sddf`, where the
+  current work lives (3D, closed form, real DNS).
+- **FATE** (`FATE/`, root) — Application / system built USING DSCN-G
+  (a drug-discovery engine over ChEMBL). DECOUPLED from the theoretical
+  core; the interface is documented in `FATE/DSCNG_INTERFACE/`.
+- **SHARED** (`SHARED/`) — The Nexus agent system (identity, knowledge
+  graph, memory). NOT DSCN-G science.
+- **Master-Document/** (root) — NOUS Paper 0 consolidation document; it
+  unifies all domains (NOUS + LOGOS).
 
-## Navegación
+## Navigation
 
-- `HORIZON/README.md` — qué es, estructura, predicción falsable.
-- `HORIZON/PAPER/INFORME_INTEGRADO.md` — el informe fundacional del marco
-  unificado (+ Apéndice C con la revisión de Nexus).
-- `PROJECT_MAP.md` — árbol completo del vault.
-- `ROADMAP.md` — completado / en revisión / futuro.
-- `REVIEW_PENDING.md` — ambigüedades, duplicados, mezclas y decisiones
-  humanas pendientes.
-- `FREEZE_CHECKLIST.md` — checklist final de forma antes de congelar v1.0
-  (no reemplaza las decisiones científicas abiertas en `REVIEW_PENDING.md`).
+- `HORIZON/README.md` — what it is, structure, falsifiable prediction.
+- `HORIZON/PAPER/INFORME_INTEGRADO.md` — the founding report of the unified
+  framework (+ Appendix C with Nexus's review).
+- `PROJECT_MAP.md` — full tree of the vault.
+- `ROADMAP.md` — completed / under review / future.
+- `REVIEW_PENDING.md` — ambiguities, duplicates, mixtures and pending human
+  decisions.
+- `FREEZE_CHECKLIST.md` — final form checklist before freezing v1.0 (does
+  not replace the open scientific decisions in `REVIEW_PENDING.md`).
 
-## Regla de oro
+## Golden rule
 
-Organización ≠ validación científica. Esta reorg NO valida ninguna
-hipótesis; solo separa para facilitar la revisión rigurosa posterior.
+Organization ≠ scientific validation. This reorganization validates NO
+hypothesis; it only separates things to make rigorous later review easier.
 
-## Estatus epistémico honesto (28-09-2026)
+## Honest epistemic status (2026-09-28)
 
-| dominio | estatus |
+| Domain | Status |
 |---------|---------|
-| SDDF / Navier-Stokes | **sólido** — forma cerrada exacta, validado en DNS real |
-| fhrr-rho-collapse | **sólido** — intervención controlada (200/200 semillas) |
-| DSCN-G (núcleo) | validado parcialmente (T1/T2 ✅, T3 ⚠️, C3/Φ ❌) |
-| Collatz / DDSD | parcial — teorema de deriva exacto; colapso conjetura; A6 formalizado en Lean 4 + Mathlib (v24, 9 teoremas sin sorry; build verificado 2026-10-20) |
-| Quantum v9.1, Gauge, Cosmos | parcial — λ₂=4 y predicciones (a)-(d) verificados con artefacto (2026-10-15); RG de Quantum sec 8.3 inconsistente (hallazgo); análogas, no causales |
-| Gödel (en HORIZON) | especulativa útil — traducción marcada explícitamente |
-| Pandora | en construcción — daemon activo, decodificador L2 pendiente |
+| SDDF / Navier-Stokes | **solid** — exact closed form, validated on real DNS |
+| fhrr-rho-collapse | **solid** — controlled intervention (200/200 seeds) |
+| DSCN-G (core) | partially validated (T1/T2 pass, T3 qualified, C3/PHI refuted) |
+| Collatz / DDSD | partial — exact drift theorem; collapse conjecture; A6 formalized in Lean 4 + Mathlib (v24, 9 theorems with no sorry; build verified 2026-10-20) |
+| Quantum v9.1, Gauge, Cosmos | partial — lambda_2 = 4 and predictions (a)-(d) verified with artifact (2026-10-15); Quantum's RG section 8.3 inconsistent (audit finding); analogies, not causal claims |
+| Goedel (in HORIZON) | useful speculation — translation explicitly marked |
+| Pandora | under construction — daemon active, L2 decoder pending |
 
+## News 2026-10-15
 
-## Novedades 2026-10-15
+- `NOUS/RHO_LAW/` made self-contained: it used to be a broken submodule
+  (empty directory); the canonical repository
+  [`Rylow999/rho-law`](https://github.com/Rylow999/rho-law) was inlined.
+- `NOUS/QUANTUM`, `NOUS/COSMOS`, `NOUS/GAUGE`: each folder is now a complete
+  package (paper + verification/ + README + separate CHANGELOG).
+  Reproducible verification: lambda_2 = 4 exact (m=3..16), Cosmos predictions
+  (a)-(d) reproduced, Gauge MC reproduced on 2 hosts. Honest finding: the RG
+  table of Quantum sec 8.3 does not follow the declared law
+  (beta_fit=0.26 vs 2*pi/D).
 
-- `NOUS/RHO_LAW/` dejado autocontenido: estaba como submódulo roto (directorio
-  vacío); se inlineó el repo canónico [`Rylow999/rho-law`](https://github.com/Rylow999/rho-law).
-- `NOUS/QUANTUM`, `NOUS/COSMOS`, `NOUS/GAUGE`: cada carpeta ahora es un
-  paquete completo (paper + verification/ + README + CHANGELOG separado).
-  Verificación reproducible: λ₂=4 exacto (m=3..16), predicciones (a)-(d) de
-  Cosmos reproducidas, MC de Gauge reproducido en 2 hosts. Hallazgo honesto:
-  la tabla RG de Quantum §8.3 no sigue la ley declarada (β_fit=0.26 vs 2π/D).
+## Motto
+
+*Per Aspera, Ad Astra.*
