@@ -2,6 +2,24 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 
+## [2026-10-25] — N=64: primera corrida a mayor tamano
+
+### Agregado
+- `verification/gauge_mc_N64_output_2026-10-25.txt` — MC Metropolis en N=64
+  (|S|=6, 352 aristas, 320 plaquettes), seed 42, 500 termalizacion + 500
+  medicion, 11 betas 0.1-10 (fino cerca de beta_c~2.5). Reproduce la
+  estructura cualitativa de N=16: plaquette 0.029 -> 0.863, loops crecientes,
+  saturacion ~0.86 en beta=10.
+
+### Nota honesta
+- El area law SIGUE sin establecerse por MC: en beta=10 la plaquette satura
+  0.863 (no ~1) y W(2,2) ~ W(1,1) (los loops NO decaen con el area en este
+  rango). La senal de confinamiento queda demostrada solo en los regimenes
+  asintoticos del paper (character expansion / gaussiana). Pendiente:
+  heat bath Kennedy-Pendleton y ratios de Creutz con errores < 5% en el
+  lado de acoplamiento fuerte (beta < beta_c), donde la extraccion de
+  sigma(beta) es viable.
+
 ## [2026-10-15] — Reproduccion cruzada del Monte Carlo
 
 ### Agregado

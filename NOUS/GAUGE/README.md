@@ -23,10 +23,10 @@ juguete**: NO constituye prueba del problema del Milenio de Yang-Mills.
 
 ## Resultados principales
 
-Monte Carlo en N=16 (Metropolis, 300 sweeps termalizacion + 300 medicion,
-barrido beta 0.1-10). Dos corridas independientes (2026-10-11 en la
-workstation Arch; 2026-10-15 en el notebook Windows) reproducen el mismo
-comportamiento cualitativo:
+Monte Carlo Metropolis en tres corridas independientes: N=16 x2 (Arch
+2026-10-11; Windows 2026-10-15) y N=64 (Arch 2026-10-25, seed 42, 500+500
+sweeps, 11 betas). Todas reproducen el mismo comportamiento cualitativo
+(N=64: plaquette 0.029 -> 0.863, saturacion ~0.86 en beta=10). Tabla N=16:
 
 | beta | plaquette (norm.) | W(1,1) | W(2,2) |
 |---|---|---|---|
@@ -43,8 +43,10 @@ resultado es PRELIMINAR** (N=16 es muy chico).
 
 ## Que falta (priorizado)
 
-1. **N=64 + heat bath Kennedy-Pendleton** — el paso siguiente declarado por
-   el propio paper para cuantificar G1 (ley de area).
+1. **N=64 Metropolis: HECHO (2026-10-25)** — misma estructura que N=16 y sin
+   area law en el rango medido. Falta heat bath Kennedy-Pendleton + ratios de
+   Creutz con errores < 5% en el lado fuerte (beta < beta_c) para cuantificar
+   G1 (ley de area) y extraer sigma(beta).
 2. **Extraccion de sigma(beta)** via ratios de Creutz con errores < 5%
    (mas sweeps; corrida actual sin error estadistico reportado).
 3. **Cuidado con G1 en beta alto:** en esta implementacion la plaquette
