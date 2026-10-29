@@ -100,14 +100,67 @@ $$W(C) = \text{tr}\left(\prod_{(i,j) \in C} U_{ij}\right) \quad (5)$$
 - **Fase confinante** si $\langle W(C) \rangle \sim \exp(-\sigma \cdot \text{Area}(C))$ (ley de área).
 - **Fase deconfinante** si $\langle W(C) \rangle \sim \exp(-\alpha \cdot \text{Perimeter}(C))$ (ley de perímetro).
 
-**Definición 2.7 (Área en circulante fractal).** Para un loop $C$, definimos $\text{Area}(C)$ como el número mínimo de plaquetas fundamentales en cualquier superficie discreta que tenga $C$ como borde. Esta definición es bien-formada porque $C_N(S)$ admite estructura de 2-complejo celular (ver Lemma 3.2).
+**Definición 2.7 (Área en circulante fractal).** Para un loop $C$, definimos $\text{Area}(C)$ como el número mínimo de plaquetas fundamentales en cualquier superficie discreta que tenga $C$ como borde.
+
+> **Revisión (auditoría 2026-10-29).** Esta definición, tal como está escrita,
+> **no tiene mínimo canónico**. Dos problemas:
+>
+> 1. **El sustrato no es una superficie.** El 2-complejo de $C_N(S)$ tiene
+>    característica de Euler $\chi = N/2$ (8 en $N=16$, 512 en $N=1024$),
+>    muy por encima de 2. Un complejo con $\chi > 2$ no es una superficie
+>    (ni orientable ni no-orientable): es un complejo de dimensión 2 con
+>    singularidades. Por lo tanto "superficie" debe entenderse como
+>    *cadena de plaquetas*, no como superficie topológica.
+>
+> 2. **Falta especificar la cadena y el embedido.** "Superficie con borde $C$"
+>    requiere decidir: (a) en qué coeficientes se trabaja ($\mathbb{Z}_2$ o
+>    $\mathbb{R}$), (b) si la superficie debe ser *embedida* en el 2-esqueleto
+>    (o sea, un conjunto de triángulos concretos) o si se admite cualquier
+>    cadena, y (c) si se permiten componentes disjuntas adicionales.
+>
+> Con las aclaraciones (a)-(c) y el embedido requerido, el mínimo sí existe
+> y es computable: es el **BFS exacto sobre el espacio de estados**
+> $\mathcal{P}(\text{triángulos})$ con operación de toggle, buscando el
+> subconjunto $S$ tal que $\bigoplus_{t \in S} \partial t = C$ (en $\mathbb{Z}_2$)
+> con $|S|$ mínimo. Implementación en `gauge_instrument.py::area_min_bfs()`;
+> verificado para $N=16$: $A_{\min}(1,1)=2$, $A_{\min}(1,2)=4$,
+> $A_{\min}(1,3)=6$ con $d_1=1, d_2=2$; y $A_{\min}(1,1)=6$,
+> $A_{\min}(2,1)=4$, $A_{\min}(2,2)=6$, $A_{\min}(3,1)=6$ con $d_1=1, d_2=4$.
+>
+> Observación adicional: el mínimo **depende de la orientación** del loop en
+> el sustrato, porque los generadores $d_1$ y $d_2$ no son equivalentes
+> (el circulante fractal no es transitivo bajo el grupo de automorfismos que
+> intercambia generadores). Por eso el ajuste de la G1 debe usar
+> $A_{\min}(C)$ por loop, no un proxy como $R \cdot T$.
+>
+> Marco de referencia para una definición rigurosa: Lemoine,
+> arXiv:2604.16252, "Universal dualities for Wilson loops in lattice
+> Yang–Mills", que desarrolla una expansión *gauge/cadena sobre superficies
+> decoradas* con ecuación maestra de loops finita-$N$, válida en dimensión
+> arbitraria y para acciones plaqueta centrales suaves.
 
 ### 2.5 Generadores de Wilson Loops
 
 **Lemma 2.2 (Cierre de loops rectangulares).** En $C_N(S)$ con $N = 2^m$, los loops rectangulares $R \times T$ definidos mediante generadores $d_1, d_2 \in S_{\text{sym}}$ cierran siempre que $R \cdot d_1 + T \cdot d_2 \equiv 0 \pmod{N}$ en el desplazamiento total.
 *Prueba.* El desplazamiento tras $R$ pasos de $d_1$, $T$ de $d_2$, $R$ de $-d_1$, $T$ de $-d_2$ es $R d_1 + T d_2 - R d_1 - T d_2 = 0 \pmod{N}$. $\blacksquare$
 
-*Elección canónica:* $d_1 = 1, d_2 = 2$. Esto garantiza cierre para cualquier $R, T$ en cualquier $N = 2^m$.
+*Elección de generadores (revisada 2026-10-29).* La elección original
+$d_1 = 1, d_2 = 2$ es **degenerada**: en $\mathbb{Z}_N$, $+2 = 2 \cdot (+1)$,
+de modo que los dos generadores son colineales y el "rectángulo" $R \times T$
+degenera en un camino colineal. Consecuencias verificadas:
+- El path puede repetir vértices (loops *TIPO-V*), y entonces no encierra
+  una región de manera canónica.
+- El path puede invertir una arista de forma **no consecutiva**, en cuyo caso
+  la holonomía **no** colapsa a 1 (las matrices $\mathrm{SU}(2)$ no conmutan:
+  $A B C A^{-1} \neq I$). Verificado: el loop $(2,2)$ con $d_1=1,d_2=2$
+  invierte la arista $(2,4)$ en los pasos 2 y 6 (no contiguos) y da
+  $W = -0.749$, no 1.
+
+La elección por defecto del instrumento corregido es **$d_1 = 1, d_2 = 4$**
+(linealmente independientes en $\mathbb{Z}_N$), con la que todos los loops
+usados son *SIMPLE*. Los loops *TIPO-E* —con holonomía idénticamente 1— sólo
+aparecen cuando $d_2$ es múltiplo de $d_1$ (p.ej. $d_1=1, d_2=8$), y se
+verifican con $W = 1.0000000000$ (desviación $2.7 \times 10^{-15}$).
 
 ---
 
@@ -125,19 +178,38 @@ donde $L$ es el Laplaciano combinatorial del grafo.
 ### 3.2 Estructura de Plaquetas
 
 **Lemma 3.2 (Conteo de plaquetas).** Sea $|P_m|$ el número de plaquetas triangulares en $C_{2^m}(S)$. Entonces:
-$$|P_m| = \frac{N}{6} \binom{|S_{\text{sym}}|}{2} - R_m = \frac{2^m}{6} \binom{2m-1}{2} - R_m$$
-donde $R_m$ cuenta las tripletas excluidas (tres distancias que no cierran triángulo módulo $N$).
+$$|P_m| = N(m - 1) = 2^m(m-1)$$
+donde $N = 2^m$ y $m \ge 3$. Equivalentemente, $|P_m|/N = m - 1$ es un entero.
 
-*Valores verificados computacionalmente:*
+Una formulación alternativa en términos de las tripletas candidatas es
+$$|P_m| = \frac{N}{6} \binom{|S_{\text{sym}}|}{2} - R_m = \frac{2^m}{6} \binom{2m-1}{2} - R_m$$
+donde $R_m$ cuenta las tripletas excluidas (tres distancias que no cierran triángulo módulo $N$). Esta segunda forma requiere un término de corrección no entero para $m=3$ y $m=6$ ($-2.67$ y $266.67$ respectivamente), por lo que la forma cerrada $N(m-1)$ es lazat.
+
+*Valores verificados computacionalmente* (`verify_lemma32.py`):
 
 | $m$ | $N = 2^m$ | $|E|$ | $|P_m|$ | $|P_m|/N$ |
 |---|---|---|---|---|
-| 3 | 8 | 20 | ~10 | 1.25 |
+| 3 | 8 | 20 | 16 | 2.00 |
 | 4 | 16 | 56 | 48 | 3.00 |
 | 5 | 32 | 144 | 128 | 4.00 |
-| 6 | 64 | 352 | ~320 | 5.00 |
+| 6 | 64 | 352 | 320 | 5.00 |
+| 7 | 128 | 832 | 768 | 6.00 |
 
-**Corolario 3.1 (Crecimiento de estructura plaquetaria).** El ratio $|P_m|/N$ crece linealmente con $m$, indicando que el circulante fractal tiene cada vez más estructura de plaquetas por nodo. Esto favorece el confinamiento en el régimen de acoplamiento fuerte al aumentar la "frustración geométrica" disponible.
+**Fórmula cerrada.** El conteo exacto es
+$$|P_m| = N(m - 1) = 2^m(m-1)$$
+para todo $m \ge 3$, verificado por enumeración directa hasta $m=7$. En
+particular, $|P_m|/N = m - 1$ es un entero.
+
+> **Corrección (auditoría 2026-10-29).** Una versión anterior de esta tabla
+> reportaba $|P_3| \approx 10$ y $|P_3|/N = 1.25$. El valor exacto es
+> $|P_3| = 16$ y $|P_3|/N = 2.00$; los valores de $m=4,5,6$ sí coincidían.
+> Los valores con "$\sim$" en la tabla original (10 y 320) eran en realidad
+> exactos. Nótese también que la fórmula original con $R_m$ da valores no
+> enteros para $m=3$ ($R_m = -2.67$) y $m=6$ ($R_m = 266.67$), lo que
+> indica que el término de corrección estaba mal definido; la forma cerrada
+> $N(m-1)$ lo evita.
+
+**Corolario 3.1 (Crecimiento de estructura plaquetaria).** El ratio $|P_m|/N = m - 1$ crece linealmente con $m$, indicando que el circulante fractal tiene cada vez más estructura de plaquetas por nodo. Esto favorece el confinamiento en el régimen de acoplamiento fuerte al aumentar la "frustración geométrica" disponible.
 
 ### 3.3 Localización de Anderson
 
@@ -190,11 +262,23 @@ Cada link compartido entre dos plaquetas adyacentes produce factor $1/2$.
 **Paso 4: Conteo combinatorio.** Para un tiling de $A(C)$ plaquetas en topología de disco:
 - $A(C)$ factores de $\beta/2$ (plaquetas)
 - $A(C) - 1$ factores de $1/2$ (links internos)
-- Contracciones de índices de color: factor $\text{tr}(I) = 2$
+- Normalización de $W(C) = \text{tr}(H)/2$: factor $1/2$
+
+El conteo de links internos $E_{\text{int}} = A(C) - 1$ se verifica por
+$3A = 2E_{\text{int}} + E_{\text{bdry}}$: para $A = 2, 4, 6$ se obtienen
+$E_{\text{int}} = 1, 3, 5$ respectivamente.
 
 **Paso 5: Combinación.**
-$$\langle W(C) \rangle = \frac{(\beta/2)^{A(C)} \cdot (1/2)^{A(C)-1} \cdot 2}{2} \cdot (1 + O(\beta)) = \left(\frac{\beta}{4}\right)^{A(C)} (1 + O(\beta))$$
+$$\langle W(C) \rangle = \frac{(\beta/2)^{A(C)} \cdot (1/2)^{A(C)-1} \cdot 1}{2} \cdot (1 + O(\beta)) = \left(\frac{\beta}{4}\right)^{A(C)} (1 + O(\beta))$$
 $\blacksquare$
+
+*Nota (auditoría 2026-10-29).* La expresión original de este paso escribía
+el factor de color como $\text{tr}(I) = 2$ en el numerador, lo que da
+$(\beta/2)^{A}(1/2)^{A-1}$ y NO cierra con $(\beta/4)^{A}$: falta un factor
+$2^{A}$. El enunciado del Teorema 4.1 es correcto —el coeficiente leader
+integrado exactamente sobre la superficie mínima da $(1/2)^{A}$, y
+$\langle W\rangle = (1/2)^{A}\cdot(\beta/2)^{A} = (\beta/4)^{A}$— pero la
+algebra escrita en el paso estaba mal. Corregido arriba.
 
 ### 4.2 Régimen de Acoplamiento Débil ($\beta \to \infty$)
 
@@ -203,6 +287,30 @@ $$\langle W(C) \rangle = \exp\left(-\frac{C_F}{\beta} P(C)\right) (1 + O(\beta^{
 donde $P(C)$ es el perímetro del loop (número de aristas en $C$) y $C_F = 3/4$ es el Casimir de la representación fundamental de $SU(2)$.
 
 *Prueba (sketch completo).*
+
+> **Estado verificado (auditoría 2026-10-29).** La FORMA del teorema
+> (ley de perímetro con corrección $O(\beta^{-1})$) está confirmada por
+> Monte Carlo: un ajuste de $\langle \text{tr}(U_p)/2\rangle$ contra $1/\beta$
+> deja un residuo relativo máximo de $5.2\times10^{-4}$, y al añadir un término
+> $1/\beta^2$ lo reduce a $3.3\times10^{-4}$. El ORDEN $1/\beta$ es correcto.
+>
+> La **CONSTANTE no reproduce**. La medición directa del coeficiente de
+> $1/\beta$ en la plaqueta da
+> $$c = 1.2946 \pm 0.0049 \qquad (\beta = 10, 20, 40, 80, 160)$$
+> con la normalización $\langle \text{tr}(U_p)/2\rangle = 1 - c/\beta +
+> O(\beta^{-2})$. Ninguno de los candidatos del argumento original coincide:
+> $C_F P/2 = 1.125$ ($z=+34$), $C_F P = 2.25$ ($z=-194$), $C_F P/2$ abeliano
+> $=0.75$ ($z=+111$), $C_F P$ abeliano $=1.50$ ($z=-42$). El resultado es
+> consistente con $c \approx 1.29$, que no corresponde a ninguno de los
+> valores estándar de $C_F$.
+>
+> Dos candidatos a explicar: (i) el $g^2 = 4/\beta$ del Paso 1 puede no ser
+> la relación correcta entre $\beta$ y el acoplamiento en esta acción; (ii) la
+> triangularización no es una triangulación de un lattice regular, y las
+> plaquetas comparten links de manera no trivial (en $C_N(S)$ con
+> $S = \{1,2,4,\ldots\}$ hay loops de longitud 3 que no son "plaquetas
+> elementales" de una celda). Sin resolver cuál de las dos, el teorema se
+> declara **NO REPRODUCIDO en su constante**, con la forma intacta.
 
 **Paso 1: Parametrización de fluctuaciones.** Para $\beta$ grande, $U_l = \exp(i g A_l) \approx I + igA_l - \frac{g^2}{2}A_l^2 + \cdots$ con $A_l \in \mathfrak{su}(2)$ y $g^2 = 4/\beta$.
 
@@ -222,7 +330,11 @@ En teoría gaussiana, la varianza de $\sum_{l \in C} A_l$ escala con el perímet
 
 **Paso 6: Fórmula de momentos gaussianos.**
 $$\langle W(C) \rangle \approx \exp\left(-\frac{g^2 C_F}{2} P(C)\right) = \exp\left(-\frac{C_F}{\beta} P(C)\right)$$
-$\blacksquare$
+
+*Verificación numérica:* `verify_thm42.py` (en el repositorio) mide el
+coeficiente $c$ directamente y produce el valor $1.2946 \pm 0.0049$ citado
+arriba. El script `verify.py` corre esa comprobación junto con el resto de
+los números del paper.
 
 ### 4.3 Transición de Fase
 
@@ -466,8 +578,13 @@ La siguiente tabla es una **analogía estructural**, no una equivalencia formal:
 ### 11.1 Corto Plazo (3-6 meses)
 
 1. **Simulación a gran escala:** Implementar heat bath de Kennedy-Pendleton sobre $C_N(S)$ para $N \in \{64, 128, 256\}$.
-2. **Extracción precisa de $\sigma(\beta)$:** Medir Wilson loops rectangulares $R \times T$ con $R, T \in \{1, 2, 4, 8, 16, 32\}$.
-3. **Verificar Conjetura G1:** Ajustar $\log \langle W(R,T) \rangle = -\sigma RT - \alpha (R+T)$.
+2. **Extracción precisa de $\sigma(\beta)$:** Medir Wilson loops con generadores no degenerados ($d_1=1, d_2=4$), restringidos a loops *SIMPLE*, con errores por bloques y $\tau_{\text{int}}$ reportados.
+3. **Verificar Conjetura G1:** Ajustar $\log \langle W(C) \rangle = -\sigma A_{\min}(C) - \alpha P(C)$, donde $A_{\min}(C)$ es el área mínima exacta por BFS (`gauge_instrument.py::area_min_bfs`) y $P(C)$ el perímetro.
+   > **Corrección (2026-10-29):** el ajuste original propuesto usaba $RT$ como
+   > proxy del área. Eso no puede funcionar: el área mínima real **depende de
+   > la orientación del loop** en el circulante fractal (verificado: con
+   > $d_1=1,d_2=4$, $A_{\min}(1,1)=6$ pero $A_{\min}(2,1)=4$, ambos con
+   > "$R\times T$" distintos de su área real). Usar $A_{\min}(C)$ por loop.
 4. **Detectar anomalías tipo K=20:** Buscar resonancias aisladas en el espectro del transfer matrix.
 
 ### 11.2 Mediano Plazo (6-18 meses)
